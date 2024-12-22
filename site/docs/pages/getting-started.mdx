@@ -1,3 +1,5 @@
+import GenerateKey from "../components/GenerateKey";
+
 # Get started [Get started with Whisk SDK in just a few lines of code.]
 
 ## Overview
@@ -36,7 +38,12 @@ yarn add @paperclip-labs/whisk-sdk
 import "@paperclip-labs/whisk-sdk/styles.css"
 // Other style imports below
 ```
- 
+
+### Generate API key
+
+The API key will be sent to your email address.
+
+<GenerateKey />
  
 ### Wrap App in `WhiskSdkProvider`
 
@@ -48,6 +55,7 @@ import { WhiskSdkProvider } from "@paperclip-labs/whisk-sdk"; // [!code focus]
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <WhiskSdkProvider // [!code focus]
+        apiKey="<YOUR_API_KEY>" // Check your email from prev step. // [!code focus]
         config={{ // [!code focus]
             // Define configuration for each kit you plan to use.  // [!code focus]
             // See respective Kit docs for full config. // [!code focus]
