@@ -1,10 +1,14 @@
 import { defineConfig } from "vocs";
 import { ModuleKind, ModuleResolutionKind, ScriptTarget } from "typescript";
+import "dotenv/config";
 
 export default defineConfig({
   vite: {
     ssr: {
       noExternal: ["@paperclip-labs/whisk-sdk", "@paperclip-labs/whisk-core"],
+    },
+    define: {
+      "import.meta.env.VITE_WHISK_API_KEY": JSON.stringify(process.env.VITE_WHISK_API_KEY),
     },
   },
   twoslash: {
