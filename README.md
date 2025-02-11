@@ -2,7 +2,11 @@
 
 Whisk SDK provides a suite of modular kits for seamless integration with the [Whisk.so](https://whisk.so) blockchain data pipeline.
 
-![Whisk Diagram](site/docs/public/how-it-works.png)
+## Installation
+
+```bash
+pnpm add @paperclip-labs/whisk-sdk
+```
 
 ## Documentation 
 

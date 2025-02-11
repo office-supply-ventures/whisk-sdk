@@ -5,14 +5,14 @@
   "scripts": {
     "dev": "vocs dev",
     "build": "vocs build",
-    "preview": "vocs preview",
-    "prebuild": "bun run --filter=@paperclip-labs/whisk-sdk build"
+    "preview": "vocs preview"
   },
   "dependencies": {
-    "@paperclip-labs/whisk-sdk": "workspace:*",
+    "@paperclip-labs/whisk-sdk": "^0.0.21",
     "@vercel/analytics": "^1.4.1",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
+    "lucide-react": "^0.475.0",
     "motion": "^11.14.1",
     "react": "^18",
     "react-dom": "^18",

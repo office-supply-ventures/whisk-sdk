@@ -1,0 +1,64 @@
+{
+  "name": "@paperclip-labs/whisk-sdk",
+  "version": "0.0.22",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/papercliplabs/whisk-sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/papercliplabs/whisk-sdk/issues"
+  },
+  "homepage": "https://docs.whisk.so",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.js",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./identity": {
+      "types": "./dist/identity/index.d.ts",
+      "default": "./dist/identity/index.js"
+    }
+  },
+  "scripts": {
+    "stylegen": "tailwindcss -i ./src/styles.css -o ./dist/styles.css",
+    "stylegen-watch": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
+    "build": "bun codegen && bun stylegen && tsc && tsc-alias",
+    "dev": "concurrently \"bun stylegen-watch\" \"bun tsc -w\" \"bun tsc-alias -w\" \"bun codegen --watch\"",
+    "codegen": "graphql-codegen --config codegen.ts",
+    "codegen-watch": "graphql-codegen --config codegen.ts --watch"
+  },
+  "keywords": [],
+  "author": "Paperclip Labs",
+  "license": "MIT",
+  "devDependencies": {
+    "@0no-co/graphqlsp": "^1.12.16",
+    "@graphql-codegen/cli": "^5.0.4",
+    "@graphql-codegen/schema-ast": "^4.1.0",
+    "@graphql-codegen/typescript-graphql-request": "^6.2.0",
+    "@parcel/watcher": "^2.5.1",
+    "concurrently": "^9.0.1",
+    "dotenv": "^16.4.7",
+    "tailwindcss": "^3.4.14",
+    "tsc-alias": "^1.8.10",
+    "react": "^19.0.0",
+    "@types/react": "^19.0.0",
+    "typescript": "^5.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0 <20.0.0"
+  },
+  "dependencies": {
+    "@tanstack/react-query": ">=5",
+    "clsx": "^2.1.1",
+    "graphql": "^16.10.0",
+    "motion": "^11.14.1",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7",
+    "viem": "^2.0.0"
+  }
+}
