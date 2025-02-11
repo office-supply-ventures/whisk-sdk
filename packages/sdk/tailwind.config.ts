@@ -2,8 +2,6 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  prefix: "dk-", // Add this line
-  darkMode: ["class"],
   content: ["./src/**/*.tsx"],
   theme: {
     container: {
@@ -15,44 +13,44 @@ export default {
     },
     extend: {
       colors: {
-        border: "hsl(var(--dk-border))",
-        input: "hsl(var(--dk-input))",
-        ring: "hsl(var(--dk-ring))",
-        background: "hsl(var(--dk-background))",
-        foreground: "hsl(var(--dk-foreground))",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--dk-primary))",
-          foreground: "hsl(var(--dk-primary-foreground))",
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--dk-secondary))",
-          foreground: "hsl(var(--dk-secondary-foreground))",
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
-          DEFAULT: "hsl(var(--dk-destructive))",
-          foreground: "hsl(var(--dk-destructive-foreground))",
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "hsl(var(--dk-muted))",
-          foreground: "hsl(var(--dk-muted-foreground))",
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--dk-accent))",
-          foreground: "hsl(var(--dk-accent-foreground))",
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
-          DEFAULT: "hsl(var(--dk-popover))",
-          foreground: "hsl(var(--dk-popover-foreground))",
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
         },
         card: {
-          DEFAULT: "hsl(var(--dk-card))",
-          foreground: "hsl(var(--dk-card-foreground))",
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
         },
       },
       borderRadius: {
-        lg: "var(--dk-radius)",
-        md: "calc(var(--dk-radius) - 2px)",
-        sm: "calc(var(--dk-radius) - 4px)",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],

@@ -9,7 +9,6 @@
     "prebuild": "bun run --filter=@paperclip-labs/whisk-sdk build"
   },
   "dependencies": {
-    "@paperclip-labs/whisk-core": "^0.0.2",
     "@paperclip-labs/whisk-sdk": "workspace:*",
     "@vercel/analytics": "^1.4.1",
     "clsx": "^2.1.1",

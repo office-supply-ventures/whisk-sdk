@@ -46,6 +46,10 @@ export default defineConfig({
         },
       ],
     },
+    {
+      text: "GraphQL",
+      link: "/graphql",
+    },
   ],
   socials: [
     {

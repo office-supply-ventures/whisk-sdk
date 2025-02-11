@@ -1,11 +1,12 @@
 "use client";
-import type { IdentityResolvers } from "@paperclip-labs/whisk-core/identity";
 import { QueryClient, QueryClientProvider, useQueryClient } from "@tanstack/react-query";
 import { createContext, ReactNode, useContext, useRef } from "react";
 import { Address } from "viem";
+import { IdentityResolverInput } from "./generated/gql/whisk/graphql";
+import { createWhiskClient } from "./utils/graphql";
 
 export interface IdentityKitConfig {
-  resolvers: IdentityResolvers; // List of resolvers to use, will process sequentially until one resolves.
+  resolverOrder?: IdentityResolverInput[]; // List of resolvers to use, will process sequentially until one resolves.
   overrides?: Record<Address, { name: string; avatar: string } | undefined>; // Override for a given address.
 }
 
@@ -14,23 +15,24 @@ export interface WhiskSdkConfig {
 }
 
 export interface WhiskSdkContextType {
-  apiKey: string;
+  whiskClient?: ReturnType<typeof createWhiskClient>;
   config: WhiskSdkConfig;
 }
 
 const WhiskSdkContext = createContext<WhiskSdkContextType>({
-  apiKey: "",
+  whiskClient: undefined,
   config: {},
 });
 
 export interface WhiskSdkProviderParams {
-  apiKey?: string;
+  apiKey: string;
   config: WhiskSdkConfig;
   children: ReactNode;
 }
 
 export function WhiskSdkProvider({ apiKey, config, children }: WhiskSdkProviderParams) {
   const queryClientRef = useRef<QueryClient | null>(null);
+  const whiskClient = createWhiskClient(apiKey);
 
   try {
     const existingQueryClient = useQueryClient();
@@ -53,7 +55,7 @@ export function WhiskSdkProvider({ apiKey, config, children }: WhiskSdkProviderP
 
   return (
     <QueryClientProvider client={queryClientRef.current}>
-      <WhiskSdkContext.Provider value={{ apiKey: apiKey ?? "DEMO", config }}>{children}</WhiskSdkContext.Provider>
+      <WhiskSdkContext.Provider value={{ whiskClient, config }}>{children}</WhiskSdkContext.Provider>
     </QueryClientProvider>
   );
 }
