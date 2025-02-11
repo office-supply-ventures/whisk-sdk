@@ -9,6 +9,7 @@
     "dev:vite": "bun run --filter=vite-react-app dev",
     "dev:next": "bun run --filter=next-app dev",
     "build:sdk": "bun run --filter=@paperclip-labs/whisk-sdk build",
+    "build:docs": "bun run --filter=docs build",
     "publish:sdk": "bun build:sdk; cd packages/sdk && bun publish --access public",
     "preinstall": "npx only-allow bun"
   },
@@ -20,5 +21,9 @@
     "packages/*",
     "examples/*",
     "site"
-  ]
+  ],
+  "overrides": {
+    "react": "^18",
+    "react-dom": "^18"
+  }
 }

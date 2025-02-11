@@ -9,11 +9,11 @@
     "prebuild": "bun run --filter=@paperclip-labs/whisk-sdk build"
   },
   "dependencies": {
-    "@paperclip-labs/whisk-core": "^0.0.2",
     "@paperclip-labs/whisk-sdk": "workspace:*",
     "@vercel/analytics": "^1.4.1",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
+    "lucide-react": "^0.453.0",
     "motion": "^11.14.1",
     "react": "^18",
     "react-dom": "^18",

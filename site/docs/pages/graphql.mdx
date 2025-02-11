@@ -1,0 +1,50 @@
+import GenerateKey from "../components/GenerateKey";
+
+# GraphQL [Directly query the Whisk server]
+
+All data in Whisk is served via a GraphQL API. Whisk SDK's components and hooks abstract this away (but use it under the hood). 
+If you need direct data access or want to use Whisk outside of React, you can use the GraphQL API directly. 
+
+API: `https://api.whisk.so/graphql`
+
+## Playground
+
+The [Whisk GraphQL playground](https://api.whisk.so/graphql) is a great way to explore the API and test queries. To use the playground:
+
+::::steps
+### Generate API key if you haven't already
+
+The API key will be sent to your email address. This is the same key you use for the SDK.
+
+<GenerateKey />
+
+### Add authorization header
+
+In the `Headers` section of the playground, add the following:
+
+```json [Headers]
+{
+  "Authorization": "Bearer <YOUR_API_KEY>"
+}
+```
+
+### Query the API
+
+Try running a query like this:
+
+```graphql [Example Query]
+{
+  identity(address: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045") {
+    aggregate {
+      name
+      avatar
+      bio
+    }
+  }
+}
+```
+
+::::
+
+Example of what your playground should look like:
+![GraphQL Example](/graphql-example.png)

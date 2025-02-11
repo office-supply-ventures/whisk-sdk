@@ -7,7 +7,8 @@ import GenerateKey from "../components/GenerateKey";
 Whisk SDK provides a suite of modular kits for seamless integration with the [Whisk.so](https://whisk.so) blockchain data pipeline. 
 Each kit includes:
 - Customizable React components for rapid development.
-- React Hooks and SDK Core APIs for programmatic access to Whisk data.
+- React Hooks programmatic access to Whisk data.
+- Direct graphQL access for low level control and use outside of React.
 
 ![Whisk Diagram](/how-it-works.png)
 
@@ -59,9 +60,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         config={{ // [!code focus]
             // Define configuration for each kit you plan to use.  // [!code focus]
             // See respective Kit docs for full config. // [!code focus]
-            identity: { // [!code focus]
-                resolvers: ["base", "uni", "nns", "ens", "farcaster"],  // [!code focus]
-            }, // [!code focus]
         }} // [!code focus]
     >
         {children}
@@ -105,6 +103,10 @@ function ExampleComponent() {
 }
 ```
 ::::
+
+## GraphQL
+
+Whisk data is all server via a GraphQL API. The SDK helps abstract this, but if you need direct data access checkout the [GraphQL docs](/graphql).
 
 ## Customization
 

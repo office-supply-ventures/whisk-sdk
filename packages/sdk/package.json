@@ -1,6 +1,6 @@
 {
   "name": "@paperclip-labs/whisk-sdk",
-  "version": "0.0.18",
+  "version": "0.1.0",
   "description": "",
   "repository": {
     "type": "git",
@@ -19,46 +19,50 @@
       "default": "./dist/index.js"
     },
     "./styles.css": "./dist/styles.css",
-    "./identity/core": {
-      "types": "./dist/identity/core/index.d.ts",
-      "default": "./dist/identity/core/index.js"
-    },
     "./identity": {
       "types": "./dist/identity/index.d.ts",
       "default": "./dist/identity/index.js"
-    },
-    "./ui": {
-      "types": "./dist/ui/index.d.ts",
-      "default": "./dist/ui/index.js"
     }
   },
   "scripts": {
     "stylegen": "tailwindcss -i ./src/styles.css -o ./dist/styles.css",
     "stylegen-watch": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
-    "build": "bun stylegen && tsc && tsc-alias",
-    "dev": "concurrently \"bun stylegen-watch\" \"bun tsc -w\" \"bun tsc-alias -w\""
+    "build": "bun codegen && bun stylegen && tsc && tsc-alias",
+    "dev": "concurrently \"bun stylegen-watch\" \"bun tsc -w\" \"bun tsc-alias -w\" \"bun codegen --watch\"",
+    "codegen": "graphql-codegen --config codegen.ts",
+    "codegen-watch": "graphql-codegen --config codegen.ts --watch"
   },
   "keywords": [],
   "author": "Paperclip Labs",
   "license": "MIT",
   "devDependencies": {
-    "@types/react": "^18.0.1",
+    "@0no-co/graphqlsp": "^1.12.16",
+    "@graphql-codegen/cli": "^5.0.4",
+    "@graphql-codegen/schema-ast": "^4.1.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "@parcel/watcher": "^2.5.1",
     "concurrently": "^9.0.1",
+    "dotenv": "^16.4.7",
     "tailwindcss": "^3.4.14",
-    "typescript": "^5.6.3"
+    "tsc-alias": "^1.8.10",
+    "typescript": "^5.7.3",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "peerDependencies": {
-    "react": ">=18.0.0"
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "@paperclip-labs/whisk-core": "^0.0.5",
     "@tanstack/react-query": ">=5",
     "clsx": "^2.1.1",
-    "hono": "^4.6.12",
+    "graphql": "^16.10.0",
+    "graphql-request": "^7.1.2",
     "motion": "^11.14.1",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
-    "tsc-alias": "^1.8.10",
     "viem": "^2.0.0"
   }
 }

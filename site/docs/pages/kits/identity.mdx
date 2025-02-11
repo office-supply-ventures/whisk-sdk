@@ -1,53 +1,69 @@
-import { Name, Avatar } from "@paperclip-labs/whisk-sdk/identity";
+import { Name, Avatar, IdentityResolver } from "@paperclip-labs/whisk-sdk/identity";
 import { Button } from 'vocs/components'
 
-# Identity Kit [Seamlessly integrate web3 avatars and usernames into your app.]
+# Identity Kit [Seamlessly integrate web3 avatars, usernames and profiles into your app.]
 
 :::code-group 
 
 <div data-title="preview">
     <div className="flex gap-2 max-w-full flex-wrap">
         {[
-            { address: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045", resolvers: ["ens"]},
-            { address: "0x9C87A1065994f156f0B7b87AAa8B3c5F7BD67E02", resolvers: ["nns", "ens"]},
-            { address: "0x17cd072cBd45031EFc21Da538c783E0ed3b25DCc", resolvers: ["farcaster"]},
-            { address: "0x849151d7D0bF1F34b70d5caD5149D28CC2308bf1", resolvers: ["base"]},
-            { address: "0xF9E1845cf5E982F4E13F23d75d41Bf795d35Bcf1", resolvers: ["uni"]},
-            { address: "0x7241DDDec3A6aF367882eAF9651b87E1C7549Dff", resolvers: ["lens"]},
-            { address: "0x97edb150bb8ca57f22090409e3a20c24afaaa7b0", resolvers: ["world"]},
-        ].map(({address, resolvers}, i) => 
+            { address: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045", resolverOrder: [IdentityResolver.Ens]},
+            { address: "0x9C87A1065994f156f0B7b87AAa8B3c5F7BD67E02", resolverOrder: [IdentityResolver.Nns, IdentityResolver.Ens]},
+            { address: "0x17cd072cBd45031EFc21Da538c783E0ed3b25DCc", resolverOrder: [IdentityResolver.Farcaster]},
+            { address: "0x849151d7D0bF1F34b70d5caD5149D28CC2308bf1", resolverOrder: [IdentityResolver.Base]},
+            { address: "0xF9E1845cf5E982F4E13F23d75d41Bf795d35Bcf1", resolverOrder: [IdentityResolver.Uni]},
+            { address: "0x7241DDDec3A6aF367882eAF9651b87E1C7549Dff", resolverOrder: [IdentityResolver.Lens]},
+            { address: "0x97edb150bb8ca57f22090409e3a20c24afaaa7b0", resolverOrder: [IdentityResolver.World]},
+        ].map(({address, resolverOrder}, i) => 
             <button key={i} className="flex gap-2 items-center p-2 border-2 w-fit rounded-lg border-white/10 hover:bg-white/10 transition-colors">
-                <Avatar address={address} size={32} resolvers={resolvers} />  
-                <Name address={address} resolvers={resolvers} /> 
+                <Avatar address={address} size={32} resolverOrder={resolverOrder} />  
+                <Name address={address} resolverOrder={resolverOrder} /> 
             </button>
         )}
     </div>
 </div>
 
 ```tsx [Code] 
-import { Name, Avatar } from "@paperclip-labs/whisk-sdk/identity";
+import { Name, Avatar, IdentityResolver } from "@paperclip-labs/whisk-sdk/identity";
 import Address from "viem";
 
 const examples = [
-    { address: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045", resolvers: ["ens"]},
-    { address: "0x9C87A1065994f156f0B7b87AAa8B3c5F7BD67E02", resolvers: ["nns", "ens"]},
-    { address: "0x17cd072cBd45031EFc21Da538c783E0ed3b25DCc", resolvers: ["farcaster"]},
-    { address: "0x849151d7D0bF1F34b70d5caD5149D28CC2308bf1", resolvers: ["base"]},
-    { address: "0xF9E1845cf5E982F4E13F23d75d41Bf795d35Bcf1", resolvers: ["uni"]},
-    { address: "0x7241DDDec3A6aF367882eAF9651b87E1C7549Dff", resolvers: ["lens"]},
-    { address: "0x97edb150bb8ca57f22090409e3a20c24afaaa7b0", resolvers: ["world"]},
+    { address: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045", resolverOrder: [IdentityResolver.Ens]},
+    { address: "0x9C87A1065994f156f0B7b87AAa8B3c5F7BD67E02", resolverOrder: [IdentityResolver.Nns, IdentityResolver.Ens]},
+    { address: "0x17cd072cBd45031EFc21Da538c783E0ed3b25DCc", resolverOrder: [IdentityResolver.Farcaster]},
+    { address: "0x849151d7D0bF1F34b70d5caD5149D28CC2308bf1", resolverOrder: [IdentityResolver.Base]},
+    { address: "0xF9E1845cf5E982F4E13F23d75d41Bf795d35Bcf1", resolverOrder: [IdentityResolver.Uni]},
+    { address: "0x7241DDDec3A6aF367882eAF9651b87E1C7549Dff", resolverOrder: [IdentityResolver.Lens]},
+    { address: "0x97edb150bb8ca57f22090409e3a20c24afaaa7b0", resolverOrder: [IdentityResolver.World]},
 ]
 
 <div className="flex gap-2 max-w-full flex-wrap">
-    {examples.map(({address, resolvers}) => 
+    {examples.map(({address, resolverOrder}) => 
         <button className="flex gap-2 items-center p-2 border-2 w-fit rounded-lg border-white/10 hover:bg-white/10 transition-colors">
-            <Avatar address={address} size={32} resolvers={resolvers} /> // [!code focus]
-            <Name address={address} resolvers={{resolvers}} /> // [!code focus]
+            <Avatar address={address} size={32} resolverOrder={resolverOrder} /> // [!code focus]
+            <Name address={address} resolverOrder={{resolverOrder}} /> // [!code focus]
         </button>
     )}
 </div>
 ```
 :::
+
+{/* TODO: Removed the profile card for now... */}
+{/* :::code-group 
+
+<div data-title="preview">
+    <div className="flex gap-2 w-full items-center justify-center">
+        <Profile address="0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045" />
+    </div>
+</div>
+
+```tsx [Code] 
+import { Profile } from "@paperclip-labs/whisk-sdk/identity";
+
+<Profile address="0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045" />
+```
+::: */}
 
 Supported resolvers:
 - [ENS](https://ens.domains/)
@@ -65,15 +81,17 @@ Before using components or hooks from this kit, set the `IdentityKitConfig` in t
 ```tsx [providers.tsx] twoslash
 "use client"; 
 import { WhiskSdkProvider } from "@paperclip-labs/whisk-sdk";
+import { IdentityResolver } from "@paperclip-labs/whisk-sdk/identity";
  
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <WhiskSdkProvider
+        apiKey={"<YOUR_API_KEY>"}
         config={{
             identity: { // [!code focus]
-                // Specify resolvers and their order for sequential resolution. // [!code focus]
+                // Specify the resolver order for sequential resolution. // [!code focus]
                 // This will be used as defaults if no resolvers are provided in the component or hook. // [!code focus]
-                resolvers: ["ens", "base", "farcaster", "nns", "uni", "lens", "world"],  // [!code focus]
+                resolverOrder: [IdentityResolver.Ens, IdentityResolver.Farcaster, IdentityResolver.Base, IdentityResolver.Nns, IdentityResolver.Uni, IdentityResolver.Lens, IdentityResolver.World],  // [!code focus]
 
                 // Optional: Override specific addresses with custom names or avatars.
                 overrides: {} // [!code focus]
@@ -88,7 +106,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
 | Parameter | Type | Required | Description |
 | --------- | ---- | -------- | ----------- |
-| `resolvers` | [`IdentityResolver[]`](#identityresolver) | Yes | List of resolvers to use, will process sequentially until one resolves. |
+| `resolverOrder` | [`IdentityResolver[]`](#identityresolver) | No | Resolver order to use, will process sequentially until one resolves. Will use a default order if not provided. |
 | `overrides` | `Record<Address, { name: string; avatar: string }>` | No | Override for a specific addresses with custom names and avatars.  |
 
 :::info
@@ -118,7 +136,7 @@ import { Name } from "@paperclip-labs/whisk-sdk/identity";
 | Props | Type | Required | Description |
 | --------- | ---- | -------- | ----------- |
 | `address` | `Address` | Yes | Address to resolve. |
-| `resolvers` | [`IdentityResolver[]`](#identityresolver) | No | Override the default resolvers set in the [`WhiskSdkProvider` config](#configuration). |
+| `resolverOrder` | [`IdentityResolver[]`](#identityresolver) | No | Override the default resolvers set in the [`WhiskSdkProvider` config](#configuration). |
 | `className` | `string` | No | Custom CSS class names. |
 
 Example customizing with tailwindCSS:
@@ -155,7 +173,7 @@ import { Avatar } from "@paperclip-labs/whisk-sdk/identity";
 | --------- | ---- | -------- | ----------- |
 | `address` | `Address` | Yes | Address to resolve. |
 | `size` | `number` | Yes | Size in pixels. |
-| `resolvers` | [`IdentityResolver[]`](#identityresolver) | No | Override the default resolvers set in the [`WhiskSdkProvider` config](#configuration). |
+| `resolverOrder` | [`IdentityResolver[]`](#identityresolver) | No | Override the default resolvers set in the [`WhiskSdkProvider` config](#configuration). |
 | `className` | `string` | No | Custom CSS class names. |
 
 Example customizing with tailwindCSS:
@@ -171,6 +189,33 @@ import { Avatar } from "@paperclip-labs/whisk-sdk/identity";
 <Avatar address="0x849151d7D0bF1F34b70d5caD5149D28CC2308bf1" size={48} className="border-2 border-red-500 rounded-[4px]" />
 ```
 :::
+
+
+{/* TODO: Removed the profile card for now... */}
+{/* 
+### Profile
+
+The profile for an address.
+
+:::code-group
+
+<div data-title="Preview">
+    <Profile address="0x17cd072cBd45031EFc21Da538c783E0ed3b25DCc" />
+</div>
+
+```tsx [Code] twoslash
+import { Profile } from "@paperclip-labs/whisk-sdk/identity";
+
+<Profile address="0x17cd072cBd45031EFc21Da538c783E0ed3b25DCc" />
+```
+:::
+
+| Props | Type | Required | Description |
+| --------- | ---- | -------- | ----------- |
+| `address` | `Address` | Yes | Address to resolve. |
+| `resolverOrder` | [`IdentityResolver[]`](#identityresolver) | No | Override the default resolvers set in the [`WhiskSdkProvider` config](#configuration). |
+| `className` | `string` | No | Custom CSS class names. | */}
+
 
 ## Hooks
 
@@ -189,7 +234,7 @@ const { data: name, isLoading } = useName({ address: "0xd8dA6BF26964aF9D7eEd9e03
 | Props | Type | Required | Description |
 | --------- | ---- | -------- | ----------- |
 | `address` | `Address` | Yes | Address to resolve. |
-| `resolvers` | [`IdentityResolver[]`](#identityresolver) | No | Override the default resolvers set in the [`WhiskSdkProvider` config](#configuration). |
+| `resolverOrder` | [`IdentityResolver[]`](#identityresolver) | No | Override the default resolvers set in the [`WhiskSdkProvider` config](#configuration). |
 
 ### useAvatar
 
@@ -202,48 +247,74 @@ const { data: avatar, isLoading } = useAvatar({ address: "0xd8dA6BF26964aF9D7eEd
 | Props | Type | Required | Description |
 | --------- | ---- | -------- | ----------- |
 | `address` | `Address` | Yes | Address to resolve. |
-| `resolvers` | [`IdentityResolver[]`](#identityresolver) | No | Override the default resolvers set in the [`WhiskSdkProvider` config](#configuration). |
+| `resolverOrder` | [`IdentityResolver[]`](#identityresolver) | No | Override the default resolvers set in the [`WhiskSdkProvider` config](#configuration). |
 
-## Core
+{/* TODO: Removed the profile card for now... */}
+{/* ### useProfile
 
-If you need direct data access you can use to SDK core.
+```tsx twoslash
+import { useProfile } from "@paperclip-labs/whisk-sdk/identity";
+
+const { data: profile, isLoading } = useProfile({ address: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045" });
+```
+
+| Props | Type | Required | Description |
+| --------- | ---- | -------- | ----------- |
+| `address` | `Address` | Yes | Address to resolve. |
+| `resolverOrder` | [`IdentityResolver[]`](#identityresolver) | No | Override the default resolvers set in the [`WhiskSdkProvider` config](#configuration). | */}
+
+
+## GraphQL
+
+If you need direct data access you can query the Whisk GraphQL API directly.
 This is useful for server component fetching, or for use outside of React.
 
 :::info
-If you want to use this in a Node.js app, you should use the [`@paperclip-labs/whisk-core`](https://www.npmjs.com/package/@paperclip-labs/whisk-core) package directly, which has these exact same methods (`whisk-sdk` just re-exports them).
+See the [graphQL docs](/graphql) for how to setup and use the API. 
 :::
 
-### getName
+Relevant schema: 
+```graphql [schema.graphql]
+type Query {
+  identities(addresses: [String!]!, resolverOrder: [IdentityResolver!]): [Identity!]!
+  identity(address: String!, resolverOrder: [IdentityResolver!]): Identity!
+}
 
-```tsx twoslash
-import { getName } from "@paperclip-labs/whisk-sdk/identity/core";
+type Identity {
+  aggregate: IdentityResolverOutput! # Aggregate based on the resolverOrder
+  base: IdentityResolverOutput!
+  ens: IdentityResolverOutput!
+  farcaster: IdentityResolverOutput!
+  lens: IdentityResolverOutput!
+  nns: IdentityResolverOutput!
+  uni: IdentityResolverOutput!
+  world: IdentityResolverOutput!
+}
 
-const name = await getName("", { address: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045", resolvers: ["ens", "farcaster"] })
+type IdentityResolverOutput {
+  avatar: String
+  bio: String
+  discord: String
+  github: String
+  name: String
+  telegram: String
+  website: String
+  x: String
+}
 ```
-
-| Params | Type | Required | Description |
-| --------- | ---- | -------- | ----------- |
-| `apiKey` | `string` | Yes | Whisk API key, can be empty string for now. |
-| `params` | `{address: Address, resolvers?: IdentityResolver[]}` | Yes | Same params as [`useName`](#usename). |
-
-
-### getAvatar
-
-```tsx twoslash
-import { getAvatar } from "@paperclip-labs/whisk-sdk/identity/core";
-
-const avatar = await getAvatar("", { address: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045", resolvers: ["ens", "farcaster"] })
-```
-
-| Params | Type | Required | Description |
-| --------- | ---- | -------- | ----------- |
-| `apiKey` | `string` | Yes | Whisk API key, can be empty string for now. |
-| `params` | `{address: Address, resolvers?: IdentityResolver[]}` | Yes | Same params as [`useAvatar`](#useavatar). |
 
 ## Types
 
 ### IdentityResolver
 
 ```tsx 
-type IdentityResolver = ("ens" | "nns" | "farcaster" | "uni" | "base" | "lens" | "world");
+export enum IdentityResolver {
+  Base = 'base',
+  Ens = 'ens',
+  Farcaster = 'farcaster',
+  Lens = 'lens',
+  Nns = 'nns',
+  Uni = 'uni',
+  World = 'world'
+}
 ```

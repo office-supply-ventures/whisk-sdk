@@ -8,7 +8,7 @@
     "css": "src/theme/globals.css",
     "baseColor": "gray",
     "cssVariables": true,
-    "prefix": "dk-"
+    "prefix": ""
   },
   "aliases": {
     "components": "@/",
