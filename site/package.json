@@ -1,5 +1,5 @@
 {
-  "name": "site",
+  "name": "whisk-docs",
   "private": true,
   "type": "module",
   "scripts": {

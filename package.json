@@ -1,4 +1,5 @@
 {
+  "name": "whisk-sdk",
   "type": "module",
   "private": true,
   "scripts": {
@@ -6,7 +7,7 @@
     "dev": "pnpm --filter='./packages/*' dev",
     "dev:docs": "pnpm run --filter='./site' dev",
     "test": "vitest",
-    "changeset:publish": "zile publish:prepare && changeset publish && zile publish:post",
+    "changeset:publish": "pnpm --filter './packages/*' exec zile publish:prepare && changeset publish && pnpm --filter './packages/*' exec zile publish:post",
     "changeset:version": "changeset version",
     "check": "biome check --fix --unsafe",
     "check:types": "tsc"
