@@ -1,0 +1,42 @@
+import { defineConfig } from "vocs";
+
+export default defineConfig({
+  title: "Whisk",
+  description: "Simplify dApp development with modular kits for Whisk's blockchain data pipelines.",
+  logoUrl: {
+    light: "/logo-light.svg",
+    dark: "/logo-dark.svg",
+  },
+  sidebar: [
+    {
+      text: "Getting Started",
+      link: "/getting-started",
+    },
+  ],
+  socials: [
+    {
+      icon: "github",
+      link: "https://github.com/papercliplabs/whisk-sdk",
+    },
+    {
+      icon: "x",
+      link: "https://x.com/PaperclipLabs",
+    },
+    {
+      icon: "warpcast",
+      link: "https://warpcast.com/papercliplabs",
+    },
+  ],
+  topNav: [
+    { text: "Docs", link: "/getting-started", match: "/docs" },
+    // {
+    //   text: "version",
+    //   items: [
+    //     {
+    //       text: "Changelog",
+    //       link: "https://github.com/wevm/vocs/blob/main/src/CHANGELOG.md",
+    //     },
+    //   ],
+    // },
+  ],
+});

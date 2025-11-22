@@ -1,0 +1,68 @@
+# Get Started
+
+## Overview
+
+![Whisk Diagram](/how-it-works.png)
+
+Whisk contains a number of kits:
+- Chain Kit: Chain metadata for all supported chains.
+- Token Kit: Metadata, prices, and balances for thousands of tokens.
+- Morpho Kit: Morpho vaults, markets, positions, and rewards.
+- Identity Kit: Resolver for crypto-native identity systems across multiple ecosystems.
+- And more...
+
+Don't see a kit you need? [Lets chat!](https://calendly.com/papercliplabs-spencer/meeting)
+
+
+## Playground
+
+The [Whisk GraphQL playground](https://api.whisk.so/graphql) is the best way to explore the APIs comprehensive schema docs, and test queries:
+
+::::steps
+### Get your test API key
+
+[Book a quick call](https://calendly.com/papercliplabs-spencer/meeting) to discuss your use case, and get a trial API key to see if Whisk is the right fit for your application.
+
+{/* ### Generate API key if you haven't already
+
+The API key will be sent to your email address. This is the same key you use for the SDK.
+
+<GenerateKey /> */}
+
+### Add authorization header
+
+In the `Headers` section of the playground, add the following:
+
+```json [Headers]
+{
+  "Authorization": "Bearer <YOUR_API_KEY>"
+}
+```
+
+### Query the API
+
+Try running a query like this:
+
+```graphql [Example Query]
+{
+  morphoVaults(where: {chainId_in: [137], whitelisted: true}, limit: 10) {
+    items {
+      name
+      totalSupplied {
+        formatted
+        usd
+      }
+  }
+}
+```
+
+::::
+
+Example of how to use the playground:
+![GraphQL Example](/graphql-example.png)
+
+
+## Typescript SDK
+The Whisk Typescript SDK is a lightweight package that provides types for your GraphQL Codegen configuration to ensure full type safety in your application.
+
+Docs on this coming soon.

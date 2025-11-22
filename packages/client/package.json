@@ -1,0 +1,28 @@
+{
+  "scripts": {
+    "build": "zile",
+    "dev": "zile dev"
+  },
+  "devDependencies": {},
+  "[!start-pkg]": "",
+  "name": "@whisk/client",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "dependencies": {},
+  "sideEffects": false,
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "src": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  }
+}
