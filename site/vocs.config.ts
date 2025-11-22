@@ -1,4 +1,4 @@
-import { defineConfig } from "vocs";
+import { defineConfig } from "vocs"
 
 export default defineConfig({
   title: "Whisk",
@@ -39,4 +39,4 @@ export default defineConfig({
     //   ],
     // },
   ],
-});
+})

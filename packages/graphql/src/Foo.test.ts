@@ -1,7 +1,7 @@
-import { foo } from './Foo.js'
+import { foo } from "./Foo.js"
 
-describe('foo', () => {
-  test('default', () => {
-    expect(foo()).toBe('Hello, foo!')
+describe("foo", () => {
+  test("default02", () => {
+    expect(foo()).toBe("Hello, foo!")
   })
 })
