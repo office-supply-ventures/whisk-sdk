@@ -1,3 +1,13 @@
 {
-  "extends": "../../tsconfig.base.json"
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "gql.tada/ts-plugin",
+        "schema": "https://api-v2.whisk.so/graphql",
+        "tadaOutputLocation": "./src/generated/graphql-env.d.ts"
+      }
+    ]
+  },
+  "include": ["schema.d.ts"]
 }

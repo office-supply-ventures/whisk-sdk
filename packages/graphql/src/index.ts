@@ -1,1 +1,2 @@
-export * as Foo from "./Foo.js"
+export * from "./graphql.js"
+export * from "./schema.js"
