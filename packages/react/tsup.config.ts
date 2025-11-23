@@ -1,0 +1,20 @@
+import { defineConfig } from "tsup"
+
+export default defineConfig({
+  entry: ["src/**/*.ts", "src/**/*.tsx", "!src/**.d.ts", "!src/**.test.ts"],
+  outDir: "dist",
+  splitting: false,
+  sourcemap: true,
+  treeshake: true,
+  clean: true,
+  bundle: false,
+  minify: false, // Let consumers minify
+  dts: {
+    resolve: true,
+  },
+  platform: "neutral",
+  format: ["esm"],
+  banner: {
+    js: '"use client"',
+  },
+})

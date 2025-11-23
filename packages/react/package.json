@@ -3,9 +3,16 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "@tanstack/react-query": "catalog:"
+  },
   "[!start-pkg]": "",
-  "name": "@whisk/client",
-  "version": "0.0.1",
+  "name": "@whisk/react",
+  "version": "0.0.0",
   "type": "module",
   "main": "./dist/index.js",
   "license": "MIT",
@@ -14,11 +21,12 @@
     "src"
   ],
   "dependencies": {
-    "@atmina/urql-custom-scalars-exchange": "^1.2.0",
-    "@urql/core": "^6.0.1",
-    "@whisk/graphql": "workspace:*",
-    "gql.tada": "catalog:",
-    "neverthrow": "^8.2.0"
+    "@whisk/client": "workspace:*",
+    "@whisk/graphql": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "@tanstack/react-query": ">=5.0.0"
   },
   "sideEffects": false,
   "module": "./dist/index.js",
