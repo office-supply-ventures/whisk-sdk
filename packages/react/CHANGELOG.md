@@ -1,5 +1,14 @@
 # @whisk/client
 
+## 0.0.2
+
+### Patch Changes
+
+- b728c66: Fix export fields in package.json
+- Updated dependencies [b728c66]
+  - @whisk/graphql@0.0.3
+  - @whisk/client@0.0.3
+
 ## 0.0.1
 
 ### Patch Changes
