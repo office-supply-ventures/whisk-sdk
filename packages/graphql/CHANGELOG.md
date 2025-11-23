@@ -1,5 +1,11 @@
 # @whisk/graphql
 
+## 0.0.3
+
+### Patch Changes
+
+- b728c66: Fix export fields in package.json
+
 ## 0.0.2
 
 ### Patch Changes
