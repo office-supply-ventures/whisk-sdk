@@ -1,16 +1,12 @@
 {
-  "devDependencies": {
-    "@urql/introspection": "^1.2.1",
-    "tsx": "^4.20.6"
-  },
+  "name": "@whisk/graphql",
+  "version": "0.0.5",
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
     "fetch-schema": "tsx scripts/fetch-schema.ts",
     "prebuild": "pnpm fetch-schema"
   },
-  "name": "@whisk/graphql",
-  "version": "0.0.5",
   "type": "module",
   "main": "./dist/index.js",
   "license": "MIT",
@@ -18,10 +14,6 @@
     "dist",
     "src"
   ],
-  "dependencies": {
-    "gql.tada": "catalog:",
-    "graphql": "^16.12.0"
-  },
   "sideEffects": false,
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -31,5 +23,16 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     }
+  },
+  "dependencies": {
+    "gql.tada": "catalog:"
+  },
+  "peerDependencies": {
+    "graphql": ">=16"
+  },
+  "devDependencies": {
+    "@urql/introspection": "^1.2.1",
+    "tsx": "^4.20.6",
+    "graphql": "^16.12.0"
   }
 }

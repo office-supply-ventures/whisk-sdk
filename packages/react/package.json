@@ -1,17 +1,10 @@
 {
+  "name": "@whisk/react",
+  "version": "0.0.4",
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  "devDependencies": {
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:",
-    "@tanstack/react-query": "catalog:"
-  },
-  "name": "@whisk/react",
-  "version": "0.0.4",
   "type": "module",
   "main": "./dist/index.js",
   "license": "MIT",
@@ -19,14 +12,6 @@
     "dist",
     "src"
   ],
-  "dependencies": {
-    "@whisk/client": "workspace:*",
-    "@whisk/graphql": "workspace:*"
-  },
-  "peerDependencies": {
-    "react": ">=18",
-    "@tanstack/react-query": ">=5.0.0"
-  },
   "sideEffects": false,
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -36,5 +21,21 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     }
+  },
+  "dependencies": {
+    "@whisk/client": "workspace:*",
+    "@whisk/graphql": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "@tanstack/react-query": ">=5"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "@tanstack/react-query": "catalog:"
   }
 }
