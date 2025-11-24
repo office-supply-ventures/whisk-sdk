@@ -1,5 +1,14 @@
 # @whisk/client
 
+## 0.0.4
+
+### Patch Changes
+
+- f826dc8: Testing full deploy flow
+- Updated dependencies [f826dc8]
+  - @whisk/client@0.0.5
+  - @whisk/graphql@0.0.5
+
 ## 0.0.3
 
 ### Patch Changes
