@@ -1,6 +1,6 @@
 # Whisk SDK
 
-Whisk SDK provides a suite of modular kits for seamless integration with the [Whisk.so](https://whisk.so) blockchain data pipeline.
+Whisk SDK provides a suite of modular kits for seamless integration with [Whisk.so](https://whisk.so). 
 
 ![Whisk Diagram](site/docs/public/how-it-works.png)
 
