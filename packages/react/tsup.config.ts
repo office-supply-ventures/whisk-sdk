@@ -1,4 +1,4 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from "tsup"
 
 export default defineConfig({
   entry: ["src/**/*.ts", "src/**/*.tsx", "!src/**.d.ts", "!src/**.test.ts"],
@@ -15,4 +15,4 @@ export default defineConfig({
   },
   platform: "neutral",
   format: ["esm"],
-});
+})

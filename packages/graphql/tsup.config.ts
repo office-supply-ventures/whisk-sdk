@@ -1,7 +1,13 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from "tsup"
 
 export default defineConfig({
-  entry: ["src/**/*.ts", "src/**/*.tsx", "src/generated/schema.json", "!src/**.d.ts", "!src/**.test.ts"],
+  entry: [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/generated/schema.json",
+    "!src/**.d.ts",
+    "!src/**.test.ts",
+  ],
   outDir: "dist",
   splitting: false,
   sourcemap: true,
@@ -18,4 +24,4 @@ export default defineConfig({
   loader: {
     ".json": "copy",
   },
-});
+})
