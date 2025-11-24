@@ -3,7 +3,6 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  "[!start-pkg]": "",
   "name": "@whisk/client",
   "version": "0.0.3",
   "type": "module",

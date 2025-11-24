@@ -10,7 +10,6 @@
     "react-dom": "catalog:",
     "@tanstack/react-query": "catalog:"
   },
-  "[!start-pkg]": "",
   "name": "@whisk/react",
   "version": "0.0.2",
   "type": "module",

@@ -5,10 +5,11 @@ export default defineConfig({
   outDir: "dist",
   splitting: false,
   sourcemap: true,
-  treeshake: true,
   clean: true,
-  bundle: false, // Let consumers bundle
-  minify: false, // Let consumers minify
+  bundle: false, // Let consumer do
+  treeshake: false, // Let consumer do
+  minify: false, // Let consumers do
+  tsconfig: "tsconfig.build.json",
   dts: {
     resolve: true,
   },
