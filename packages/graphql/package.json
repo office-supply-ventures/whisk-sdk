@@ -9,7 +9,6 @@
     "fetch-schema": "tsx scripts/fetch-schema.ts",
     "prebuild": "pnpm fetch-schema"
   },
-  "[!start-pkg]": "",
   "name": "@whisk/graphql",
   "version": "0.0.2",
   "type": "module",

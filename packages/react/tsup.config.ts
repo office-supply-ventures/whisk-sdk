@@ -14,7 +14,4 @@ export default defineConfig({
   },
   platform: "neutral",
   format: ["esm"],
-  banner: {
-    js: '"use client"',
-  },
 })
