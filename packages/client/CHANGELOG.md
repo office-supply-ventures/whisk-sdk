@@ -1,5 +1,13 @@
 # @whisk/client
 
+## 0.0.4
+
+### Patch Changes
+
+- 6dfb615: Fix build setup
+- Updated dependencies [6dfb615]
+  - @whisk/graphql@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes
