@@ -1,5 +1,11 @@
 # @whisk/graphql
 
+## 0.0.6
+
+### Patch Changes
+
+- d2af4d9: make graphql a peer dependecy
+
 ## 0.0.5
 
 ### Patch Changes
