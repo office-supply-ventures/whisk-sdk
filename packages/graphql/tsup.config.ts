@@ -1,25 +1,21 @@
-import { defineConfig } from "tsup"
+import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/generated/schema.json",
-    "!src/**.d.ts",
-    "!src/**.test.ts",
-  ],
+  entry: ["src/**/*.ts", "src/**/*.tsx", "src/generated/schema.json", "!src/**.d.ts", "!src/**.test.ts"],
   outDir: "dist",
   splitting: false,
   sourcemap: true,
-  treeshake: true,
   clean: true,
-  bundle: false, // Let consumers bundle
-  minify: false, // Let consumers minify
-  tsconfig: "tsconfig.json",
-  dts: true,
+  bundle: false, // Let consumer do
+  treeshake: false, // Let consumer do
+  minify: false, // Let consumers do
+  tsconfig: "tsconfig.build.json",
+  dts: {
+    resolve: true,
+  },
   platform: "neutral",
   format: ["esm"],
   loader: {
     ".json": "copy",
   },
-})
+});

@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "./tsconfig.build.json",
   "compilerOptions": {
     "plugins": [
       {
@@ -9,5 +9,6 @@
       }
     ]
   },
-  "include": ["schema.d.ts"]
+  "include": ["src/**/*.ts", "test/**/*.ts", "scripts/**/*.ts"],
+  "exclude": []
 }
