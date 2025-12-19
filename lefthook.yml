@@ -1,0 +1,14 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - run: biome check {staged_files}
+      glob: "*.{js,ts,jsx,tsx}"
+    - run: gitleaks git --pre-commit --staged --no-banner --redact --verbose
+post-merge:
+  jobs:
+    - run: mise install
+      glob: "{mise.toml,pnpm-lock.yaml,package.json}"
+post-checkout:
+  jobs:
+    - run: mise install
+      glob: "{mise.toml,pnpm-lock.yaml,package.json}"

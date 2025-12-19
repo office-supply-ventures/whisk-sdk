@@ -9,13 +9,12 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        uses: ./.github/actions/install-dependencies
-
-      - name: Install dependencies
-        run: pnpm install
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Prerelease
         run: |
           pnpm run build
-          pnpx pkg-pr-new publish --pnpm './packages/*'
+          pnpm dlx pkg-pr-new publish --pnpm './packages/*'

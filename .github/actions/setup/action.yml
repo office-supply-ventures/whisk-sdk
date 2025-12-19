@@ -1,0 +1,36 @@
+name: "Base repo setup"
+description: "Run basic repo setup commands"
+inputs:
+  token:
+    description: "GitHub token for authentication"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - uses: jdx/mise-action@v3
+      with:
+        install: true
+        cache: true
+        github_token: ${{ inputs.token }}
+
+    - name: Get pnpm store directory
+      shell: bash
+      run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+    - uses: actions/cache@v4
+      with:
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+
+    - name: Prepare deps
+      shell: bash
+      env:
+        FORCE_COLOR: 0
+        GITHUB_TOKEN: ${{ inputs.token }}
+      run: pnpm install --frozen-lockfile
+
+    - name: Setup Turbo
+      uses: rharkor/caching-for-turbo@v2.2.3
