@@ -26,8 +26,7 @@
     "@atmina/urql-custom-scalars-exchange": "^1.2.0",
     "@urql/core": "^6.0.1",
     "@whisk/graphql": "workspace:*",
-    "gql.tada": "catalog:",
-    "neverthrow": "^8.2.0"
+    "gql.tada": "catalog:"
   },
   "peerDependencies": {
     "graphql": ">=16"

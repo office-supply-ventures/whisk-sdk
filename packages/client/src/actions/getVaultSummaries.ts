@@ -22,6 +22,7 @@ export type GetVaultSummariesResult = ResultOf<typeof vaultSummaryQuery>["morpho
 export const getVaultSummaries: WhiskActionFn<
   GetVaultSummariesResult,
   GetVaultSummariesVariables
-> = (client, variables) => {
-  return client.query(vaultSummaryQuery, variables).map((result) => result.morphoVaults.items)
+> = async (client, variables) => {
+  const result = await client.query(vaultSummaryQuery, variables)
+  return result.morphoVaults.items
 }

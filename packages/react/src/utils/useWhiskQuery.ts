@@ -14,12 +14,6 @@ export function useWhiskQuery<TData, TVariables>({
   const { client } = useWhisk()
   return useQuery({
     queryKey: [queryName, variables],
-    queryFn: () =>
-      actionFn(client, variables).match(
-        (data) => data,
-        (error) => {
-          throw error
-        },
-      ),
+    queryFn: () => actionFn(client, variables),
   })
 }

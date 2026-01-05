@@ -5,7 +5,6 @@ import {
   type TypedDocumentNode,
   Client as UrqlClient,
 } from "@urql/core"
-import { errAsync, okAsync, ResultAsync } from "neverthrow"
 import { WhiskError } from "./errors.js"
 import { scalarsExchange } from "./scalarExchange.js"
 
@@ -35,29 +34,27 @@ export class WhiskClient {
     this.debug = debug
   }
 
-  public query<TValue, TVariables extends AnyVariables>(
+  public async query<TValue, TVariables extends AnyVariables>(
     document: TypedDocumentNode<TValue, TVariables>,
     variables: TVariables,
-  ): ResultAsync<TValue, WhiskError> {
-    return ResultAsync.fromPromise(this.urql.query(document, variables), (error: unknown) =>
-      WhiskError.from(error),
-    ).andThen((result) => {
-      // Bubbles up any network errors
-      if (result.error?.networkError) {
-        return errAsync(WhiskError.from(result.error.networkError))
-      }
+  ): Promise<TValue> {
+    const result = await this.urql.query(document, variables)
 
-      // Error if we have no data
-      if (result.data === undefined) {
-        return errAsync(WhiskError.from("No data returned from query"))
-      }
+    // Bubbles up any network errors
+    if (result.error && !result.data) {
+      throw WhiskError.from(result.error)
+    }
 
-      // Log any graphql errors (but don't put into error, since partial is fine)
-      if ((result.error?.graphQLErrors?.length ?? 0) > 0 && this.debug) {
-        console.debug("[Whisk Client] GraphQL errors:", result.error?.graphQLErrors)
-      }
+    // Error if we have no data
+    if (!result.data) {
+      throw WhiskError.from("No data returned from query")
+    }
 
-      return okAsync(result.data)
-    })
+    // Log any graphql errors (but don't put into error, since partial is fine)
+    if (result.error && this.debug) {
+      console.debug("[Whisk Client] GraphQL errors:", result.error)
+    }
+
+    return result.data
   }
 }
