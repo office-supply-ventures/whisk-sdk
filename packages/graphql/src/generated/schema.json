@@ -699,6 +699,77 @@
               "ofType": { "kind": "SCALAR", "name": "Boolean", "ofType": null }
             },
             "args": []
+          },
+          {
+            "name": "pendingDeposits",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "AeraPendingAction",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "pendingWithdrawals",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "AeraPendingAction",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AeraPendingAction",
+        "fields": [
+          {
+            "name": "hash",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "SCALAR", "name": "Hex", "ofType": null }
+            },
+            "args": []
+          },
+          {
+            "name": "token",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "OBJECT", "name": "Token", "ofType": null }
+            },
+            "args": []
+          },
+          {
+            "name": "amount",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TokenAmount",
+                "ofType": null
+              }
+            },
+            "args": []
           }
         ],
         "interfaces": []
@@ -939,6 +1010,18 @@
                     "ofType": null
                   }
                 }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "riskAssessment",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "BoxVaultRiskAssessment",
+                "ofType": null
               }
             },
             "args": []
@@ -1805,6 +1888,18 @@
             "args": []
           },
           {
+            "name": "riskAssessment",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "MorphoVaultV1RiskAssessment",
+                "ofType": null
+              }
+            },
+            "args": []
+          },
+          {
             "name": "totalSupplied",
             "type": {
               "kind": "NON_NULL",
@@ -1932,6 +2027,30 @@
             ]
           },
           {
+            "name": "idleAssets",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TokenAmount",
+                "ofType": null
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "liquidityAssets",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TokenAmount",
+                "ofType": null
+              }
+            },
+            "args": []
+          },
+          {
             "name": "metadata",
             "type": {
               "kind": "OBJECT",
@@ -2027,18 +2146,6 @@
             "args": []
           },
           {
-            "name": "liquidityAdapter",
-            "type": {
-              "kind": "NON_NULL",
-              "ofType": {
-                "kind": "INTERFACE",
-                "name": "Adapter",
-                "ofType": null
-              }
-            },
-            "args": []
-          },
-          {
             "name": "adapters",
             "type": {
               "kind": "NON_NULL",
@@ -2053,6 +2160,25 @@
                   }
                 }
               }
+            },
+            "args": []
+          },
+          {
+            "name": "caps",
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "NON_NULL",
+                "ofType": { "kind": "INTERFACE", "name": "Cap", "ofType": null }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "liquidityAdapterAddress",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "SCALAR", "name": "Address", "ofType": null }
             },
             "args": []
           },
@@ -2096,6 +2222,18 @@
               "ofType": null
             },
             "args": []
+          },
+          {
+            "name": "riskAssessment",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "MorphoVaultV2RiskAssessment",
+                "ofType": null
+              }
+            },
+            "args": []
           }
         ],
         "interfaces": [{ "kind": "INTERFACE", "name": "Erc4626Vault" }]
@@ -2113,14 +2251,6 @@
             "args": []
           },
           {
-            "name": "isEnabled",
-            "type": {
-              "kind": "NON_NULL",
-              "ofType": { "kind": "SCALAR", "name": "Boolean", "ofType": null }
-            },
-            "args": []
-          },
-          {
             "name": "adapterCap",
             "type": { "kind": "OBJECT", "name": "AdapterCap", "ofType": null },
             "args": []
@@ -2128,6 +2258,15 @@
           {
             "name": "name",
             "type": { "kind": "SCALAR", "name": "String", "ofType": null },
+            "args": []
+          },
+          {
+            "name": "riskAssessment",
+            "type": {
+              "kind": "OBJECT",
+              "name": "AdapterRiskAssessment",
+              "ofType": null
+            },
             "args": []
           }
         ],
@@ -2152,14 +2291,6 @@
             "args": []
           },
           {
-            "name": "isEnabled",
-            "type": {
-              "kind": "NON_NULL",
-              "ofType": { "kind": "SCALAR", "name": "Boolean", "ofType": null }
-            },
-            "args": []
-          },
-          {
             "name": "adapterCap",
             "type": { "kind": "OBJECT", "name": "AdapterCap", "ofType": null },
             "args": []
@@ -2167,6 +2298,15 @@
           {
             "name": "name",
             "type": { "kind": "SCALAR", "name": "String", "ofType": null },
+            "args": []
+          },
+          {
+            "name": "riskAssessment",
+            "type": {
+              "kind": "OBJECT",
+              "name": "AdapterRiskAssessment",
+              "ofType": null
+            },
             "args": []
           },
           {
@@ -2180,24 +2320,6 @@
                   "ofType": {
                     "kind": "OBJECT",
                     "name": "MarketV1ExposureCap",
-                    "ofType": null
-                  }
-                }
-              }
-            },
-            "args": []
-          },
-          {
-            "name": "collateralCaps",
-            "type": {
-              "kind": "NON_NULL",
-              "ofType": {
-                "kind": "LIST",
-                "ofType": {
-                  "kind": "NON_NULL",
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "CollateralExposureCap",
                     "ofType": null
                   }
                 }
@@ -2221,14 +2343,6 @@
             "args": []
           },
           {
-            "name": "isEnabled",
-            "type": {
-              "kind": "NON_NULL",
-              "ofType": { "kind": "SCALAR", "name": "Boolean", "ofType": null }
-            },
-            "args": []
-          },
-          {
             "name": "adapterCap",
             "type": { "kind": "OBJECT", "name": "AdapterCap", "ofType": null },
             "args": []
@@ -2236,6 +2350,15 @@
           {
             "name": "name",
             "type": { "kind": "SCALAR", "name": "String", "ofType": null },
+            "args": []
+          },
+          {
+            "name": "riskAssessment",
+            "type": {
+              "kind": "OBJECT",
+              "name": "AdapterRiskAssessment",
+              "ofType": null
+            },
             "args": []
           },
           {
@@ -2259,14 +2382,6 @@
             "args": []
           },
           {
-            "name": "isEnabled",
-            "type": {
-              "kind": "NON_NULL",
-              "ofType": { "kind": "SCALAR", "name": "Boolean", "ofType": null }
-            },
-            "args": []
-          },
-          {
             "name": "adapterCap",
             "type": { "kind": "OBJECT", "name": "AdapterCap", "ofType": null },
             "args": []
@@ -2274,6 +2389,15 @@
           {
             "name": "name",
             "type": { "kind": "SCALAR", "name": "String", "ofType": null },
+            "args": []
+          },
+          {
+            "name": "riskAssessment",
+            "type": {
+              "kind": "OBJECT",
+              "name": "AdapterRiskAssessment",
+              "ofType": null
+            },
             "args": []
           },
           {
@@ -2297,14 +2421,6 @@
             "args": []
           },
           {
-            "name": "isEnabled",
-            "type": {
-              "kind": "NON_NULL",
-              "ofType": { "kind": "SCALAR", "name": "Boolean", "ofType": null }
-            },
-            "args": []
-          },
-          {
             "name": "adapterCap",
             "type": { "kind": "OBJECT", "name": "AdapterCap", "ofType": null },
             "args": []
@@ -2312,6 +2428,15 @@
           {
             "name": "name",
             "type": { "kind": "SCALAR", "name": "String", "ofType": null },
+            "args": []
+          },
+          {
+            "name": "riskAssessment",
+            "type": {
+              "kind": "OBJECT",
+              "name": "AdapterRiskAssessment",
+              "ofType": null
+            },
             "args": []
           }
         ],
@@ -2699,6 +2824,14 @@
             "args": []
           },
           {
+            "name": "supplyApy6h",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "OBJECT", "name": "Apy", "ofType": null }
+            },
+            "args": []
+          },
+          {
             "name": "supplyApy1d",
             "type": {
               "kind": "NON_NULL",
@@ -2999,6 +3132,14 @@
             "args": []
           },
           {
+            "name": "supplyApy6h",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "OBJECT", "name": "Apy", "ofType": null }
+            },
+            "args": []
+          },
+          {
             "name": "supplyApy1d",
             "type": {
               "kind": "NON_NULL",
@@ -3024,6 +3165,14 @@
           },
           {
             "name": "borrowApy",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "OBJECT", "name": "Apy", "ofType": null }
+            },
+            "args": []
+          },
+          {
+            "name": "borrowApy6h",
             "type": {
               "kind": "NON_NULL",
               "ofType": { "kind": "OBJECT", "name": "Apy", "ofType": null }
@@ -3084,6 +3233,18 @@
           {
             "name": "totalCollateral",
             "type": { "kind": "OBJECT", "name": "TokenAmount", "ofType": null },
+            "args": []
+          },
+          {
+            "name": "riskAssessment",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "MorphoMarketV1RiskAssessment",
+                "ofType": null
+              }
+            },
             "args": []
           }
         ],
@@ -3229,6 +3390,14 @@
             "args": []
           },
           {
+            "name": "supplyApy6h",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "OBJECT", "name": "Apy", "ofType": null }
+            },
+            "args": []
+          },
+          {
             "name": "supplyApy1d",
             "type": {
               "kind": "NON_NULL",
@@ -3254,6 +3423,14 @@
           },
           {
             "name": "borrowApyInstantaneous",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "OBJECT", "name": "Apy", "ofType": null }
+            },
+            "args": []
+          },
+          {
+            "name": "borrowApy6h",
             "type": {
               "kind": "NON_NULL",
               "ofType": { "kind": "OBJECT", "name": "Apy", "ofType": null }
@@ -3672,6 +3849,125 @@
       },
       {
         "kind": "OBJECT",
+        "name": "SteakhouseRiskAssessment",
+        "fields": [
+          {
+            "name": "score",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "SCALAR", "name": "Float", "ofType": null }
+            },
+            "args": []
+          },
+          {
+            "name": "rating",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "SCALAR", "name": "String", "ofType": null }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "MorphoVaultV1RiskAssessment",
+        "fields": [
+          {
+            "name": "steakhouse",
+            "type": {
+              "kind": "OBJECT",
+              "name": "SteakhouseRiskAssessment",
+              "ofType": null
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "MorphoVaultV2RiskAssessment",
+        "fields": [
+          {
+            "name": "steakhouse",
+            "type": {
+              "kind": "OBJECT",
+              "name": "SteakhouseRiskAssessment",
+              "ofType": null
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "BoxVaultRiskAssessment",
+        "fields": [
+          {
+            "name": "steakhouse",
+            "type": {
+              "kind": "OBJECT",
+              "name": "SteakhouseRiskAssessment",
+              "ofType": null
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "MorphoMarketV1RiskAssessment",
+        "fields": [
+          {
+            "name": "steakhouse",
+            "type": {
+              "kind": "OBJECT",
+              "name": "SteakhouseRiskAssessment",
+              "ofType": null
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TokenRiskAssessment",
+        "fields": [
+          {
+            "name": "steakhouse",
+            "type": {
+              "kind": "OBJECT",
+              "name": "SteakhouseRiskAssessment",
+              "ofType": null
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AdapterRiskAssessment",
+        "fields": [
+          {
+            "name": "steakhouse",
+            "type": {
+              "kind": "OBJECT",
+              "name": "SteakhouseRiskAssessment",
+              "ofType": null
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
         "name": "TokenHistoricalEntry",
         "fields": [
           {
@@ -3811,6 +4107,18 @@
               "ofType": {
                 "kind": "OBJECT",
                 "name": "TokenHistorical",
+                "ofType": null
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "riskAssessment",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TokenRiskAssessment",
                 "ofType": null
               }
             },
