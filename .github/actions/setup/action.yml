@@ -8,7 +8,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: jdx/mise-action@ee5e440b6bc67efba232daff2df2be30d8e26c53 # v2.2.3
+    - uses: jdx/mise-action@146a28175021df8ca24f8ee1828cc2a60f980bd5 # v3.5.1
       with:
         install: true
         cache: true
@@ -18,7 +18,7 @@ runs:
       shell: bash
       run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-    - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+    - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
       with:
         path: ${{ env.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -29,8 +29,4 @@ runs:
       shell: bash
       env:
         FORCE_COLOR: 0
-        GITHUB_TOKEN: ${{ inputs.token }}
       run: pnpm install --frozen-lockfile
-
-    - name: Setup Turbo
-      uses: rharkor/caching-for-turbo@8dc0c509c68b2285d761ee274acef35d865338e8 # v2.2.3
