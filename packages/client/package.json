@@ -23,8 +23,8 @@
     }
   },
   "dependencies": {
-    "@atmina/urql-custom-scalars-exchange": "^1.2.0",
-    "@urql/core": "^6.0.1",
+    "@atmina/urql-custom-scalars-exchange": "1.2.0",
+    "@urql/core": "catalog:",
     "@whisk/graphql": "workspace:*",
     "gql.tada": "catalog:"
   },

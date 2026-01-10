@@ -33,7 +33,7 @@
     }
   },
   "dependencies": {
-    "@urql/core": "^6.0.1",
+    "@urql/core": "catalog:",
     "@whisk/client": "workspace:*",
     "@whisk/graphql": "workspace:*",
     "gql.tada": "catalog:"
