@@ -2,7 +2,7 @@
 
 Whisk SDK provides a suite of modular kits for seamless integration with [Whisk.so](https://whisk.so). 
 
-![Whisk Diagram](site/docs/public/how-it-works.png)
+![Whisk Diagram](site/public/how-it-works.png)
 
 ## Documentation
 
