@@ -62,33 +62,21 @@ importers:
       '@tanstack/react-query':
         specifier: 'catalog:'
         version: 5.90.10(react@19.2.0)
-      '@whisk/client':
+      '@whisk/steakhouse':
         specifier: workspace:*
-        version: link:../../packages/client
-      '@whisk/graphql':
-        specifier: workspace:*
-        version: link:../../packages/graphql
-      '@whisk/react':
-        specifier: workspace:*
-        version: link:../../packages/react
-      add:
-        specifier: ^2.0.6
-        version: 2.0.6
+        version: link:../../packages/steakhouse
+      dotenv:
+        specifier: ^16.4.0
+        version: 16.6.1
       next:
         specifier: 16.0.3
         version: 16.0.3(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      pnpm:
-        specifier: ^10.23.0
-        version: 10.23.0
       react:
         specifier: 19.2.0
         version: 19.2.0
       react-dom:
         specifier: 19.2.0
         version: 19.2.0(react@19.2.0)
-      urql:
-        specifier: ^5.0.1
-        version: 5.0.1(@urql/core@6.0.1(graphql@16.12.0))(react@19.2.0)
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4
@@ -111,6 +99,9 @@ importers:
       tailwindcss:
         specifier: ^4
         version: 4.1.15
+      tsx:
+        specifier: ^4.7.0
+        version: 4.20.6
       typescript:
         specifier: ^5
         version: 5.9.2
@@ -149,14 +140,23 @@ importers:
         specifier: ^4.20.6
         version: 4.20.6
 
-  packages/react:
+  packages/steakhouse:
     dependencies:
+      '@urql/core':
+        specifier: ^6.0.1
+        version: 6.0.1(graphql@16.12.0)
       '@whisk/client':
         specifier: workspace:*
         version: link:../client
       '@whisk/graphql':
         specifier: workspace:*
         version: link:../graphql
+      gql.tada:
+        specifier: 'catalog:'
+        version: 1.9.0(graphql@16.12.0)(typescript@5.9.2)
+      graphql:
+        specifier: '>=16'
+        version: 16.12.0
     devDependencies:
       '@tanstack/react-query':
         specifier: 'catalog:'
@@ -2695,9 +2695,6 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
-  add@2.0.6:
-    resolution: {integrity: sha512-j5QzrmsokwWWp6kUcJQySpbG+xfOBqqKnup3OIk1pz+kB/80SLorZ9V8zHFLO92Lcd+hbvq8bT+zOGoPkmBV0Q==}
-
   ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
 
@@ -3302,6 +3299,10 @@ packages:
 
   dompurify@3.3.0:
     resolution: {integrity: sha512-r+f6MYR1gGN1eJv0TVQbhA7if/U7P87cdPl3HN5rikqaBSBxLiCb/b9O+2eG0cxz0ghyU+mU1QkbsOwERMYlWQ==}
+
+  dotenv@16.6.1:
+    resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
+    engines: {node: '>=12'}
 
   dotenv@17.2.3:
     resolution: {integrity: sha512-JVUnt+DUIzu87TABbhPmNfVdBDt18BLOWjMUFJMSi/Qqg7NTYtabbvSNJGOJ7afbRuv9D/lngizHtP7QyLQ+9w==}
@@ -4816,11 +4817,6 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  pnpm@10.23.0:
-    resolution: {integrity: sha512-IcTlaYACrel+Tv6Li0qJqN48haN5GflX56DzDzj7xbvdBZgP/ikXmy+25uaRJC4JjZRdFgF3LK0P71+2QR4qSw==}
-    engines: {node: '>=18.12'}
-    hasBin: true
-
   points-on-curve@0.2.0:
     resolution: {integrity: sha512-0mYKnYYe9ZcqMCWhUjItv/oHjvgEsfKvnUTg8sAtnHr3GVy7rGkXCb6d5cSyqrWqL4k81b9CPg3urd+T7aop3A==}
 
@@ -5601,12 +5597,6 @@ packages:
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
-
-  urql@5.0.1:
-    resolution: {integrity: sha512-r58gYlWvCTC19QvkTaARaCLV9/bp870byH/qbLaw3S7f8i/bC6x2Szub8RVXptiMxWmqq5dyVBjUL9G+xPEuqg==}
-    peerDependencies:
-      '@urql/core': ^6.0.0
-      react: '>= 16.8.0'
 
   use-callback-ref@1.3.3:
     resolution: {integrity: sha512-jQL3lRnocaFtu3V00JToYz/4QkNWswxijDaCVNZRiRTO3HQDLsdu1ZtmIUvV4yPp+rvWm5j0y0TG/S61cuijTg==}
@@ -8305,8 +8295,6 @@ snapshots:
 
   acorn@8.15.0: {}
 
-  add@2.0.6: {}
-
   ajv@6.12.6:
     dependencies:
       fast-deep-equal: 3.1.3
@@ -8917,6 +8905,8 @@ snapshots:
   dompurify@3.3.0:
     optionalDependencies:
       '@types/trusted-types': 2.0.7
+
+  dotenv@16.6.1: {}
 
   dotenv@17.2.3: {}
 
@@ -10997,8 +10987,6 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.2
 
-  pnpm@10.23.0: {}
-
   points-on-curve@0.2.0: {}
 
   points-on-path@0.2.1:
@@ -12055,12 +12043,6 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
-
-  urql@5.0.1(@urql/core@6.0.1(graphql@16.12.0))(react@19.2.0):
-    dependencies:
-      '@urql/core': 6.0.1(graphql@16.12.0)
-      react: 19.2.0
-      wonka: 6.3.5
 
   use-callback-ref@1.3.3(@types/react@19.2.6)(react@19.2.0):
     dependencies:
