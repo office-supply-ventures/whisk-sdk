@@ -1,5 +1,11 @@
 # @whisk/graphql
 
+## 0.0.7
+
+### Patch Changes
+
+- 8336e73: Added @whisk/steakhouse scaffolding with subpath exports. Removed @whisk/react for now.
+
 ## 0.0.6
 
 ### Patch Changes
