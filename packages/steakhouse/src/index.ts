@@ -1,3 +1,3 @@
-export { SteakhouseClient, type SteakhouseClientConfig } from "./client.js"
+export type { WhiskClientConfig as SteakhouseClientConfig } from "@whisk/client"
+export { createSteakhouseClient, SteakhouseClient } from "./client.js"
 export * from "./queries/index.js"
-export type { SteakhouseQueryFn } from "./queries/types.js"

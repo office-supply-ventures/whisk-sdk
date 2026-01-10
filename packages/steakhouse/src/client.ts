@@ -1,12 +1,10 @@
 import type { AnyVariables, TypedDocumentNode } from "@urql/core"
 import { WhiskClient, type WhiskClientConfig } from "@whisk/client"
 
-export interface SteakhouseClientConfig extends WhiskClientConfig {}
-
 export class SteakhouseClient {
   private readonly client: WhiskClient
 
-  constructor(config: SteakhouseClientConfig) {
+  constructor(config: WhiskClientConfig) {
     this.client = new WhiskClient(config)
   }
 
@@ -16,4 +14,11 @@ export class SteakhouseClient {
   ): Promise<TValue> {
     return this.client.query(document, variables)
   }
+}
+
+/**
+ * Create a Steakhouse client for querying vault data.
+ */
+export function createSteakhouseClient(config: WhiskClientConfig): SteakhouseClient {
+  return new SteakhouseClient(config)
 }

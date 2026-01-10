@@ -177,6 +177,9 @@ importers:
 
   site:
     dependencies:
+      '@whisk/steakhouse':
+        specifier: workspace:*
+        version: link:../packages/steakhouse
       react:
         specifier: 'catalog:'
         version: 19.2.0
