@@ -3,8 +3,7 @@ import { steakhouseClient } from "../lib/steakhouse"
 import { ClientComponent } from "./ClientComponent"
 
 export default async function Home() {
-  const hasApiKey = Boolean(process.env.NEXT_PUBLIC_WHISK_API_KEY)
-  const vaults = hasApiKey ? await getVaults(steakhouseClient, { limit: 5 }) : []
+  const vaults = await getVaults(steakhouseClient, { limit: 5 })
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -12,9 +11,6 @@ export default async function Home() {
         <section>
           <h2 className="text-lg font-semibold mb-4">Server-side Fetching</h2>
           <div className="space-y-2">
-            {vaults.length === 0 && (
-              <div className="text-sm text-gray-500">No API key configured</div>
-            )}
             {vaults.map((vault, i) => (
               <div key={vault?.vaultAddress ?? i} className="text-sm font-mono">
                 {vault?.vaultAddress.slice(0, 10)}... — {vault?.totalSupplied.raw}
