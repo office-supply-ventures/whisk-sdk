@@ -12,7 +12,8 @@
     "changeset:publish": "pnpm build && changeset publish",
     "changeset:version": "changeset version",
     "check": "biome check --fix --unsafe",
-    "check:types": "tsc"
+    "check:types": "tsc",
+    "schema:sync": "pnpm --filter @whisk/graphql schema:sync"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.6",

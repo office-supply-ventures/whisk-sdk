@@ -48,11 +48,10 @@ pnpm clean           # Clean all build artifacts
 The schema is committed and not fetched during build (for security). When the Whisk API schema changes:
 
 ```bash
-cd packages/graphql
-pnpm fetch-schema
+pnpm schema:sync
 ```
 
-Review the diff, commit, and push. The updated types will flow through to dependent packages.
+This fetches the schema from the API and regenerates `graphql-env.d.ts`. Review the diff, commit, and push.
 
 ### Adding a new query to @whisk/steakhouse
 
