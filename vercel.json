@@ -1,4 +1,3 @@
 {
-  "buildCommand": "cd site && pnpm build",
   "outputDirectory": "site/dist"
 }
