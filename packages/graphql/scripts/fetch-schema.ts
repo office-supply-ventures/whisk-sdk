@@ -16,5 +16,6 @@ fetch("https://api-v2.whisk.so/graphql", {
   })
   .then(({ data }) => {
     const minified = minifyIntrospectionQuery(getIntrospectedSchema(data), { includeScalars: true })
+    fs.mkdirSync("./src/generated", { recursive: true })
     fs.writeFileSync("./src/generated/schema.json", JSON.stringify(minified))
   })

@@ -10,7 +10,7 @@
   "dependencies": {
     "react": "catalog:",
     "react-dom": "catalog:",
-    "vocs": "^1.1.4"
+    "vocs": "^1.4.1"
   },
   "devDependencies": {
     "@types/react": "catalog:"

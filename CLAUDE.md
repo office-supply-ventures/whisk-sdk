@@ -43,6 +43,16 @@ pnpm clean           # Clean all build artifacts
 
 ## Development
 
+### Updating the GraphQL schema
+
+The schema is committed and not fetched during build (for security). When the Whisk API schema changes:
+
+```bash
+pnpm schema:sync
+```
+
+This fetches the schema from the API and regenerates `graphql-env.d.ts`. Review the diff, commit, and push.
+
 ### Adding a new query to @whisk/steakhouse
 
 1. Create fragment in `src/queries/fragments/` if needed

@@ -4,8 +4,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "fetch-schema": "tsx scripts/fetch-schema.ts",
-    "prebuild": "pnpm fetch-schema"
+    "schema:sync": "tsx scripts/fetch-schema.ts && gql-tada generate-output"
   },
   "type": "module",
   "main": "./dist/index.js",
