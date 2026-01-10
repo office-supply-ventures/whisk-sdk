@@ -1,5 +1,13 @@
 # @whisk/client
 
+## 0.0.9
+
+### Patch Changes
+
+- fc7ef3d: Add repository to package.json
+- Updated dependencies [fc7ef3d]
+  - @whisk/graphql@0.0.9
+
 ## 0.0.8
 
 ### Patch Changes
