@@ -1,9 +1,9 @@
 "use client"
 
-import { useVaultSummaries } from "@whisk/react"
+import { useVaults } from "@whisk/steakhouse/react"
 
 export function ClientComponent() {
-  const { data } = useVaultSummaries({ limit: 10 })
+  const { data } = useVaults({ limit: 10 })
 
   return (
     <div>
