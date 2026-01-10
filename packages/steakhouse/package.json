@@ -1,6 +1,11 @@
 {
   "name": "@whisk/steakhouse",
   "version": "0.0.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/office-supply-ventures/whisk-sdk.git",
+    "directory": "packages/steakhouse"
+  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch"
