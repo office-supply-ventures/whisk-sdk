@@ -2,7 +2,6 @@ import { defineConfig } from "vocs"
 
 export default defineConfig({
   rootDir: "./",
-  outDir: "./dist",
   title: "Whisk",
   description: "Simplify dApp development with modular kits for Whisk's blockchain data pipelines.",
   logoUrl: {
