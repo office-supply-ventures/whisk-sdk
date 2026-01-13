@@ -1,8 +1,9 @@
 import { graphql } from "@whisk/graphql"
 import type { SteakhouseClient } from "../client.js"
-import type { Address, VaultConfig } from "../metadata/types.js"
+import type { Address } from "../metadata/types.js"
 import { ALL_VAULTS } from "../metadata/vaults.js"
 import { type VaultDetail, vaultDetailFragment } from "./fragments/vaultDetail.js"
+import { buildSteakhouseMetadata, type SteakhouseMetadata } from "./steakhouseMetadata.js"
 
 /** Historical data fragment for vault charts (works for both v1 and v2) */
 const vaultHistoricalFragment = graphql(`
@@ -81,24 +82,6 @@ export type GetDetailedVaultVariables = {
   address: Address
   /** Include historical data for charts (default: true) */
   historical?: boolean
-}
-
-/** Steakhouse-specific metadata augmented onto vault data */
-export type SteakhouseMetadata = {
-  name?: string
-  description?: string
-  tag?: VaultConfig["tag"]
-  protocol: VaultConfig["protocol"]
-}
-
-/** Build metadata object from vault config */
-export function buildSteakhouseMetadata(config: VaultConfig): SteakhouseMetadata {
-  return {
-    protocol: config.protocol,
-    ...(config.name !== undefined && { name: config.name }),
-    ...(config.description !== undefined && { description: config.description }),
-    ...(config.tag !== undefined && { tag: config.tag }),
-  }
 }
 
 /** Vault detail with Steakhouse metadata and optional historical data */

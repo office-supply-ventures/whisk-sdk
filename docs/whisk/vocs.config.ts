@@ -22,24 +22,6 @@ export default defineConfig({
       text: "Getting Started",
       link: "/getting-started",
     },
-    {
-      text: "Steakhouse SDK",
-      collapsed: false,
-      items: [
-        {
-          text: "Overview",
-          link: "/steakhouse",
-        },
-        {
-          text: "Queries",
-          link: "/steakhouse/queries",
-        },
-        {
-          text: "React Hooks",
-          link: "/steakhouse/react",
-        },
-      ],
-    },
   ],
   socials: [
     {

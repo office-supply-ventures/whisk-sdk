@@ -5,7 +5,7 @@ import {
   type GetDetailedVaultResult,
   type GetDetailedVaultVariables,
   getDetailedVault,
-} from "../../queries/getVault.js"
+} from "../../queries/getDetailedVault.js"
 import { useSteakhouseQuery } from "./useSteakhouseQuery.js"
 
 export function useDetailedVault(

@@ -1,8 +1,8 @@
-# Steakhouse SDK
+# Getting Started
 
 Type-safe queries for Steakhouse-curated DeFi vaults.
 
-## Quick Start
+## Installation
 
 :::code-group
 
@@ -20,10 +20,12 @@ yarn add @whisk/steakhouse
 
 :::
 
-```ts [client.ts]
-import { createSteakhouseClient, getVaults } from "@whisk/steakhouse"
+## Quick Start
 
-const client = createSteakhouseClient({
+```ts [client.ts]
+import { SteakhouseClient, getVaults } from "@whisk/steakhouse"
+
+const client = new SteakhouseClient({
   apiKey: process.env.WHISK_API_KEY!,
 })
 
@@ -33,17 +35,17 @@ const vaults = await getVaults(client, { chainId: 1 })
 
 ## React
 
-Requires [`@tanstack/react-query`](https://tanstack.com/query). See [React Hooks](/steakhouse/react) for full setup.
+Requires [`@tanstack/react-query`](https://tanstack.com/query). See [React Hooks](/react) for full setup.
 
 ```tsx [providers.tsx]
 "use client"
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { createSteakhouseClient } from "@whisk/steakhouse"
+import { SteakhouseClient } from "@whisk/steakhouse"
 import { SteakhouseProvider } from "@whisk/steakhouse/react"
 
 const queryClient = new QueryClient()
-const client = createSteakhouseClient({ apiKey: process.env.NEXT_PUBLIC_WHISK_API_KEY! })
+const client = new SteakhouseClient({ apiKey: process.env.NEXT_PUBLIC_WHISK_API_KEY! })
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -64,11 +66,11 @@ export function VaultList() {
 }
 ```
 
-## API
+## API Reference
 
 | Function | Description |
 |----------|-------------|
-| [`getVaults`](/steakhouse/queries#getvaults) | Fetch all vaults |
-| [`getDetailedVault`](/steakhouse/queries#getdetailedvault) | Fetch single vault with historical data |
-| [`useVaults`](/steakhouse/react#usevaults) | React hook for vault list |
-| [`useDetailedVault`](/steakhouse/react#usedetailedvault) | React hook for vault detail |
+| [`getVaults`](/queries#getvaults) | Fetch all vaults |
+| [`getDetailedVault`](/queries#getdetailedvault) | Fetch single vault with historical data |
+| [`useVaults`](/react#usevaults) | React hook for vault list |
+| [`useDetailedVault`](/react#usedetailedvault) | React hook for vault detail |

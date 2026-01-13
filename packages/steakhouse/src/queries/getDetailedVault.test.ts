@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
-import { createMockClient } from "../testing.js"
-import { getDetailedVault } from "./getVault.js"
+import { createMockClient } from "../../test/mocks.js"
+import { getDetailedVault } from "./getDetailedVault.js"
 
 // Mock the metadata module
 vi.mock("../metadata/vaults.js", () => ({

@@ -3,7 +3,7 @@ import type { SteakhouseClient } from "../client.js"
 import type { Address, VaultConfig } from "../metadata/types.js"
 import { ALL_VAULTS } from "../metadata/vaults.js"
 import { type VaultDetail, vaultDetailFragment } from "./fragments/vaultDetail.js"
-import { buildSteakhouseMetadata, type SteakhouseMetadata } from "./getVault.js"
+import { buildSteakhouseMetadata, type SteakhouseMetadata } from "./steakhouseMetadata.js"
 
 /** GraphQL query for fetching Steakhouse vaults */
 export const vaultsQuery = graphql(

@@ -64,6 +64,44 @@ importers:
         specifier: ^4.0.10
         version: 4.0.12(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1)
 
+  docs/steakhouse:
+    dependencies:
+      '@whisk/steakhouse':
+        specifier: workspace:*
+        version: link:../../packages/steakhouse
+      react:
+        specifier: 'catalog:'
+        version: 19.2.0
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.2.0(react@19.2.0)
+      vocs:
+        specifier: ^1.4.1
+        version: 1.4.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(jiti@2.6.1)(lightningcss@1.30.2)(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(tsx@4.20.6)(typescript@5.9.2)
+    devDependencies:
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.2.6
+
+  docs/whisk:
+    dependencies:
+      '@whisk/steakhouse':
+        specifier: workspace:*
+        version: link:../../packages/steakhouse
+      react:
+        specifier: 'catalog:'
+        version: 19.2.0
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.2.0(react@19.2.0)
+      vocs:
+        specifier: ^1.4.1
+        version: 1.4.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(jiti@2.6.1)(lightningcss@1.30.2)(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(tsx@4.20.6)(typescript@5.9.2)
+    devDependencies:
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.2.6
+
   examples/next-app:
     dependencies:
       '@tanstack/react-query':
@@ -174,25 +212,6 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
-
-  site:
-    dependencies:
-      '@whisk/steakhouse':
-        specifier: workspace:*
-        version: link:../packages/steakhouse
-      react:
-        specifier: 'catalog:'
-        version: 19.2.0
-      react-dom:
-        specifier: 'catalog:'
-        version: 19.2.0(react@19.2.0)
-      vocs:
-        specifier: ^1.4.1
-        version: 1.4.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(jiti@2.6.1)(lightningcss@1.30.2)(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(tsx@4.20.6)(typescript@5.9.2)
-    devDependencies:
-      '@types/react':
-        specifier: 'catalog:'
-        version: 19.2.6
 
 packages:
 

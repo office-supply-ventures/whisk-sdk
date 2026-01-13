@@ -28,12 +28,12 @@ Wrap your app in both `QueryClientProvider` (TanStack Query) and `SteakhouseProv
 "use client"
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { createSteakhouseClient } from "@whisk/steakhouse"
+import { SteakhouseClient } from "@whisk/steakhouse"
 import { SteakhouseProvider } from "@whisk/steakhouse/react"
 
 const queryClient = new QueryClient()
 
-const steakhouseClient = createSteakhouseClient({
+const steakhouseClient = new SteakhouseClient({
   apiKey: process.env.NEXT_PUBLIC_WHISK_API_KEY!,
 })
 
@@ -125,9 +125,9 @@ function VaultDetail({ address }: { address: string }) {
 Use query functions directly in Next.js server components:
 
 ```tsx [app/vaults/page.tsx]
-import { createSteakhouseClient, getVaults } from "@whisk/steakhouse"
+import { SteakhouseClient, getVaults } from "@whisk/steakhouse"
 
-const client = createSteakhouseClient({
+const client = new SteakhouseClient({
   apiKey: process.env.WHISK_API_KEY!,
 })
 

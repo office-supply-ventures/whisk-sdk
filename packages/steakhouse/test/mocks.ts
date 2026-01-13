@@ -4,7 +4,7 @@
  */
 
 import { vi } from "vitest"
-import type { SteakhouseClient } from "./client.js"
+import type { SteakhouseClient } from "../src/client.js"
 
 /** Create a mock SteakhouseClient that returns the given response */
 export function createMockClient(mockResponse: unknown): SteakhouseClient {

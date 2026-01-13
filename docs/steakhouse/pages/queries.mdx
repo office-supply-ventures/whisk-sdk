@@ -5,9 +5,9 @@
 Fetch all Steakhouse-curated vaults.
 
 ```ts twoslash
-import { createSteakhouseClient, getVaults } from "@whisk/steakhouse"
+import { SteakhouseClient, getVaults } from "@whisk/steakhouse"
 
-const client = createSteakhouseClient({ apiKey: "your-api-key" })
+const client = new SteakhouseClient({ apiKey: "your-api-key" })
 
 const vaults = await getVaults(client, { chainId: 1 })
 //    ^?
@@ -24,9 +24,9 @@ const vaults = await getVaults(client, { chainId: 1 })
 Fetch a single vault with optional historical data.
 
 ```ts twoslash
-import { createSteakhouseClient, getDetailedVault } from "@whisk/steakhouse"
+import { SteakhouseClient, getDetailedVault } from "@whisk/steakhouse"
 
-const client = createSteakhouseClient({ apiKey: "your-api-key" })
+const client = new SteakhouseClient({ apiKey: "your-api-key" })
 
 const vault = await getDetailedVault(client, {
   chainId: 1,
@@ -50,8 +50,8 @@ Returns `null` if vault is not in Steakhouse whitelist.
 
 ```ts twoslash
 // @noErrors
-import { createSteakhouseClient, getVaults } from "@whisk/steakhouse"
-const client = createSteakhouseClient({ apiKey: "your-api-key" })
+import { SteakhouseClient, getVaults } from "@whisk/steakhouse"
+const client = new SteakhouseClient({ apiKey: "your-api-key" })
 // ---cut---
 const vaults = await getVaults(client, { chainId: 1 })
 
@@ -68,8 +68,8 @@ for (const vault of vaults) {
 
 ```ts twoslash
 // @noErrors
-import { createSteakhouseClient, getDetailedVault } from "@whisk/steakhouse"
-const client = createSteakhouseClient({ apiKey: "your-api-key" })
+import { SteakhouseClient, getDetailedVault } from "@whisk/steakhouse"
+const client = new SteakhouseClient({ apiKey: "your-api-key" })
 // ---cut---
 const vault = await getDetailedVault(client, { chainId: 1, address: "0xBEEF..." })
 
