@@ -1025,9 +1025,238 @@
               }
             },
             "args": []
+          },
+          {
+            "name": "fundingModules",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "INTERFACE",
+                    "name": "BoxFundingModule",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
           }
         ],
         "interfaces": [{ "kind": "INTERFACE", "name": "Erc4626Vault" }]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "BoxFundingModule",
+        "fields": [
+          {
+            "name": "fundingModuleAddress",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "SCALAR", "name": "Address", "ofType": null }
+            },
+            "args": []
+          },
+          {
+            "name": "collateralHoldings",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "TokenHolding",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "debtHoldings",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "TokenHolding",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "nav",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TokenAmount",
+                "ofType": null
+              }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": [],
+        "possibleTypes": [
+          { "kind": "OBJECT", "name": "BoxMorphoFundingModule" },
+          { "kind": "OBJECT", "name": "BoxUnknownFundingModule" }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "BoxMorphoFundingModule",
+        "fields": [
+          {
+            "name": "fundingModuleAddress",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "SCALAR", "name": "Address", "ofType": null }
+            },
+            "args": []
+          },
+          {
+            "name": "collateralHoldings",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "TokenHolding",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "debtHoldings",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "TokenHolding",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "nav",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TokenAmount",
+                "ofType": null
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "positions",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "MorphoMarketPosition",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": [{ "kind": "INTERFACE", "name": "BoxFundingModule" }]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "BoxUnknownFundingModule",
+        "fields": [
+          {
+            "name": "fundingModuleAddress",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "SCALAR", "name": "Address", "ofType": null }
+            },
+            "args": []
+          },
+          {
+            "name": "collateralHoldings",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "TokenHolding",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "debtHoldings",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "TokenHolding",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "nav",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TokenAmount",
+                "ofType": null
+              }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": [{ "kind": "INTERFACE", "name": "BoxFundingModule" }]
       },
       {
         "kind": "OBJECT",

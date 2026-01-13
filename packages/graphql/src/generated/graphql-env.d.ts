@@ -490,6 +490,185 @@ export type introspection_types = {
   }
   BigInt: unknown
   Boolean: unknown
+  BoxFundingModule: {
+    kind: "INTERFACE"
+    name: "BoxFundingModule"
+    fields: {
+      collateralHoldings: {
+        name: "collateralHoldings"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: {
+            kind: "LIST"
+            name: never
+            ofType: {
+              kind: "NON_NULL"
+              name: never
+              ofType: { kind: "OBJECT"; name: "TokenHolding"; ofType: null }
+            }
+          }
+        }
+      }
+      debtHoldings: {
+        name: "debtHoldings"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: {
+            kind: "LIST"
+            name: never
+            ofType: {
+              kind: "NON_NULL"
+              name: never
+              ofType: { kind: "OBJECT"; name: "TokenHolding"; ofType: null }
+            }
+          }
+        }
+      }
+      fundingModuleAddress: {
+        name: "fundingModuleAddress"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "SCALAR"; name: "Address"; ofType: null }
+        }
+      }
+      nav: {
+        name: "nav"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "OBJECT"; name: "TokenAmount"; ofType: null }
+        }
+      }
+    }
+    possibleTypes: "BoxMorphoFundingModule" | "BoxUnknownFundingModule"
+  }
+  BoxMorphoFundingModule: {
+    kind: "OBJECT"
+    name: "BoxMorphoFundingModule"
+    fields: {
+      collateralHoldings: {
+        name: "collateralHoldings"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: {
+            kind: "LIST"
+            name: never
+            ofType: {
+              kind: "NON_NULL"
+              name: never
+              ofType: { kind: "OBJECT"; name: "TokenHolding"; ofType: null }
+            }
+          }
+        }
+      }
+      debtHoldings: {
+        name: "debtHoldings"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: {
+            kind: "LIST"
+            name: never
+            ofType: {
+              kind: "NON_NULL"
+              name: never
+              ofType: { kind: "OBJECT"; name: "TokenHolding"; ofType: null }
+            }
+          }
+        }
+      }
+      fundingModuleAddress: {
+        name: "fundingModuleAddress"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "SCALAR"; name: "Address"; ofType: null }
+        }
+      }
+      nav: {
+        name: "nav"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "OBJECT"; name: "TokenAmount"; ofType: null }
+        }
+      }
+      positions: {
+        name: "positions"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: {
+            kind: "LIST"
+            name: never
+            ofType: {
+              kind: "NON_NULL"
+              name: never
+              ofType: { kind: "OBJECT"; name: "MorphoMarketPosition"; ofType: null }
+            }
+          }
+        }
+      }
+    }
+  }
+  BoxUnknownFundingModule: {
+    kind: "OBJECT"
+    name: "BoxUnknownFundingModule"
+    fields: {
+      collateralHoldings: {
+        name: "collateralHoldings"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: {
+            kind: "LIST"
+            name: never
+            ofType: {
+              kind: "NON_NULL"
+              name: never
+              ofType: { kind: "OBJECT"; name: "TokenHolding"; ofType: null }
+            }
+          }
+        }
+      }
+      debtHoldings: {
+        name: "debtHoldings"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: {
+            kind: "LIST"
+            name: never
+            ofType: {
+              kind: "NON_NULL"
+              name: never
+              ofType: { kind: "OBJECT"; name: "TokenHolding"; ofType: null }
+            }
+          }
+        }
+      }
+      fundingModuleAddress: {
+        name: "fundingModuleAddress"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "SCALAR"; name: "Address"; ofType: null }
+        }
+      }
+      nav: {
+        name: "nav"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "OBJECT"; name: "TokenAmount"; ofType: null }
+        }
+      }
+    }
+  }
   BoxVault: {
     kind: "OBJECT"
     name: "BoxVault"
@@ -540,6 +719,22 @@ export type introspection_types = {
           kind: "NON_NULL"
           name: never
           ofType: { kind: "SCALAR"; name: "Int"; ofType: null }
+        }
+      }
+      fundingModules: {
+        name: "fundingModules"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: {
+            kind: "LIST"
+            name: never
+            ofType: {
+              kind: "NON_NULL"
+              name: never
+              ofType: { kind: "INTERFACE"; name: "BoxFundingModule"; ofType: null }
+            }
+          }
         }
       }
       name: {
