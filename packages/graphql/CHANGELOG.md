@@ -1,5 +1,11 @@
 # @whisk/graphql
 
+## 0.0.10
+
+### Patch Changes
+
+- 8772317: Add core functionality, minized other complexity, steakhouse SDK wip
+
 ## 0.0.9
 
 ### Patch Changes
