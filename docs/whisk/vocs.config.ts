@@ -3,6 +3,15 @@ import { defineConfig } from "vocs"
 export default defineConfig({
   rootDir: "./",
   title: "Whisk",
+  twoslash: {
+    compilerOptions: {
+      strict: true,
+      // ModuleResolutionKind.Bundler = 100
+      moduleResolution: 100,
+      // Use "src" condition to resolve workspace packages to source files
+      customConditions: ["src"],
+    },
+  },
   description: "Simplify dApp development with modular kits for Whisk's blockchain data pipelines.",
   logoUrl: {
     light: "/logo-light.svg",

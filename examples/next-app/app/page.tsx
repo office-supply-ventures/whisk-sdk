@@ -3,7 +3,7 @@ import { steakhouseClient } from "../lib/steakhouse"
 import { ClientComponent } from "./ClientComponent"
 
 export default async function Home() {
-  const vaults = await getVaults(steakhouseClient, { limit: 5 })
+  const vaults = await getVaults(steakhouseClient, { chainId: 1 })
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -11,9 +11,9 @@ export default async function Home() {
         <section>
           <h2 className="text-lg font-semibold mb-4">Server-side Fetching</h2>
           <div className="space-y-2">
-            {vaults.map((vault, i) => (
-              <div key={vault?.vaultAddress ?? i} className="text-sm font-mono">
-                {vault?.vaultAddress.slice(0, 10)}... — {vault?.totalSupplied.raw}
+            {vaults.slice(0, 5).map((vault) => (
+              <div key={vault.vaultAddress} className="text-sm font-mono">
+                {vault.vaultAddress.slice(0, 10)}... — {vault.totalAssets.raw}
               </div>
             ))}
           </div>

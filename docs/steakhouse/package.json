@@ -1,13 +1,14 @@
 {
-  "name": "site",
+  "name": "steakhouse-docs",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vocs dev",
+    "dev": "vocs dev --port 5173",
     "build": "vocs build",
     "preview": "vocs preview"
   },
   "dependencies": {
+    "@whisk/steakhouse": "workspace:*",
     "react": "catalog:",
     "react-dom": "catalog:",
     "vocs": "^1.4.1"
