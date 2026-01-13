@@ -1,5 +1,14 @@
 # @whisk/steakhouse
 
+## 0.0.5
+
+### Patch Changes
+
+- 8772317: Add core functionality, minized other complexity, steakhouse SDK wip
+- Updated dependencies [8772317]
+  - @whisk/graphql@0.0.10
+  - @whisk/client@0.0.10
+
 ## 0.0.4
 
 ### Patch Changes
