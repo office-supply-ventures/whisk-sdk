@@ -11,7 +11,7 @@ export function useSteakhouseQuery<TData, TVariables>(options: {
 }): UseQueryResult<TData, Error> {
   const { client } = useSteakhouse()
   return useQuery({
-    queryKey: [options.queryName, options.variables],
+    queryKey: ["steakhouse", options.queryName, options.variables],
     queryFn: () => options.queryFn(client, options.variables),
   })
 }

@@ -28,11 +28,11 @@ export const vaultDetailFragment = graphql(`
       formatted
       usd
     }
-    apy {
+    apy(timeframe: seven_days) {
       base
       total
       rewards {
-        token {
+        asset {
           symbol
           icon
         }
@@ -45,7 +45,7 @@ export const vaultDetailFragment = graphql(`
         formatted
         usd
       }
-      performanceFee
+      v1PerformanceFee: performanceFee
       feeRecipientAddress
       ownerAddress
       curatorAddress
@@ -87,7 +87,7 @@ export const vaultDetailFragment = graphql(`
         vaultSupplyShare
         marketSupplyShare
         position {
-          supplyAssets {
+          supplyAmount {
             formatted
             usd
           }
@@ -126,27 +126,16 @@ export const vaultDetailFragment = graphql(`
         formatted
         usd
       }
-      performanceFee {
+      v2PerformanceFee: performanceFee {
         formatted
       }
       managementFee {
         formatted
       }
       adapters {
-        ... on MorphoMarketAdapter {
-          market {
-            marketId
-            name
-            loanAsset {
-              symbol
-              icon
-            }
-            collateralAsset {
-              symbol
-              icon
-            }
-            isIdle
-          }
+        ... on MarketV1Adapter {
+          adapterAddress
+          name
         }
       }
       riskAssessment {
