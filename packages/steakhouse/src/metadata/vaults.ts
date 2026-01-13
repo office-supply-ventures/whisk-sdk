@@ -5,8 +5,9 @@ import type { VaultConfig } from "./types.js"
 export const MAINNET_VAULTS: readonly VaultConfig[] = [
   // Example placeholder vault
   // {
+  //   chainId: MAINNET.id,
   //   address: "0x...",
-  //   protocol: "steakhouse",
+  //   protocol: "morpho",
   //   name: "Steakhouse USDC Vault",
   //   tag: "featured",
   // },
@@ -17,8 +18,9 @@ export const MAINNET_VAULTS: readonly VaultConfig[] = [
 export const BASE_VAULTS: readonly VaultConfig[] = [
   // Example placeholder vault
   // {
+  //   chainId: BASE.id,
   //   address: "0x...",
-  //   protocol: "steakhouse",
+  //   protocol: "morpho",
   //   name: "Steakhouse USDC Vault",
   // },
 ] as const

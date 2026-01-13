@@ -8,6 +8,7 @@
     "preview": "vocs preview"
   },
   "dependencies": {
+    "@whisk/steakhouse": "workspace:*",
     "react": "catalog:",
     "react-dom": "catalog:",
     "vocs": "^1.4.1"

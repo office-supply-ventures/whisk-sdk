@@ -1,0 +1,74 @@
+# Steakhouse SDK
+
+Type-safe queries for Steakhouse-curated DeFi vaults.
+
+## Quick Start
+
+:::code-group
+
+```bash [pnpm]
+pnpm add @whisk/steakhouse
+```
+
+```bash [npm]
+npm install @whisk/steakhouse
+```
+
+```bash [yarn]
+yarn add @whisk/steakhouse
+```
+
+:::
+
+```ts [client.ts]
+import { createSteakhouseClient, getVaults } from "@whisk/steakhouse"
+
+const client = createSteakhouseClient({
+  apiKey: process.env.WHISK_API_KEY!,
+})
+
+const vaults = await getVaults(client, { chainId: 1 })
+// => [{ name: "Steakhouse USDC", apy: { total: 0.082 }, ... }]
+```
+
+## React
+
+Requires [`@tanstack/react-query`](https://tanstack.com/query). See [React Hooks](/steakhouse/react) for full setup.
+
+```tsx [providers.tsx]
+"use client"
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { createSteakhouseClient } from "@whisk/steakhouse"
+import { SteakhouseProvider } from "@whisk/steakhouse/react"
+
+const queryClient = new QueryClient()
+const client = createSteakhouseClient({ apiKey: process.env.NEXT_PUBLIC_WHISK_API_KEY! })
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <SteakhouseProvider client={client}>{children}</SteakhouseProvider>
+    </QueryClientProvider>
+  )
+}
+```
+
+```tsx [vault-list.tsx]
+import { useVaults } from "@whisk/steakhouse/react"
+
+export function VaultList() {
+  const { data: vaults } = useVaults({ chainId: 1 })
+
+  return vaults?.map((v) => <div key={v.vaultAddress}>{v.name}</div>)
+}
+```
+
+## API
+
+| Function | Description |
+|----------|-------------|
+| [`getVaults`](/steakhouse/queries#getvaults) | Fetch all vaults |
+| [`getDetailedVault`](/steakhouse/queries#getdetailedvault) | Fetch single vault with historical data |
+| [`useVaults`](/steakhouse/react#usevaults) | React hook for vault list |
+| [`useDetailedVault`](/steakhouse/react#usedetailedvault) | React hook for vault detail |
