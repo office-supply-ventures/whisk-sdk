@@ -2,7 +2,7 @@
 DO_NOT_TRACK=1
 
 [tools]
-nodejs = '24.5.0'
+nodejs = '24.13.0'
 pnpm = '10.26.0'
 gitleaks = '8.28.0'
 lefthook = '1.12.3'
