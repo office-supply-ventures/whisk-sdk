@@ -36,13 +36,14 @@ Steakhouse vault metadata is defined in markdown files with YAML frontmatter, wh
    Custom description in markdown. Supports **formatting**, links, etc.
    ```
 
-3. Run the build:
+3. Regenerate and commit:
 
    ```bash
-   pnpm build
+   pnpm generate:vaults
+   git add src/metadata/generated/vaults.ts
    ```
 
-4. Verify the vault appears in `generated/vaults.ts`
+4. Verify the vault appears in `generated/vaults.ts` and commit the changes
 
 ## Frontmatter Fields
 
@@ -85,8 +86,8 @@ The filename doesn't affect the generated code - it's just for organization.
 
 ## Generated Output
 
-The build generates `src/metadata/generated/vaults.ts` with:
+The generator creates `src/metadata/generated/vaults.ts` with:
 
 - `STEAKHOUSE_VAULTS` - array of all vault configurations
 
-This file is not committed to git - it's regenerated on each build.
+This file is committed to git for security auditability. CI verifies the committed file matches regenerated output.

@@ -3,6 +3,3 @@ node_modules
 *.tsbuildinfo
 .turbo
 .env*
-
-# Generated files
-packages/steakhouse/src/metadata/generated/
