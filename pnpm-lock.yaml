@@ -219,7 +219,7 @@ importers:
         specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       tsx:
-        specifier: ^4.21.0
+        specifier: ^4.20.6
         version: 4.21.0
       viem:
         specifier: ^2.0.0
