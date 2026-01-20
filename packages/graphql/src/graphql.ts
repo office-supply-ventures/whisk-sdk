@@ -1,5 +1,5 @@
 import { initGraphQLTada } from "gql.tada"
-import type { introspection } from "./generated/graphql-env.js"
+import type { introspection, introspection_types } from "./generated/graphql-env.js"
 
 export const graphql = initGraphQLTada<{
   disableMasking: true
@@ -16,6 +16,5 @@ export const graphql = initGraphQLTada<{
 export type { FragmentOf, ResultOf, VariablesOf } from "gql.tada"
 export { readFragment } from "gql.tada"
 
-/** Vault protocol values - must match Erc4626VaultProtocol enum in GraphQL schema */
-export const VAULT_PROTOCOLS = ["morpho_v1", "morpho_v2", "generic", "box"] as const
-export type VaultProtocol = (typeof VAULT_PROTOCOLS)[number]
+/** Vault protocol type from GraphQL schema */
+export type VaultProtocol = introspection_types["Erc4626VaultProtocol"]["enumValues"]

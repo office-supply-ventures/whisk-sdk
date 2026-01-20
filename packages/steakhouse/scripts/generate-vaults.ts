@@ -1,10 +1,18 @@
 import * as fs from "node:fs"
 import * as path from "node:path"
-import { VAULT_PROTOCOLS } from "@whisk/graphql"
+import type { VaultProtocol } from "@whisk/graphql"
 import matter from "gray-matter"
 import { getAddress, isAddress } from "viem"
 import { z } from "zod"
 import { VAULT_TYPES } from "../src/metadata/types.js"
+
+/** Vault protocol values - type-checked against GraphQL schema */
+const VAULT_PROTOCOLS = [
+  "generic",
+  "morpho_v1",
+  "morpho_v2",
+  "box",
+] as const satisfies readonly VaultProtocol[]
 
 /**
  * Quote unquoted Ethereum addresses in YAML frontmatter.

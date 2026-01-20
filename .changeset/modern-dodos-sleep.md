@@ -2,4 +2,4 @@
 "@whisk/steakhouse": patch
 ---
 
-Added md based metadat config and generation
+Added md based metadata config and generation
