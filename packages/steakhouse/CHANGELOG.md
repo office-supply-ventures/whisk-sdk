@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.0.6
+
+### Patch Changes
+
+- 82b040a: Added md based metadata config and generation
+
 ## 0.0.5
 
 ### Patch Changes
