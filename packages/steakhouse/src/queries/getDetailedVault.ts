@@ -1,7 +1,7 @@
 import { graphql } from "@whisk/graphql"
 import type { SteakhouseClient } from "../client.js"
+import { STEAKHOUSE_VAULTS } from "../metadata/generated/vaults.js"
 import type { Address } from "../metadata/types.js"
-import { ALL_VAULTS } from "../metadata/vaults.js"
 import { type VaultDetail, vaultDetailFragment } from "./fragments/vaultDetail.js"
 import { buildSteakhouseMetadata, type SteakhouseMetadata } from "./steakhouseMetadata.js"
 
@@ -102,9 +102,8 @@ export async function getDetailedVault(
 ): Promise<GetDetailedVaultResult> {
   const { chainId, address, historical = true } = variables
 
-  const vaultConfig = ALL_VAULTS.find(
-    (v) =>
-      v.chainId === chainId && v.address.toLowerCase() === address.toLowerCase() && !v.isHidden,
+  const vaultConfig = STEAKHOUSE_VAULTS.find(
+    (v) => v.chainId === chainId && v.address.toLowerCase() === address.toLowerCase(),
   )
 
   if (!vaultConfig) {

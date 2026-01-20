@@ -2,22 +2,23 @@ import { beforeEach, describe, expect, it, vi } from "vitest"
 import { createMockClient } from "../../test/mocks.js"
 import { getDetailedVault } from "./getDetailedVault.js"
 
-// Mock the metadata module
-vi.mock("../metadata/vaults.js", () => ({
-  ALL_VAULTS: [
+// Mock the generated vaults module
+vi.mock("../metadata/generated/vaults.js", () => ({
+  STEAKHOUSE_VAULTS: [
     {
       chainId: 1,
       address: "0x1111111111111111111111111111111111111111",
       protocol: "morpho_v1",
       name: "Steakhouse USDC",
       description: "A USDC vault",
-      tag: "featured",
+      type: "Prime",
     },
     {
       chainId: 1,
       address: "0x2222222222222222222222222222222222222222",
       protocol: "morpho_v1",
-      isHidden: true, // Should be excluded
+      name: "Steakhouse ETH",
+      description: "An ETH vault",
     },
   ],
 }))
@@ -103,18 +104,6 @@ describe("getDetailedVault", () => {
     expect(client.query).not.toHaveBeenCalled()
   })
 
-  it("returns null for hidden vault", async () => {
-    const client = createMockClient({})
-
-    const result = await getDetailedVault(client, {
-      chainId: 1,
-      address: "0x2222222222222222222222222222222222222222",
-    })
-
-    expect(result).toBeNull()
-    expect(client.query).not.toHaveBeenCalled()
-  })
-
   it("returns null for vault on wrong chain", async () => {
     const client = createMockClient({})
 
@@ -148,7 +137,8 @@ describe("getDetailedVault", () => {
       vaultAddress: "0x1111111111111111111111111111111111111111",
     })
     // Remove historical from response
-    delete (mockResponse.erc4626Vaults.items[0] as Record<string, unknown>).historical
+    // biome-ignore lint/complexity/useLiteralKeys: Needed for index signature access
+    delete (mockResponse.erc4626Vaults.items[0] as Record<string, unknown>)["historical"]
 
     const client = createMockClient(mockResponse)
 
@@ -178,7 +168,7 @@ describe("getDetailedVault", () => {
     expect(result?.steakhouseMetadata).toEqual({
       name: "Steakhouse USDC",
       description: "A USDC vault",
-      tag: "featured",
+      type: "Prime",
       protocol: "morpho_v1",
     })
   })
