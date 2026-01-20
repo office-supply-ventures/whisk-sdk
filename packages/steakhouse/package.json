@@ -7,8 +7,10 @@
     "directory": "packages/steakhouse"
   },
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch"
+    "generate:vaults": "tsx scripts/generate-vaults.ts",
+    "generate:vaults:watch": "chokidar \"src/metadata/vaults/**/*.md\" --initial -c \"pnpm generate:vaults\"",
+    "build": "pnpm generate:vaults && tsup",
+    "dev": "concurrently -n vaults,tsup -c blue,green \"pnpm generate:vaults:watch\" \"tsup --watch\""
   },
   "type": "module",
   "main": "./dist/index.js",
@@ -44,10 +46,10 @@
     "gql.tada": "catalog:"
   },
   "peerDependencies": {
+    "@tanstack/react-query": ">=5",
     "graphql": ">=16",
     "react": ">=18",
-    "react-dom": ">=18",
-    "@tanstack/react-query": ">=5"
+    "react-dom": ">=18"
   },
   "peerDependenciesMeta": {
     "react": {
@@ -61,10 +63,15 @@
     }
   },
   "devDependencies": {
+    "@tanstack/react-query": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^9.2.1",
+    "gray-matter": "^4.0.3",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "@tanstack/react-query": "catalog:"
+    "viem": "^2.0.0",
+    "zod": "^3.24.0"
   }
 }

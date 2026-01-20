@@ -4,7 +4,7 @@ import type { VaultConfig } from "../metadata/types.js"
 export type SteakhouseMetadata = {
   name?: string
   description?: string
-  tag?: VaultConfig["tag"]
+  type?: VaultConfig["type"]
   protocol: VaultConfig["protocol"]
 }
 
@@ -14,6 +14,6 @@ export function buildSteakhouseMetadata(config: VaultConfig): SteakhouseMetadata
     protocol: config.protocol,
     ...(config.name !== undefined && { name: config.name }),
     ...(config.description !== undefined && { description: config.description }),
-    ...(config.tag !== undefined && { tag: config.tag }),
+    ...(config.type !== undefined && { type: config.type }),
   }
 }

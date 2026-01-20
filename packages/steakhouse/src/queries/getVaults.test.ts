@@ -2,33 +2,30 @@ import { beforeEach, describe, expect, it, vi } from "vitest"
 import { createMockClient } from "../../test/mocks.js"
 import { getVaults } from "./getVaults.js"
 
-// Mock the metadata module
-vi.mock("../metadata/vaults.js", () => ({
-  ALL_VAULTS: [
+// Mock the generated vaults module
+vi.mock("../metadata/generated/vaults.js", () => ({
+  STEAKHOUSE_VAULTS: [
     {
       chainId: 1,
       address: "0x1111111111111111111111111111111111111111",
       protocol: "morpho_v1",
       name: "Steakhouse USDC",
       description: "A USDC vault",
-      tag: "featured",
+      type: "Prime",
     },
     {
       chainId: 1,
       address: "0x2222222222222222222222222222222222222222",
       protocol: "morpho_v1",
       name: "Steakhouse ETH",
+      description: "An ETH vault",
     },
     {
       chainId: 8453,
       address: "0x3333333333333333333333333333333333333333",
       protocol: "morpho_v2",
-    },
-    {
-      chainId: 1,
-      address: "0x4444444444444444444444444444444444444444",
-      protocol: "morpho_v1",
-      isHidden: true, // Should be excluded
+      name: "Base Vault",
+      description: "A Base vault",
     },
   ],
 }))
@@ -120,24 +117,6 @@ describe("getVaults", () => {
     )
   })
 
-  it("excludes hidden vaults from whitelist", async () => {
-    const client = createMockClient(
-      createMockVaultResponse([
-        { vaultAddress: "0x1111111111111111111111111111111111111111" },
-        { vaultAddress: "0x2222222222222222222222222222222222222222" },
-      ]),
-    )
-
-    await getVaults(client, { chainId: 1 })
-
-    // Should not include the hidden vault (0x4444...)
-    const call = vi.mocked(client.query).mock.calls[0]
-    const keys = call[1].where.keys as Array<{ vaultAddress: string }>
-    expect(keys.map((k) => k.vaultAddress)).not.toContain(
-      "0x4444444444444444444444444444444444444444",
-    )
-  })
-
   it("augments results with steakhouse metadata", async () => {
     const client = createMockClient(
       createMockVaultResponse([{ vaultAddress: "0x1111111111111111111111111111111111111111" }]),
@@ -145,27 +124,29 @@ describe("getVaults", () => {
 
     const result = await getVaults(client, { chainId: 1 })
 
-    expect(result[0].steakhouseMetadata).toEqual({
+    expect(result[0]?.steakhouseMetadata).toEqual({
       name: "Steakhouse USDC",
       description: "A USDC vault",
-      tag: "featured",
+      type: "Prime",
       protocol: "morpho_v1",
     })
   })
 
-  it("handles vaults without metadata overrides", async () => {
+  it("handles vaults without type", async () => {
     const client = createMockClient(
       createMockVaultResponse([{ vaultAddress: "0x3333333333333333333333333333333333333333" }]),
     )
 
     const result = await getVaults(client, { chainId: 8453 })
 
-    expect(result[0].steakhouseMetadata).toEqual({
+    expect(result[0]?.steakhouseMetadata).toEqual({
+      name: "Base Vault",
+      description: "A Base vault",
       protocol: "morpho_v2",
     })
   })
 
-  it("returns all non-hidden vaults when no chainId filter", async () => {
+  it("returns all vaults when no chainId filter", async () => {
     const client = createMockClient(
       createMockVaultResponse([
         { vaultAddress: "0x1111111111111111111111111111111111111111" },
@@ -179,7 +160,7 @@ describe("getVaults", () => {
     expect(client.query).toHaveBeenCalledWith(
       expect.anything(),
       expect.objectContaining({
-        limit: 3, // 3 non-hidden vaults
+        limit: 3,
       }),
     )
   })
