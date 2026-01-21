@@ -1,5 +1,14 @@
 # @whisk/steakhouse
 
+## 0.0.7
+
+### Patch Changes
+
+- 157bda9: Added getTvl and useTvl
+- Updated dependencies [157bda9]
+  - @whisk/graphql@0.0.11
+  - @whisk/client@0.0.11
+
 ## 0.0.6
 
 ### Patch Changes
