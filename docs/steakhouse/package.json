@@ -8,6 +8,7 @@
     "preview": "vocs preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "catalog:",
     "@whisk/steakhouse": "workspace:*",
     "react": "catalog:",
     "react-dom": "catalog:",

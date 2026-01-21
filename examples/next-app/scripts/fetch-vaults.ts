@@ -4,20 +4,28 @@
  * Run with: pnpm --filter next-app exec tsx scripts/fetch-vaults.ts
  */
 import "dotenv/config"
-import { getVaults } from "@whisk/steakhouse"
+import { getTvl } from "@whisk/steakhouse"
 import { steakhouseClient } from "../lib/steakhouse"
 
 async function main() {
-  console.log("Fetching vaults...")
-  const vaults = await getVaults(steakhouseClient, { chainId: 1 })
+  console.log("Fetching TVL...")
+  const tvl = await getTvl(steakhouseClient)
 
-  console.log(`Found ${vaults.length} vaults:\n`)
+  console.log(`\nTotal TVL: $${tvl.totalUsd.toLocaleString()}\n`)
 
-  for (const vault of vaults.slice(0, 5)) {
-    console.log(`  Chain: ${vault.chain.id}`)
-    console.log(`  Address: ${vault.vaultAddress}`)
-    console.log(`  Total Assets: ${vault.totalAssets.raw}`)
-    console.log("")
+  console.log("By Chain:")
+  for (const item of tvl.byChain) {
+    console.log(`  ${item.chain.name}: $${item.tvlUsd.toLocaleString()}`)
+  }
+
+  console.log("\nBy Protocol:")
+  for (const item of tvl.byProtocol) {
+    console.log(`  ${item.protocol}: $${item.tvlUsd.toLocaleString()}`)
+  }
+
+  console.log("\nBy Asset Category:")
+  for (const item of tvl.byAssetCategory) {
+    console.log(`  ${item.category}: $${item.tvlUsd.toLocaleString()}`)
   }
 }
 

@@ -66,6 +66,9 @@ importers:
 
   docs/steakhouse:
     dependencies:
+      '@tanstack/react-query':
+        specifier: 'catalog:'
+        version: 5.90.10(react@19.2.0)
       '@whisk/steakhouse':
         specifier: workspace:*
         version: link:../../packages/steakhouse
