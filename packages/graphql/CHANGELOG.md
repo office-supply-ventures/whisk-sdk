@@ -1,5 +1,11 @@
 # @whisk/graphql
 
+## 0.0.11
+
+### Patch Changes
+
+- 157bda9: Added getTvl and useTvl
+
 ## 0.0.10
 
 ### Patch Changes
