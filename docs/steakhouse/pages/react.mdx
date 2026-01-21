@@ -1,6 +1,8 @@
 # React Hooks
 
-Hooks powered by [TanStack Query](https://tanstack.com/query) for async state management.
+Hooks for client-side data fetching in React apps with automatic caching, background refetching, and loading states. Powered by [TanStack Query](https://tanstack.com/query).
+
+For server-side rendering or non-React contexts, use [query functions](/queries) directly.
 
 ## Installation
 
@@ -24,9 +26,8 @@ yarn add @whisk/steakhouse @tanstack/react-query
 
 Wrap your app in both `QueryClientProvider` (TanStack Query) and `SteakhouseProvider`.
 
-```tsx [app/providers.tsx]
-"use client"
-
+```tsx twoslash [app/providers.tsx]
+import * as React from "react"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { SteakhouseClient } from "@whisk/steakhouse"
 import { SteakhouseProvider } from "@whisk/steakhouse/react"
@@ -34,13 +35,13 @@ import { SteakhouseProvider } from "@whisk/steakhouse/react"
 const queryClient = new QueryClient()
 
 const steakhouseClient = new SteakhouseClient({
-  apiKey: process.env.NEXT_PUBLIC_WHISK_API_KEY!,
+  apiKey: process.env.NEXT_PUBLIC_STEAKHOUSE_API_KEY!,
 })
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <QueryClientProvider client={queryClient}> // [!code highlight]
-      <SteakhouseProvider client={steakhouseClient}> // [!code highlight]
+    <QueryClientProvider client={queryClient}>
+      <SteakhouseProvider client={steakhouseClient}>
         {children}
       </SteakhouseProvider>
     </QueryClientProvider>
@@ -48,92 +49,60 @@ export function Providers({ children }: { children: React.ReactNode }) {
 }
 ```
 
-```tsx [app/layout.tsx]
+```tsx twoslash [app/layout.tsx]
+// @noErrors
+import * as React from "react"
 import { Providers } from "./providers"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html>
       <body>
-        <Providers>{children}</Providers> // [!code highlight]
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
 }
 ```
 
----
+## useTvl
 
-## useVaults
+Fetch Steakhouse TVL breakdown.
 
-```tsx
-import { useVaults } from "@whisk/steakhouse/react"
+```tsx twoslash
+import * as React from "react"
+import { useTvl } from "@whisk/steakhouse/react"
 
-function VaultList() {
-  const { data: vaults, isLoading } = useVaults({ chainId: 1 }) // [!code highlight]
-
-  if (isLoading) return <div>Loading...</div>
-
-  return vaults?.map((vault) => (
-    <div key={vault.vaultAddress}>
-      {vault.name} — {(vault.apy.total * 100).toFixed(2)}%
-    </div>
-  ))
-}
-```
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `chainId` | `number` | Filter by chain (optional) |
-
----
-
-## useDetailedVault
-
-```tsx
-import { useDetailedVault } from "@whisk/steakhouse/react"
-
-function VaultDetail({ address }: { address: string }) {
-  const { data: vault, isLoading } = useDetailedVault({ // [!code highlight]
-    chainId: 1, // [!code highlight]
-    address, // [!code highlight]
-  }) // [!code highlight]
+function TvlDashboard() {
+  const { data: tvl, isLoading } = useTvl() // [!code focus]
 
   if (isLoading) return <div>Loading...</div>
-  if (!vault) return <div>Not found</div>
 
   return (
     <div>
-      <h1>{vault.name}</h1>
-      <p>${vault.totalAssets.usd.toLocaleString()} TVL</p>
-      {vault.historical && <Chart data={vault.historical.daily} />}
+      <h1>Total TVL: ${tvl?.totalUsd.toLocaleString()}</h1>
+
+      <h2>By Chain</h2>
+      {tvl?.byChain.map((item) => (
+        <div key={item.chain.id}>
+          {item.chain.name}: ${item.tvlUsd.toLocaleString()}
+        </div>
+      ))}
+
+      <h2>By Protocol</h2>
+      {tvl?.byProtocol.map((item) => (
+        <div key={item.protocol}>
+          {item.protocol}: ${item.tvlUsd.toLocaleString()}
+        </div>
+      ))}
+
+      <h2>By Asset Category</h2>
+      {tvl?.byAssetCategory.map((item) => (
+        <div key={item.category}>
+          {item.category}: ${item.tvlUsd.toLocaleString()}
+        </div>
+      ))}
     </div>
   )
-}
-```
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `chainId` | `number` | Chain ID |
-| `address` | `string` | Vault address |
-| `historical` | `boolean` | Include time-series (default: `true`) |
-
----
-
-## Server Components
-
-Use query functions directly in Next.js server components:
-
-```tsx [app/vaults/page.tsx]
-import { SteakhouseClient, getVaults } from "@whisk/steakhouse"
-
-const client = new SteakhouseClient({
-  apiKey: process.env.WHISK_API_KEY!,
-})
-
-export default async function VaultsPage() {
-  const vaults = await getVaults(client, { chainId: 1 }) // [!code highlight]
-
-  return vaults.map((v) => <div key={v.vaultAddress}>{v.name}</div>)
 }
 ```

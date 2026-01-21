@@ -369,6 +369,18 @@
             ]
           },
           {
+            "name": "steakhouseTvl",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "SteakhouseTvl",
+                "ofType": null
+              }
+            },
+            "args": []
+          },
+          {
             "name": "tokens",
             "type": {
               "kind": "NON_NULL",
@@ -4189,6 +4201,152 @@
               "kind": "OBJECT",
               "name": "SteakhouseRiskAssessment",
               "ofType": null
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "SteakhouseTvl",
+        "fields": [
+          {
+            "name": "totalUsd",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "SCALAR", "name": "Float", "ofType": null }
+            },
+            "args": []
+          },
+          {
+            "name": "computedAt",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "SCALAR", "name": "Int", "ofType": null }
+            },
+            "args": []
+          },
+          {
+            "name": "byChain",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "SteakhouseTvlByChain",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "byProtocol",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "SteakhouseTvlByProtocol",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "byAssetCategory",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "SteakhouseTvlByAssetCategory",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "SteakhouseTvlByChain",
+        "fields": [
+          {
+            "name": "chain",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "OBJECT", "name": "Chain", "ofType": null }
+            },
+            "args": []
+          },
+          {
+            "name": "tvlUsd",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "SCALAR", "name": "Float", "ofType": null }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "SteakhouseTvlByProtocol",
+        "fields": [
+          {
+            "name": "protocol",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "SCALAR", "name": "Any" }
+            },
+            "args": []
+          },
+          {
+            "name": "tvlUsd",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "SCALAR", "name": "Float", "ofType": null }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "SteakhouseTvlByAssetCategory",
+        "fields": [
+          {
+            "name": "category",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "SCALAR", "name": "Any" }
+            },
+            "args": []
+          },
+          {
+            "name": "tvlUsd",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": { "kind": "SCALAR", "name": "Float", "ofType": null }
             },
             "args": []
           }

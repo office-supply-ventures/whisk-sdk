@@ -37,5 +37,11 @@ export default defineConfig({
       link: "https://x.com/SteakhouseFi",
     },
   ],
-  topNav: [{ text: "Docs", link: "/getting-started", match: "/docs" }],
+  topNav: [
+    { text: "Docs", link: "/getting-started", match: "/docs" },
+    {
+      text: "Changelog",
+      link: "https://github.com/papercliplabs/whisk-sdk/blob/main/packages/steakhouse/CHANGELOG.md",
+    },
+  ],
 })

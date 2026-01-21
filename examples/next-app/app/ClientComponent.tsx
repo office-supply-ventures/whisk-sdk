@@ -1,26 +1,38 @@
 "use client"
 
-import { useVaults } from "@whisk/steakhouse/react"
+import { useTvl } from "@whisk/steakhouse/react"
 
 export function ClientComponent() {
-  const { data, isLoading, error } = useVaults({ chainId: 1 })
+  const { data, isLoading, error } = useTvl()
 
-  if (isLoading) return <div>Loading vaults...</div>
+  if (isLoading) return <div>Loading TVL...</div>
   if (error) return <div>Error: {error.message}</div>
 
   return (
     <div>
-      <h2>Steakhouse Vaults (Ethereum)</h2>
-      {data?.map((vault) => (
-        <div
-          key={vault.vaultAddress}
-          style={{ margin: "8px 0", padding: "8px", border: "1px solid #ccc" }}
-        >
-          <strong>{vault.name}</strong> ({vault.symbol})
-          <br />
-          TVL: ${vault.totalAssets.usd?.toLocaleString() ?? "N/A"}
-          <br />
-          APY: {vault.apy.total ? `${(vault.apy.total * 100).toFixed(2)}%` : "N/A"}
+      <h2>Steakhouse TVL</h2>
+      <p>
+        <strong>Total:</strong> ${data?.totalUsd.toLocaleString()}
+      </p>
+
+      <h3>By Chain</h3>
+      {data?.byChain.map((item) => (
+        <div key={item.chain.id}>
+          {item.chain.name}: ${item.tvlUsd.toLocaleString()}
+        </div>
+      ))}
+
+      <h3>By Protocol</h3>
+      {data?.byProtocol.map((item) => (
+        <div key={item.protocol}>
+          {item.protocol}: ${item.tvlUsd.toLocaleString()}
+        </div>
+      ))}
+
+      <h3>By Asset Category</h3>
+      {data?.byAssetCategory.map((item) => (
+        <div key={item.category}>
+          {item.category}: ${item.tvlUsd.toLocaleString()}
         </div>
       ))}
     </div>

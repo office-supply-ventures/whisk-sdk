@@ -1,83 +1,15 @@
 # Queries
 
-## getVaults
+Query functions for server-side usage, Node.js scripts, Next.js server components, or any non-React context. For React client components, use [hooks](/react) instead.
 
-Fetch all Steakhouse-curated vaults.
+## getTvl
+
+Fetch Steakhouse TVL breakdown by chain, protocol, and asset category.
 
 ```ts twoslash
-import { SteakhouseClient, getVaults } from "@whisk/steakhouse"
+import { SteakhouseClient, getTvl } from "@whisk/steakhouse"
 
 const client = new SteakhouseClient({ apiKey: "your-api-key" })
 
-const vaults = await getVaults(client, { chainId: 1 })
-//    ^?
-```
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `chainId` | `number` | Filter by chain (optional) |
-
----
-
-## getDetailedVault
-
-Fetch a single vault with optional historical data.
-
-```ts twoslash
-import { SteakhouseClient, getDetailedVault } from "@whisk/steakhouse"
-
-const client = new SteakhouseClient({ apiKey: "your-api-key" })
-
-const vault = await getDetailedVault(client, {
-  chainId: 1,
-  address: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
-})
-```
-
-Returns `null` if vault is not in Steakhouse whitelist.
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `chainId` | `number` | Chain ID |
-| `address` | `string` | Vault address |
-| `historical` | `boolean` | Include time-series data (default: `true`) |
-
----
-
-## Examples
-
-### Vault Table
-
-```ts twoslash
-// @noErrors
-import { SteakhouseClient, getVaults } from "@whisk/steakhouse"
-const client = new SteakhouseClient({ apiKey: "your-api-key" })
-// ---cut---
-const vaults = await getVaults(client, { chainId: 1 })
-
-for (const vault of vaults) {
-  console.log(
-    vault.name,
-    `$${(vault.totalAssets.usd / 1e6).toFixed(1)}M`,
-    `${(vault.apy.total * 100).toFixed(2)}%`
-  )
-}
-```
-
-### Chart Data
-
-```ts twoslash
-// @noErrors
-import { SteakhouseClient, getDetailedVault } from "@whisk/steakhouse"
-const client = new SteakhouseClient({ apiKey: "your-api-key" })
-// ---cut---
-const vault = await getDetailedVault(client, { chainId: 1, address: "0xBEEF..." })
-
-if (vault?.historical) {
-  const chartData = vault.historical.daily.map((d) => ({
-    date: new Date(d.bucketTimestamp * 1000),
-    apy: d.supplyApy7d.total * 100,
-    tvl: d.totalSupplied.usd,
-  }))
-}
+const tvl = await getTvl(client) // [!code focus]
 ```

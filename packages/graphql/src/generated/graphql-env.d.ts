@@ -3463,6 +3463,14 @@ export type introspection_types = {
           ofType: { kind: "OBJECT"; name: "MorphoVaultPage"; ofType: null }
         }
       }
+      steakhouseTvl: {
+        name: "steakhouseTvl"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "OBJECT"; name: "SteakhouseTvl"; ofType: null }
+        }
+      }
       tokenHoldings: {
         name: "tokenHoldings"
         type: {
@@ -3537,6 +3545,142 @@ export type introspection_types = {
       }
       score: {
         name: "score"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "SCALAR"; name: "Float"; ofType: null }
+        }
+      }
+    }
+  }
+  SteakhouseTvl: {
+    kind: "OBJECT"
+    name: "SteakhouseTvl"
+    fields: {
+      byAssetCategory: {
+        name: "byAssetCategory"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: {
+            kind: "LIST"
+            name: never
+            ofType: {
+              kind: "NON_NULL"
+              name: never
+              ofType: { kind: "OBJECT"; name: "SteakhouseTvlByAssetCategory"; ofType: null }
+            }
+          }
+        }
+      }
+      byChain: {
+        name: "byChain"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: {
+            kind: "LIST"
+            name: never
+            ofType: {
+              kind: "NON_NULL"
+              name: never
+              ofType: { kind: "OBJECT"; name: "SteakhouseTvlByChain"; ofType: null }
+            }
+          }
+        }
+      }
+      byProtocol: {
+        name: "byProtocol"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: {
+            kind: "LIST"
+            name: never
+            ofType: {
+              kind: "NON_NULL"
+              name: never
+              ofType: { kind: "OBJECT"; name: "SteakhouseTvlByProtocol"; ofType: null }
+            }
+          }
+        }
+      }
+      computedAt: {
+        name: "computedAt"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "SCALAR"; name: "Int"; ofType: null }
+        }
+      }
+      totalUsd: {
+        name: "totalUsd"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "SCALAR"; name: "Float"; ofType: null }
+        }
+      }
+    }
+  }
+  SteakhouseTvlByAssetCategory: {
+    kind: "OBJECT"
+    name: "SteakhouseTvlByAssetCategory"
+    fields: {
+      category: {
+        name: "category"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "ENUM"; name: "TokenCategory"; ofType: null }
+        }
+      }
+      tvlUsd: {
+        name: "tvlUsd"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "SCALAR"; name: "Float"; ofType: null }
+        }
+      }
+    }
+  }
+  SteakhouseTvlByChain: {
+    kind: "OBJECT"
+    name: "SteakhouseTvlByChain"
+    fields: {
+      chain: {
+        name: "chain"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "OBJECT"; name: "Chain"; ofType: null }
+        }
+      }
+      tvlUsd: {
+        name: "tvlUsd"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "SCALAR"; name: "Float"; ofType: null }
+        }
+      }
+    }
+  }
+  SteakhouseTvlByProtocol: {
+    kind: "OBJECT"
+    name: "SteakhouseTvlByProtocol"
+    fields: {
+      protocol: {
+        name: "protocol"
+        type: {
+          kind: "NON_NULL"
+          name: never
+          ofType: { kind: "ENUM"; name: "Erc4626VaultProtocol"; ofType: null }
+        }
+      }
+      tvlUsd: {
+        name: "tvlUsd"
         type: {
           kind: "NON_NULL"
           name: never
