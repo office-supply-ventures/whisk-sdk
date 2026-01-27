@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.0.8
+
+### Patch Changes
+
+- 165522a: Add chain icon to getTvl.byChain query
+
 ## 0.0.7
 
 ### Patch Changes
