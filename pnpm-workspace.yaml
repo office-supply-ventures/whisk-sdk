@@ -15,5 +15,7 @@ catalog:
 minimumReleaseAge: 1440
 
 overrides:
+  hono@<4.11.4: '>=4.11.4'
+  lodash-es@>=4.0.0 <=4.17.22: '>=4.17.23'
   mdast-util-to-hast@>=13.0.0 <13.2.1: '>=13.2.1'
   react-router@>=7.0.0 <7.12.0: '>=7.12.0'
