@@ -11,6 +11,7 @@ export const tvlQuery = graphql(`
         chain {
           id
           name
+          icon
         }
         tvlUsd
       }
