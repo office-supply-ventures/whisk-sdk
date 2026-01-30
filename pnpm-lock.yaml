@@ -82,7 +82,7 @@ importers:
         version: 19.2.0(react@19.2.0)
       vocs:
         specifier: ^1.4.1
-        version: 1.4.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(jiti@2.6.1)(lightningcss@1.30.2)(next@16.1.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(tsx@4.21.0)(typescript@5.9.2)
+        version: 1.4.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(jiti@2.6.1)(lightningcss@1.30.2)(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(tsx@4.21.0)(typescript@5.9.2)
     devDependencies:
       '@types/react':
         specifier: 'catalog:'
@@ -98,7 +98,7 @@ importers:
         version: 19.2.0(react@19.2.0)
       vocs:
         specifier: ^1.4.1
-        version: 1.4.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(jiti@2.6.1)(lightningcss@1.30.2)(next@16.1.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(tsx@4.21.0)(typescript@5.9.2)
+        version: 1.4.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(jiti@2.6.1)(lightningcss@1.30.2)(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(tsx@4.21.0)(typescript@5.9.2)
     devDependencies:
       '@types/react':
         specifier: 'catalog:'
@@ -199,6 +199,12 @@ importers:
         specifier: 'catalog:'
         version: 1.9.0(graphql@16.12.0)(typescript@5.9.2)
     devDependencies:
+      '@morpho-org/blue-sdk':
+        specifier: ^5.12.0
+        version: 5.12.0(@morpho-org/morpho-ts@2.4.6)
+      '@morpho-org/morpho-ts':
+        specifier: ^2.4.6
+        version: 2.4.6
       '@tanstack/react-query':
         specifier: 'catalog:'
         version: 5.90.10(react@19.2.0)
@@ -1141,6 +1147,14 @@ packages:
 
   '@mermaid-js/parser@0.6.3':
     resolution: {integrity: sha512-lnjOhe7zyHjc+If7yT4zoedx2vo4sHaTmtkl1+or8BRTnCtDmcTpAjpzDSfCZrshM5bCoz0GyidzadJAH1xobA==}
+
+  '@morpho-org/blue-sdk@5.12.0':
+    resolution: {integrity: sha512-uGficAM7HCOEGAllztYyHzF5yMTEet6ZxjMN4aPQLPahiQxDSFlvgUSiyr6CFpKWd3u0JhBnP16Ot1E2d3fhdA==}
+    peerDependencies:
+      '@morpho-org/morpho-ts': ^2.4.6
+
+  '@morpho-org/morpho-ts@2.4.6':
+    resolution: {integrity: sha512-LWglkfjjU5xXOwNg8dog9g7+k42rBbgvx6xf1SBje8ZQOurhC+BB0yh/Jl/ArcTf/siiFeXDKievEhETZEo4jg==}
 
   '@napi-rs/wasm-runtime@0.2.12':
     resolution: {integrity: sha512-ZVWUcfwY4E/yPitQJl481FjFo3K22D6qF0DuFH6Y/nbnE11GY5uguDxZMGXPQ8WQ0128MXQD7TnfHyK4oWoIJQ==}
@@ -2473,6 +2487,15 @@ packages:
 
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+
+  '@types/lodash.isplainobject@4.0.9':
+    resolution: {integrity: sha512-QC8nKcap5hRrbtIaPRjUMlcXXnLeayqQZPSaWJDx3xeuN17+2PW5wkmEJ4+lZgNnQRlSPzxjTYKCfV1uTnPaEg==}
+
+  '@types/lodash.mergewith@4.6.9':
+    resolution: {integrity: sha512-fgkoCAOF47K7sxrQ7Mlud2TH023itugZs2bUg8h/KzT+BnZNrR2jAOmaokbLunHNnobXVWOezAeNn/lZqwxkcw==}
+
+  '@types/lodash@4.17.23':
+    resolution: {integrity: sha512-RDvF6wTulMPjrNdCoYRC8gNR880JNGT8uB+REUpC2Ns4pRqQJhGz90wh7rgdXDPpCczF3VGktDuFGVnz8zP7HA==}
 
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
@@ -4450,8 +4473,14 @@ packages:
   lodash.debounce@4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
 
+  lodash.isplainobject@4.0.6:
+    resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
+
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
+
+  lodash.mergewith@4.6.2:
+    resolution: {integrity: sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==}
 
   lodash.startcase@4.4.0:
     resolution: {integrity: sha512-+WKqsK294HMSc2jEbNgpHpd0JfIBhp7rEV4aqXWqFr6AlXov+SlcgB1Fv01y2kGe3Gc8nMW7VA0SrGuSkRfIEg==}
@@ -6959,6 +6988,17 @@ snapshots:
     dependencies:
       langium: 3.3.1
 
+  '@morpho-org/blue-sdk@5.12.0(@morpho-org/morpho-ts@2.4.6)':
+    dependencies:
+      '@morpho-org/morpho-ts': 2.4.6
+      '@noble/hashes': 1.8.0
+      '@types/lodash.isplainobject': 4.0.9
+      '@types/lodash.mergewith': 4.6.9
+      lodash.isplainobject: 4.0.6
+      lodash.mergewith: 4.6.2
+
+  '@morpho-org/morpho-ts@2.4.6': {}
+
   '@napi-rs/wasm-runtime@0.2.12':
     dependencies:
       '@emnapi/core': 1.7.1
@@ -8264,6 +8304,16 @@ snapshots:
   '@types/json-schema@7.0.15': {}
 
   '@types/json5@0.0.29': {}
+
+  '@types/lodash.isplainobject@4.0.9':
+    dependencies:
+      '@types/lodash': 4.17.23
+
+  '@types/lodash.mergewith@4.6.9':
+    dependencies:
+      '@types/lodash': 4.17.23
+
+  '@types/lodash@4.17.23': {}
 
   '@types/mdast@4.0.4':
     dependencies:
@@ -10574,7 +10624,11 @@ snapshots:
 
   lodash.debounce@4.0.8: {}
 
+  lodash.isplainobject@4.0.6: {}
+
   lodash.merge@4.6.2: {}
+
+  lodash.mergewith@4.6.2: {}
 
   lodash.startcase@4.4.0: {}
 
@@ -11222,7 +11276,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nuqs@2.8.0(next@16.1.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-router@7.12.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0):
+  nuqs@2.8.0(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-router@7.12.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0):
     dependencies:
       '@standard-schema/spec': 1.0.0
       react: 19.2.0
@@ -12679,7 +12733,7 @@ snapshots:
       - tsx
       - yaml
 
-  vocs@1.4.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(jiti@2.6.1)(lightningcss@1.30.2)(next@16.1.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(tsx@4.21.0)(typescript@5.9.2):
+  vocs@1.4.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(jiti@2.6.1)(lightningcss@1.30.2)(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(tsx@4.21.0)(typescript@5.9.2):
     dependencies:
       '@floating-ui/react': 0.27.16(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@hono/node-server': 1.19.6(hono@4.11.5)
@@ -12723,7 +12777,7 @@ snapshots:
       mdast-util-to-hast: 13.2.1
       mdast-util-to-markdown: 2.1.2
       minisearch: 7.2.0
-      nuqs: 2.8.0(next@16.1.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-router@7.12.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
+      nuqs: 2.8.0(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-router@7.12.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
       ora: 7.0.1
       p-limit: 5.0.0
       picomatch: 4.0.3
