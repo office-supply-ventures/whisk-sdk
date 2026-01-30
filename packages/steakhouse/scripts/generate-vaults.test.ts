@@ -114,30 +114,30 @@ describe("VaultFrontmatterSchema", () => {
     expect(result.success).toBe(false)
   })
 
-  it("validates type enum (optional, accepts valid values, rejects invalid)", () => {
-    const validTypes = ["Prime", "High Yield", "Turbo", "Term"] as const
+  it("validates strategy enum (optional, accepts valid values, rejects invalid)", () => {
+    const validStrategies = ["Prime", "High Yield", "Turbo", "Term"] as const
 
-    // Valid types should pass
-    for (const type of validTypes) {
+    // Valid strategies should pass
+    for (const strategy of validStrategies) {
       const result = VaultFrontmatterSchema.safeParse({
         chainId: 1,
         vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
         protocol: "morpho_v2",
-        type,
+        strategy,
       })
       expect(result.success).toBe(true)
     }
 
-    // Invalid type should fail
+    // Invalid strategy should fail
     const invalidResult = VaultFrontmatterSchema.safeParse({
       chainId: 1,
       vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
       protocol: "morpho_v2",
-      type: "invalid_type",
+      strategy: "invalid_strategy",
     })
     expect(invalidResult.success).toBe(false)
 
-    // Optional - should work without type
+    // Optional - should work without strategy
     const optionalResult = VaultFrontmatterSchema.safeParse({
       chainId: 1,
       vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
@@ -145,7 +145,7 @@ describe("VaultFrontmatterSchema", () => {
     })
     expect(optionalResult.success).toBe(true)
     if (optionalResult.success) {
-      expect(optionalResult.data.type).toBeUndefined()
+      expect(optionalResult.data.strategy).toBeUndefined()
     }
   })
 })
@@ -157,7 +157,7 @@ chainId: 1
 vaultAddress: "0xbeef01735c132ada46aa9aa4c54623caa92a64cb"
 protocol: morpho_v2
 name: Test Vault
-type: Prime
+strategy: Prime
 ---
 
 This is the vault description.
@@ -168,7 +168,7 @@ This is the vault description.
     expect(result.vaultAddress).toBe("0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB")
     expect(result.protocol).toBe("morpho_v2")
     expect(result.name).toBe("Test Vault")
-    expect(result.type).toBe("Prime")
+    expect(result.strategy).toBe("Prime")
     expect(result.description).toBe("This is the vault description.")
     expect(result.filePath).toBe("test.md")
   })
@@ -374,10 +374,10 @@ describe("generateCode", () => {
     expect(code).toContain('protocol: "morpho_v2"')
     expect(code).toContain('name: "Test Vault"')
     expect(code).toContain('description: "A test vault"')
-    expect(code).not.toContain("type:")
+    expect(code).not.toContain("strategy:")
   })
 
-  it("includes type when present", () => {
+  it("includes strategy when present", () => {
     const vaults: ParsedVault[] = [
       {
         chainId: 1,
@@ -385,14 +385,15 @@ describe("generateCode", () => {
         protocol: "morpho_v2",
         name: "Prime Vault",
         description: "",
-        type: "Prime",
+        strategy: "Prime",
         filePath: "test.md",
+        isListed: true,
       },
     ]
 
     const code = generateCode(vaults)
 
-    expect(code).toContain('type: "Prime"')
+    expect(code).toContain('strategy: "Prime"')
   })
 
   it("conditionally includes description based on presence", () => {

@@ -4,7 +4,7 @@ import type { VaultProtocol } from "@whisk/graphql"
 import matter from "gray-matter"
 import { getAddress, isAddress } from "viem"
 import { z } from "zod"
-import { VAULT_TYPES } from "../src/metadata/types.js"
+import { VAULT_STRATEGIES } from "../src/metadata/types.js"
 
 /** Vault protocol values - type-checked against GraphQL schema */
 const VAULT_PROTOCOLS = [
@@ -41,7 +41,8 @@ export const VaultFrontmatterSchema = z.object({
     .transform((addr) => getAddress(addr)), // checksums the address
   protocol: z.enum(VAULT_PROTOCOLS),
   name: z.string().min(1).optional(),
-  type: z.enum(VAULT_TYPES).optional(),
+  strategy: z.enum(VAULT_STRATEGIES).optional(),
+  isListed: z.boolean().default(true),
 })
 
 type VaultFrontmatter = z.infer<typeof VaultFrontmatterSchema>
@@ -145,11 +146,12 @@ export function generateCode(vaults: ParsedVault[]): string {
       const descriptionLine = vault.description
         ? `\n    description: ${JSON.stringify(vault.description)},`
         : ""
-      const typeLine = vault.type ? `\n    type: "${vault.type}",` : ""
+      const strategyLine = vault.strategy ? `\n    strategy: "${vault.strategy}",` : ""
       return `  {
     chainId: ${vault.chainId},
     address: "${vault.vaultAddress}",
-    protocol: "${vault.protocol}",${nameLine}${descriptionLine}${typeLine}
+    protocol: "${vault.protocol}",${nameLine}${descriptionLine}${strategyLine}
+    isListed: ${vault.isListed},
   }`
     })
     .join(",\n")

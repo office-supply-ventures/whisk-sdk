@@ -3,9 +3,9 @@ import type { VaultProtocol } from "@whisk/graphql"
 export type { VaultProtocol }
 export type Address = `0x${string}`
 
-/** Valid vault types for categorization */
-export const VAULT_TYPES = ["Prime", "High Yield", "Turbo", "Term"] as const
-export type VaultType = (typeof VAULT_TYPES)[number]
+/** Valid vault strategies for categorization */
+export const VAULT_STRATEGIES = ["Prime", "High Yield", "Turbo", "Term"] as const
+export type VaultStrategy = (typeof VAULT_STRATEGIES)[number]
 
 /** Vault configuration with metadata */
 export interface VaultConfig {
@@ -14,5 +14,6 @@ export interface VaultConfig {
   readonly protocol: VaultProtocol
   readonly name?: string
   readonly description?: string
-  readonly type?: VaultType
+  readonly strategy?: VaultStrategy
+  readonly isListed: boolean
 }
