@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "check:types": "tsc --noEmit"
   },
   "type": "module",
   "main": "./dist/index.js",
