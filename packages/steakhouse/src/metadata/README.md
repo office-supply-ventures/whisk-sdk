@@ -1,15 +1,48 @@
 # Vault Metadata
 
-Each Steakhouse vault is defined in a markdown file. This guide explains how to add a new vault.
+This folder contains the official list of Steakhouse vaults. Each vault is defined in a simple markdown file with the vault's details.
+
+This guide explains how to add a new vault.
 
 ## Quick Start
 
 1. Create a new `.md` file in the appropriate chain folder (e.g., `vaults/mainnet/`)
-2. Copy the template below and fill in the vault details
-3. Run `pnpm generate:vaults` to update the registry
-4. Run `pnpm vitest` to run tests to verify the vault contract onchain
+2. Define the vault using yaml frontmatter and markdown
+3. Run `pnpm generate:vaults` to generate the vault registry
+4. Run `pnpm vitest vault-verification` to verify the vault onchain
 5. Run `pnpm changeset` to prepare for publishing
 6. Commit and open a PR
+
+## Before You Begin
+
+You'll need:
+
+- The vault's contract address
+- Which blockchain the vault is on
+- The vault protocol version (`morpho_v1` or `morpho_v2`)
+
+## Supported Chains
+
+Vaults must be placed in the folder that corresponds to their deployment chain.
+
+| Chain    | chainId | Folder      |
+| -------- | ------- | ----------- |
+| Ethereum | 1       | `mainnet/`  |
+| Base     | 8453    | `base/`     |
+| Arbitrum | 42161   | `arbitrum/` |
+| Polygon  | 137     | `polygon/`  |
+| Monad    | 143     | `monad/`    |
+| Katana   | 747474  | `katana/`   |
+| Unichain | 130     | `unichain/` |
+
+### Adding a New Chain
+
+To support a new blockchain:
+
+1. Create a folder in `vaults/` (e.g., `vaults/newchain/`)
+2. Add the chain name to `chainNames` in `scripts/generate-vaults.ts`
+3. Add the chain config to `chainConfigs` in `vault-verification.test.ts` (import from `viem/chains`)
+4. Update the Supported Chains table above
 
 ## Adding a New Vault
 
@@ -80,14 +113,14 @@ This creates two files in `generated/`:
 - **vaults.ts** — The code used by the app
 - **VAULTS.md** — A summary table of all vaults
 
-**Review `generated/VAULTS.md`** to verify your vault appears correctly with the right name, strategy, and listed status.
+**Review [`generated/VAULTS.md`](./generated/VAULTS.md)** to verify your vault appears correctly with the right name, strategy, and listed status.
 
 ### Step 4: Run onchain validation
 
 Run the onchain validation to verify the vault exists onchain and has the correct curator:
 
 ```bash
-pnpm vitest
+pnpm vitest vault-verification
 ```
 
 This checks that:
@@ -137,18 +170,6 @@ Then open a pull request for review.
 - Partner-specific vaults
 - Deprecated vaults
 - Vaults not yet ready for public use
-
-## Supported Chains
-
-| Chain    | chainId | Folder      |
-| -------- | ------- | ----------- |
-| Ethereum | 1       | `mainnet/`  |
-| Base     | 8453    | `base/`     |
-| Arbitrum | 42161   | `arbitrum/` |
-| Polygon  | 137     | `polygon/`  |
-| Monad    | 143     | `monad/`    |
-| Katana   | 747474  | `katana/`   |
-| Unichain | 130     | `unichain/` |
 
 ## Folder Structure
 
