@@ -63,6 +63,8 @@
     }
   },
   "devDependencies": {
+    "@morpho-org/blue-sdk": "^5.12.0",
+    "@morpho-org/morpho-ts": "^2.4.6",
     "@tanstack/react-query": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",

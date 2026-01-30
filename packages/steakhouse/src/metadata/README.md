@@ -7,8 +7,9 @@ Each Steakhouse vault is defined in a markdown file. This guide explains how to 
 1. Create a new `.md` file in the appropriate chain folder (e.g., `vaults/mainnet/`)
 2. Copy the template below and fill in the vault details
 3. Run `pnpm generate:vaults` to update the registry
-4. Run `pnpm changeset` to prepare for publishing
-5. Commit and open a PR
+4. Run `pnpm vitest` to run tests to verify the vault contract onchain
+5. Run `pnpm changeset` to prepare for publishing
+6. Commit and open a PR
 
 ## Adding a New Vault
 
@@ -61,7 +62,7 @@ strategy: Prime
 name: USDC Prime Instant
 isListed: false
 ---
-Optional description goes here. You can use **bold**, *italics*, and [links](https://example.com).
+Optional description goes here. You can use any markdown formatting.
 
 This text appears as the vault description in the app.
 ```
@@ -81,7 +82,22 @@ This creates two files in `generated/`:
 
 **Review `generated/VAULTS.md`** to verify your vault appears correctly with the right name, strategy, and listed status.
 
-### Step 4: Create a changeset
+### Step 4: Run onchain validation
+
+Run the onchain validation to verify the vault exists onchain and has the correct curator:
+
+```bash
+pnpm vitest
+```
+
+This checks that:
+
+- The vault was deployed from a Morpho factory
+- The vault has the Steakhouse curator
+
+> Note this is also run in CI, so you will not be able to merge unless this passes
+
+### Step 5: Create a changeset
 
 Run this command to prepare your change for publishing:
 
@@ -95,7 +111,7 @@ When prompted:
 2. Choose "patch" (for adding/updating vaults)
 3. Write a short description like "Add USDC Prime vault"
 
-### Step 5: Commit and open a PR
+### Step 6: Commit and open a PR
 
 ```bash
 git add .
@@ -113,7 +129,7 @@ Then open a pull request for review.
 | `vaultAddress` | Yes      | The vault's contract address (starts with `0x`)                 |
 | `protocol`     | Yes      | Either `morpho_v1` or `morpho_v2`                               |
 | `strategy`     | No       | `Prime`, `High Yield`, `Turbo`, or `Term`                       |
-| `name`         | No       | Custom display name (otherwise uses the on-chain name)          |
+| `name`         | No       | Custom display name (otherwise uses the onchain name)           |
 | `isListed`     | No       | Set to `false` to hide from public listings                     |
 
 **About `isListed`:** Vaults with `isListed: false` won't appear in public vault listings but still exist in the registry. Use this for:
@@ -150,9 +166,9 @@ vaults/
     usdc-turbo.md
 ```
 
-## Validation
+## Generation Checks
 
-The generator checks for common mistakes:
+The generator (`pnpm generate:vaults`) checks for common mistakes:
 
 - Missing required fields
 - Invalid contract addresses
@@ -160,7 +176,21 @@ The generator checks for common mistakes:
 - Duplicate vaults (same chain + address)
 - Mismatched chain IDs within a folder
 
-If something is wrong, you'll see an error message pointing to the file and field.
+If something is wrong, you'll see an error message pointing to the file and field. See [Troubleshooting](#troubleshooting) for how to fix common errors.
+
+## Onchain Validation
+
+The onchain validation (`vault-verification.test.ts`) verifies that all vaults are valid onchain. This runs in CI and is recommended to run manually before submitting a PR (see [Step 4](#step-4-run-onchain-validation)).
+
+### What the tests check
+
+1. **Factory verification** — Every vault must be deployed from a Morpho factory (v1.0, v1.1, or v2)
+2. **Curator verification** — Every vault must have the Steakhouse curator (`0x827e86072B06674a077f592A531dcE4590aDeCdB`)
+
+### If a test fails
+
+- **Factory check fails** — The vault address may be incorrect, or it's a non-Morpho vault
+- **Curator check fails** — The vault may be a partnership vault with a different curator. Add it to the `CURATOR_CHECK_EXCLUSIONS` list in `vault-verification.test.ts`
 
 ## Troubleshooting
 
@@ -175,6 +205,7 @@ All files in the same folder must have the same `chainId`. Check that you didn't
 
 **"Invalid frontmatter" error**
 The error message will show which field is invalid:
+
 - `chainId`: Must be a positive number (e.g., `1`, not `"1"`)
 - `vaultAddress`: Must be a valid Ethereum address
 - `protocol`: Must be exactly `morpho_v1` or `morpho_v2`
