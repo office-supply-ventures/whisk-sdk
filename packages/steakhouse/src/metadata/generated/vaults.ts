@@ -39,15 +39,6 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
   },
   {
     chainId: 42161,
-    address: "0x3Df55F274ff3f4bD0de58EfFC25c7EFC7ec463F8",
-    protocol: "morpho_v2",
-    name: "USDC Turbo",
-    description: "**High Leverage**\n\nTurbo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/turbo)) target a 10% liquidity rate held in repo and the remainder programmatically allocated to a simple leverage strategy.\n\nNAV accumulates when the cost of borrowing is persistently lower than the return on the underlying strategy. NAV decreases when the borrow cost is higher. The collateral selected fits our [risk framework](https://www.steakhouse.financial/docs/risk-management) to mitigate solvency risks.\n\nPositions are intended to be held for an extended period (>30 days) to avoid slippage from swapping into positions from diluting the NAV.\n\nUses [Steakhouse Box](https://www.steakhouse.financial/docs/products/infrastructure/box-vaults) custom adapters to extend the noncustodial features of Morpho v2 vaults to additional strategies beyond borrow/lend. As this vault does not use the Morpho adapter registry, it is not available on the Morpho frontend.",
-    strategy: "Turbo",
-    isListed: true,
-  },
-  {
-    chainId: 42161,
     address: "0x4739E2c293bDCD835829aA7c5d7fBdee93565D1a",
     protocol: "morpho_v1",
     name: "(v1) USDT0 High Yield Instant",

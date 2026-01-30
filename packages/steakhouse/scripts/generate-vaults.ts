@@ -99,17 +99,11 @@ function findVaultFiles(dir: string): string[] {
 /** Validate all vaults in same folder have consistent chainId (exported for testing) */
 export function validateFolderConsistency(vaults: ParsedVault[], vaultsDir: string): void {
   // Group vaults by folder
-  const folderVaults = new Map<string, ParsedVault[]>()
-  for (const vault of vaults) {
-    const folder = getChainFolder(vault.filePath, vaultsDir)
-    if (!folder) continue
-    const existing = folderVaults.get(folder) ?? []
-    existing.push(vault)
-    folderVaults.set(folder, existing)
-  }
+  const folderVaults = Map.groupBy(vaults, (vault) => getChainFolder(vault.filePath, vaultsDir))
 
   // Check each folder has consistent chainId
   for (const [folder, vaultsInFolder] of folderVaults) {
+    if (!folder) continue
     const chainIds = new Set(vaultsInFolder.map((v) => v.chainId))
     if (chainIds.size > 1) {
       const examples = vaultsInFolder
@@ -148,12 +142,7 @@ export function generateMarkdown(vaults: ParsedVault[]): string {
   })
 
   // Group by chainId for summary
-  const byChain = new Map<number, ParsedVault[]>()
-  for (const vault of sorted) {
-    const existing = byChain.get(vault.chainId) ?? []
-    existing.push(vault)
-    byChain.set(vault.chainId, existing)
-  }
+  const byChain = Map.groupBy(sorted, (vault) => vault.chainId)
 
   const chainNames: Record<number, string> = {
     1: "Ethereum",
@@ -188,13 +177,11 @@ export function generateMarkdown(vaults: ParsedVault[]): string {
 
   md += `\n## Summary by Chain\n\n| Chain | Vaults |\n|-------|--------|\n`
 
-  let chainTotal = 0
   for (const [chainId, chainVaults] of byChain) {
     const chainName = chainNames[chainId] ?? `Chain ${chainId}`
     md += `| ${chainName} | ${chainVaults.length} |\n`
-    chainTotal += chainVaults.length
   }
-  md += `| **Total** | **${chainTotal}** |\n`
+  md += `| **Total** | **${vaults.length}** |\n`
 
   // Group by asset for summary (extract from filename)
   const extractAsset = (filePath: string): string => {
@@ -215,12 +202,10 @@ export function generateMarkdown(vaults: ParsedVault[]): string {
 
   md += `\n## Summary by Asset\n\n| Asset | Vaults |\n|-------|--------|\n`
 
-  let assetTotal = 0
   for (const [asset, count] of sortedAssets) {
     md += `| ${asset} | ${count} |\n`
-    assetTotal += count
   }
-  md += `| **Total** | **${assetTotal}** |\n`
+  md += `| **Total** | **${vaults.length}** |\n`
 
   return md
 }
