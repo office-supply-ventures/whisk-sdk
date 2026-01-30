@@ -30,7 +30,7 @@ const OUTPUT_MARKDOWN = path.join(import.meta.dirname, "../src/metadata/generate
 export function getChainFolder(filePath: string, vaultsDir: string): string | null {
   const relativePath = path.relative(vaultsDir, filePath)
   const parts = relativePath.split(path.sep)
-  return parts.length > 1 ? parts[0] : null
+  return parts.length > 1 ? (parts[0] ?? null) : null
 }
 
 /** Zod schema for vault frontmatter validation */
@@ -187,7 +187,7 @@ export function generateMarkdown(vaults: ParsedVault[]): string {
   const extractAsset = (filePath: string): string => {
     const filename = path.basename(filePath, ".md")
     // First segment before hyphen is the asset (e.g., "usdc-high-yield" → "usdc")
-    const asset = filename.split("-")[0]
+    const asset = filename.split("-")[0] ?? "UNKNOWN"
     return asset.toUpperCase()
   }
 

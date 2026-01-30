@@ -75,11 +75,13 @@ function getFactoryAddresses(chainId: number): FactoryAddresses {
   // v1.0 factory only exists on mainnet and base
   const hasV1_0 = chainId === mainnet.id || chainId === base.id
 
-  return {
-    metaMorphoV1_0Factory: hasV1_0 ? METAMORPHO_V1_0_FACTORY : undefined,
-    metaMorphoV1_1Factory: chainAddresses.metaMorphoFactory as Address | undefined,
-    vaultV2Factory: chainAddresses.vaultV2Factory as Address | undefined,
-  }
+  const result: FactoryAddresses = {}
+  if (hasV1_0) result.metaMorphoV1_0Factory = METAMORPHO_V1_0_FACTORY
+  if (chainAddresses.metaMorphoFactory)
+    result.metaMorphoV1_1Factory = chainAddresses.metaMorphoFactory as Address
+  if (chainAddresses.vaultV2Factory)
+    result.vaultV2Factory = chainAddresses.vaultV2Factory as Address
+  return result
 }
 
 /** Create a viem client for a chain with multicall batching enabled */

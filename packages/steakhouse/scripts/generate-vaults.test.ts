@@ -313,6 +313,7 @@ describe("validateUniqueness", () => {
         name: "Vault 1",
         description: "",
         filePath: "vault1.md",
+        isListed: true,
       },
       {
         chainId: 1,
@@ -321,6 +322,7 @@ describe("validateUniqueness", () => {
         name: "Vault 2",
         description: "",
         filePath: "vault2.md",
+        isListed: true,
       },
     ]
 
@@ -336,6 +338,7 @@ describe("validateUniqueness", () => {
         name: "Vault Mainnet",
         description: "",
         filePath: "mainnet/vault.md",
+        isListed: true,
       },
       {
         chainId: 8453,
@@ -344,6 +347,7 @@ describe("validateUniqueness", () => {
         name: "Vault Base",
         description: "",
         filePath: "base/vault.md",
+        isListed: true,
       },
     ]
 
@@ -359,6 +363,7 @@ describe("validateUniqueness", () => {
         name: "Vault 1",
         description: "",
         filePath: "vault1.md",
+        isListed: true,
       },
       {
         chainId: 1,
@@ -367,6 +372,7 @@ describe("validateUniqueness", () => {
         name: "Vault 2",
         description: "",
         filePath: "vault2.md",
+        isListed: true,
       },
     ]
 
@@ -382,6 +388,7 @@ describe("validateUniqueness", () => {
         name: "Vault 1",
         description: "",
         filePath: "vault1.md",
+        isListed: true,
       },
       {
         chainId: 1,
@@ -390,6 +397,7 @@ describe("validateUniqueness", () => {
         name: "Vault 2",
         description: "",
         filePath: "vault2.md",
+        isListed: true,
       },
     ]
 
@@ -407,6 +415,7 @@ describe("generateCode", () => {
         name: "Test Vault",
         description: "A test vault",
         filePath: "test.md",
+        isListed: true,
       },
     ]
 
@@ -450,6 +459,7 @@ describe("generateCode", () => {
         protocol: "morpho_v2",
         description: "",
         filePath: "test.md",
+        isListed: true,
       },
     ])
     expect(withoutDescription).not.toContain("description:")
@@ -461,6 +471,7 @@ describe("generateCode", () => {
         protocol: "morpho_v2",
         description: "This vault has a description.",
         filePath: "test.md",
+        isListed: true,
       },
     ])
     expect(withDescription).toContain('description: "This vault has a description."')
@@ -474,6 +485,7 @@ describe("generateCode", () => {
         protocol: "morpho_v2",
         description: "",
         filePath: "test.md",
+        isListed: true,
       },
     ])
     expect(withoutName).not.toContain("name:")
@@ -486,6 +498,7 @@ describe("generateCode", () => {
         name: "Custom Name",
         description: "",
         filePath: "test.md",
+        isListed: true,
       },
     ])
     expect(withName).toContain('name: "Custom Name"')
@@ -500,6 +513,7 @@ describe("generateCode", () => {
         name: 'Vault "Special"',
         description: "Description with\nnewline",
         filePath: "test.md",
+        isListed: true,
       },
     ]
 
@@ -569,6 +583,7 @@ describe("validateFolderConsistency", () => {
         name: "Vault 1",
         description: "",
         filePath: "/vaults/mainnet/vault1.md",
+        isListed: true,
       },
       {
         chainId: 1,
@@ -577,6 +592,7 @@ describe("validateFolderConsistency", () => {
         name: "Vault 2",
         description: "",
         filePath: "/vaults/mainnet/vault2.md",
+        isListed: true,
       },
     ]
 
@@ -592,6 +608,7 @@ describe("validateFolderConsistency", () => {
         name: "Mainnet Vault",
         description: "",
         filePath: "/vaults/mainnet/vault.md",
+        isListed: true,
       },
       {
         chainId: 8453,
@@ -600,6 +617,7 @@ describe("validateFolderConsistency", () => {
         name: "Base Vault",
         description: "",
         filePath: "/vaults/base/vault.md",
+        isListed: true,
       },
     ]
 
@@ -615,6 +633,7 @@ describe("validateFolderConsistency", () => {
         name: "Vault 1",
         description: "",
         filePath: "/vaults/mainnet/vault1.md",
+        isListed: true,
       },
       {
         chainId: 8453, // Different chainId in same folder
@@ -623,6 +642,7 @@ describe("validateFolderConsistency", () => {
         name: "Vault 2",
         description: "",
         filePath: "/vaults/mainnet/vault2.md",
+        isListed: true,
       },
     ]
 
@@ -639,6 +659,7 @@ describe("validateFolderConsistency", () => {
         name: "Root Vault",
         description: "",
         filePath: "/vaults/vault.md", // not in a subfolder
+        isListed: true,
       },
     ]
 
@@ -654,6 +675,7 @@ describe("validateFolderConsistency", () => {
         name: "Arbitrum Vault",
         description: "",
         filePath: "/vaults/arbitrum/vault.md",
+        isListed: true,
       },
       {
         chainId: 747474,
@@ -662,6 +684,7 @@ describe("validateFolderConsistency", () => {
         name: "Katana Vault",
         description: "",
         filePath: "/vaults/katana/vault.md",
+        isListed: true,
       },
     ]
 
