@@ -301,6 +301,33 @@ vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB"
 `
     expect(() => parseVaultContent(content, "test.md")).toThrow("Invalid frontmatter in test.md")
   })
+
+  it("parses isListed: false from frontmatter", () => {
+    const content = `---
+chainId: 1
+vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB"
+protocol: morpho_v2
+name: Unlisted Vault
+isListed: false
+---
+`
+    const result = parseVaultContent(content, "test.md")
+
+    expect(result.isListed).toBe(false)
+  })
+
+  it("defaults isListed to true when not specified", () => {
+    const content = `---
+chainId: 1
+vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB"
+protocol: morpho_v2
+name: Listed Vault
+---
+`
+    const result = parseVaultContent(content, "test.md")
+
+    expect(result.isListed).toBe(true)
+  })
 })
 
 describe("validateUniqueness", () => {
