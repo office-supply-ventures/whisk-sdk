@@ -12,7 +12,7 @@
     "changeset:publish": "pnpm build && changeset publish",
     "changeset:version": "changeset version",
     "check": "biome check --fix --unsafe",
-    "check:types": "tsc",
+    "check:types": "pnpm run --r --parallel check:types && tsc --noEmit",
     "generate:vaults": "pnpm --filter @whisk/steakhouse generate:vaults",
     "schema:sync": "pnpm --filter @whisk/graphql schema:sync"
   },
