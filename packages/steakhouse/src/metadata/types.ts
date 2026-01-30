@@ -1,6 +1,5 @@
-import type { VaultProtocol } from "@whisk/graphql"
+import type { Erc4626VaultProtocol } from "@whisk/graphql"
 
-export type { VaultProtocol }
 export type Address = `0x${string}`
 
 /** Valid vault strategies for categorization */
@@ -11,7 +10,7 @@ export type VaultStrategy = (typeof VAULT_STRATEGIES)[number]
 export interface VaultConfig {
   readonly chainId: number
   readonly address: Address
-  readonly protocol: VaultProtocol
+  readonly protocol: Erc4626VaultProtocol
   readonly name?: string
   readonly description?: string
   readonly strategy?: VaultStrategy
