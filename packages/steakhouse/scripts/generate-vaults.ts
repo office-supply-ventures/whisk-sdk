@@ -1,6 +1,6 @@
 import * as fs from "node:fs"
 import * as path from "node:path"
-import type { VaultProtocol } from "@whisk/graphql"
+import type { Erc4626VaultProtocol } from "@whisk/graphql"
 import matter from "gray-matter"
 import { getAddress, isAddress } from "viem"
 import { z } from "zod"
@@ -12,7 +12,7 @@ const VAULT_PROTOCOLS = [
   "morpho_v1",
   "morpho_v2",
   "box",
-] as const satisfies readonly VaultProtocol[]
+] as const satisfies readonly Erc4626VaultProtocol[]
 
 /**
  * Quote unquoted Ethereum addresses in YAML frontmatter.
