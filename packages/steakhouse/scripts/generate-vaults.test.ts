@@ -148,6 +148,52 @@ describe("VaultFrontmatterSchema", () => {
       expect(optionalResult.data.strategy).toBeUndefined()
     }
   })
+
+  it("validates isListed boolean field with default true", () => {
+    // Explicit true
+    const trueResult = VaultFrontmatterSchema.safeParse({
+      chainId: 1,
+      vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
+      protocol: "morpho_v2",
+      isListed: true,
+    })
+    expect(trueResult.success).toBe(true)
+    if (trueResult.success) {
+      expect(trueResult.data.isListed).toBe(true)
+    }
+
+    // Explicit false
+    const falseResult = VaultFrontmatterSchema.safeParse({
+      chainId: 1,
+      vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
+      protocol: "morpho_v2",
+      isListed: false,
+    })
+    expect(falseResult.success).toBe(true)
+    if (falseResult.success) {
+      expect(falseResult.data.isListed).toBe(false)
+    }
+
+    // Default to true when not provided
+    const defaultResult = VaultFrontmatterSchema.safeParse({
+      chainId: 1,
+      vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
+      protocol: "morpho_v2",
+    })
+    expect(defaultResult.success).toBe(true)
+    if (defaultResult.success) {
+      expect(defaultResult.data.isListed).toBe(true)
+    }
+
+    // Invalid value should fail
+    const invalidResult = VaultFrontmatterSchema.safeParse({
+      chainId: 1,
+      vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
+      protocol: "morpho_v2",
+      isListed: "true", // string instead of boolean
+    })
+    expect(invalidResult.success).toBe(false)
+  })
 })
 
 describe("parseVaultContent", () => {
@@ -469,6 +515,32 @@ describe("generateCode", () => {
 
     expect(code).toContain("export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [")
     expect(code).toContain("] as const")
+  })
+
+  it("includes isListed field in generated code", () => {
+    const listedVault = generateCode([
+      {
+        chainId: 1,
+        vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
+        protocol: "morpho_v2",
+        description: "",
+        filePath: "test.md",
+        isListed: true,
+      },
+    ])
+    expect(listedVault).toContain("isListed: true")
+
+    const unlistedVault = generateCode([
+      {
+        chainId: 1,
+        vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
+        protocol: "morpho_v2",
+        description: "",
+        filePath: "test.md",
+        isListed: false,
+      },
+    ])
+    expect(unlistedVault).toContain("isListed: false")
   })
 })
 

@@ -24,6 +24,7 @@ function quoteAddresses(content: string): string {
 
 const VAULTS_DIR = path.join(import.meta.dirname, "../src/metadata/vaults")
 const OUTPUT_FILE = path.join(import.meta.dirname, "../src/metadata/generated/vaults.ts")
+const OUTPUT_MARKDOWN = path.join(import.meta.dirname, "../src/metadata/generated/VAULTS.md")
 
 /** Extract chain folder name from file path (e.g., "mainnet" from "vaults/mainnet/vault.md") */
 export function getChainFolder(filePath: string, vaultsDir: string): string | null {
@@ -138,6 +139,92 @@ export function validateUniqueness(vaults: ParsedVault[]): void {
   }
 }
 
+/** Generate markdown summary from parsed vaults (exported for testing) */
+export function generateMarkdown(vaults: ParsedVault[]): string {
+  // Sort by chainId, then by name
+  const sorted = [...vaults].sort((a, b) => {
+    if (a.chainId !== b.chainId) return a.chainId - b.chainId
+    return (a.name ?? "").localeCompare(b.name ?? "")
+  })
+
+  // Group by chainId for summary
+  const byChain = new Map<number, ParsedVault[]>()
+  for (const vault of sorted) {
+    const existing = byChain.get(vault.chainId) ?? []
+    existing.push(vault)
+    byChain.set(vault.chainId, existing)
+  }
+
+  const chainNames: Record<number, string> = {
+    1: "Ethereum",
+    137: "Polygon",
+    8453: "Base",
+    42161: "Arbitrum",
+    130: "Unichain",
+    143: "Monad",
+    747474: "Katana",
+  }
+
+  let md = `# Steakhouse Vaults
+
+> This file is auto-generated. Do not edit directly.
+> Run \`pnpm generate:vaults\` to regenerate.
+
+**Total Vaults: ${vaults.length}**
+
+## All Vaults
+
+| Chain | Address | Name | Protocol | Strategy | Listed |
+|-------|---------|------|----------|----------|--------|
+`
+
+  for (const vault of sorted) {
+    const chainName = chainNames[vault.chainId] ?? `Chain ${vault.chainId}`
+    const name = vault.name ?? "-"
+    const strategy = vault.strategy ?? "-"
+    const listed = vault.isListed ? "✓" : "✗"
+    md += `| ${chainName} | \`${vault.vaultAddress}\` | ${name} | ${vault.protocol} | ${strategy} | ${listed} |\n`
+  }
+
+  md += `\n## Summary by Chain\n\n| Chain | Vaults |\n|-------|--------|\n`
+
+  let chainTotal = 0
+  for (const [chainId, chainVaults] of byChain) {
+    const chainName = chainNames[chainId] ?? `Chain ${chainId}`
+    md += `| ${chainName} | ${chainVaults.length} |\n`
+    chainTotal += chainVaults.length
+  }
+  md += `| **Total** | **${chainTotal}** |\n`
+
+  // Group by asset for summary (extract from filename)
+  const extractAsset = (filePath: string): string => {
+    const filename = path.basename(filePath, ".md")
+    // First segment before hyphen is the asset (e.g., "usdc-high-yield" → "usdc")
+    const asset = filename.split("-")[0]
+    return asset.toUpperCase()
+  }
+
+  const byAsset = new Map<string, number>()
+  for (const vault of vaults) {
+    const asset = extractAsset(vault.filePath)
+    byAsset.set(asset, (byAsset.get(asset) ?? 0) + 1)
+  }
+
+  // Sort by count descending
+  const sortedAssets = [...byAsset.entries()].sort((a, b) => b[1] - a[1])
+
+  md += `\n## Summary by Asset\n\n| Asset | Vaults |\n|-------|--------|\n`
+
+  let assetTotal = 0
+  for (const [asset, count] of sortedAssets) {
+    md += `| ${asset} | ${count} |\n`
+    assetTotal += count
+  }
+  md += `| **Total** | **${assetTotal}** |\n`
+
+  return md
+}
+
 /** Generate TypeScript code from parsed vaults (exported for testing) */
 export function generateCode(vaults: ParsedVault[]): string {
   const vaultEntries = vaults
@@ -205,9 +292,15 @@ function main() {
     fs.mkdirSync(outputDir, { recursive: true })
   }
 
-  // Write output
+  // Write TypeScript output
   fs.writeFileSync(OUTPUT_FILE, code)
   console.log(`Generated: ${path.relative(process.cwd(), OUTPUT_FILE)}`)
+
+  // Generate and write markdown summary
+  const markdown = generateMarkdown(vaults)
+  fs.writeFileSync(OUTPUT_MARKDOWN, markdown)
+  console.log(`Generated: ${path.relative(process.cwd(), OUTPUT_MARKDOWN)}`)
+
   console.log(`Total vaults: ${vaults.length}`)
 }
 
