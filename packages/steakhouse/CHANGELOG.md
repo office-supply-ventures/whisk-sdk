@@ -1,5 +1,13 @@
 # @whisk/steakhouse
 
+## 0.0.10
+
+### Patch Changes
+
+- Updated dependencies [a631fb8]
+  - @whisk/graphql@0.0.13
+  - @whisk/client@0.0.13
+
 ## 0.0.9
 
 ### Patch Changes
