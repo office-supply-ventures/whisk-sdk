@@ -1,5 +1,11 @@
 # @whisk/graphql
 
+## 0.0.13
+
+### Patch Changes
+
+- a631fb8: Sync'd with Whisk Schema to pickup most recent changes
+
 ## 0.0.12
 
 ### Patch Changes
