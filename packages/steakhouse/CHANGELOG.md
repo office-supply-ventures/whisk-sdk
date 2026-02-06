@@ -1,5 +1,30 @@
 # @whisk/steakhouse
 
+## 0.1.0
+
+### Minor Changes
+
+- be73782: Restructure TVL queries around snapshot model and add historical TVL
+
+  **Breaking changes:**
+
+  - **`getTvl` return type changed**: Now returns `SteakhouseTvlSnapshot` instead of `SteakhouseTvl`. The shape is similar but includes `timestamp`
+    instead of `computedAt`.
+  - **`useTvl` hook removed**: Use `getTvl` directly with server-side fetching instead.
+  - **`category` is now nullable in `byAssetCategory`**: `TokenCategory | null` instead of `TokenCategory`. A `null` category represents uncategorized
+    assets.
+  - **`tvlQuery` is no longer exported**: The GraphQL document is now a private module detail.
+
+  **New features:**
+
+  - **`getTvlHistorical`**: Fetch daily TVL snapshots for the last 365 days, ordered oldest-first.
+
+### Patch Changes
+
+- Updated dependencies [be73782]
+  - @whisk/graphql@0.0.14
+  - @whisk/client@0.0.14
+
 ## 0.0.10
 
 ### Patch Changes
