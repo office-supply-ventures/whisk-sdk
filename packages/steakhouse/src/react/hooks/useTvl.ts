@@ -2,7 +2,7 @@
 
 import type { UseQueryResult } from "@tanstack/react-query"
 import { useQuery } from "@tanstack/react-query"
-import { type GetTvlResult, getTvl } from "../../queries/getTvl.js"
+import { type GetTvlResult, getTvl } from "../../queries/index.js"
 import { useSteakhouse } from "../provider.js"
 
 export function useTvl(): UseQueryResult<GetTvlResult, Error> {

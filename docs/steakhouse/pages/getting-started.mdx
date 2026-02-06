@@ -36,7 +36,7 @@ const client = new SteakhouseClient({ // [!code focus]
 }) // [!code focus]
 ```
 
-### 2. Fetch TVL
+### 2. Fetch Current TVL
 
 ```ts twoslash [index.ts]
 import { SteakhouseClient, getTvl } from "@whisk/steakhouse"
@@ -48,11 +48,20 @@ const client = new SteakhouseClient({
 const tvl = await getTvl(client) // [!code focus]
 ```
 
-## React
+### 3. Fetch Historical TVL
 
-For React apps, see [React Hooks](/react) for TanStack Query integration with `useTvl`.
+```ts twoslash [index.ts]
+import { SteakhouseClient, getTvlHistorical } from "@whisk/steakhouse"
+
+const client = new SteakhouseClient({
+  apiKey: process.env.STEAKHOUSE_API_KEY!,
+})
+
+const historical = await getTvlHistorical(client) // [!code focus]
+// Daily snapshots for the last 365 days, oldest first
+```
 
 ## Next Steps
 
 - [Queries](/queries) - Full query API reference
-- [React Hooks](/react) - Client components with automatic caching
+- [React Hooks](/react) - Coming soon
