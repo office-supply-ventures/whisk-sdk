@@ -1,10 +1,10 @@
 # Queries
 
-Query functions for server-side usage, Node.js scripts, Next.js server components, or any non-React context. For React client components, use [hooks](/react) instead.
+Query functions for server-side usage, Node.js scripts, Next.js server components, or any non-React context.
 
 ## getTvl
 
-Fetch Steakhouse TVL breakdown by chain, protocol, and asset category.
+Fetch current Steakhouse TVL breakdown by chain, protocol, and asset category.
 
 ```ts twoslash
 import { SteakhouseClient, getTvl } from "@whisk/steakhouse"
@@ -12,4 +12,30 @@ import { SteakhouseClient, getTvl } from "@whisk/steakhouse"
 const client = new SteakhouseClient({ apiKey: "your-api-key" })
 
 const tvl = await getTvl(client) // [!code focus]
+
+tvl.totalUsd       // Total TVL in USD
+tvl.byChain        // Breakdown by chain (name, id, icon, tvlUsd)
+tvl.byProtocol     // Breakdown by protocol (protocol, tvlUsd)
+tvl.byAssetCategory // Breakdown by asset category (category, tvlUsd)
+```
+
+## getTvlHistorical
+
+Fetch daily historical TVL snapshots (last 365 days, oldest first). Each snapshot has the same shape as the current TVL — `totalUsd` plus breakdowns by chain, protocol, and asset category.
+
+```ts twoslash
+import { SteakhouseClient, getTvlHistorical } from "@whisk/steakhouse"
+
+const client = new SteakhouseClient({ apiKey: "your-api-key" })
+
+const historical = await getTvlHistorical(client) // [!code focus]
+
+// Each snapshot has a timestamp and the same breakdowns as getTvl
+for (const snapshot of historical) {
+  snapshot.timestamp     // Unix timestamp (seconds)
+  snapshot.totalUsd      // Total TVL at this point in time
+  snapshot.byChain       // Chain breakdown at this point
+  snapshot.byProtocol    // Protocol breakdown at this point
+  snapshot.byAssetCategory // Asset category breakdown at this point
+}
 ```

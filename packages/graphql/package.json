@@ -10,7 +10,7 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "schema:sync": "tsx scripts/fetch-schema.ts && gql-tada generate-output",
-    "check:types": "tsc --noEmit"
+    "check:types": "tsgo --noEmit"
   },
   "type": "module",
   "main": "./dist/index.js",

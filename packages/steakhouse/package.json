@@ -11,7 +11,7 @@
     "generate:vaults:watch": "chokidar \"src/metadata/vaults/**/*.md\" --initial -c \"pnpm generate:vaults\"",
     "build": "pnpm generate:vaults && tsup",
     "dev": "concurrently -n vaults,tsup -c blue,green \"pnpm generate:vaults:watch\" \"tsup --watch\"",
-    "check:types": "tsc --noEmit"
+    "check:types": "tsgo --noEmit"
   },
   "type": "module",
   "main": "./dist/index.js",
