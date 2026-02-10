@@ -4,6 +4,7 @@ vaultAddress: "0xbeef050a7485865a7a8d8ca0cc5f7536b7a3443e"
 protocol: morpho_v1
 name: ETH High Yield Instant
 strategy: High Yield
+isListed: false
 ---
 
 **Consider switching to the [Morpho v2 equivalent](https://app.steakhouse.financial/earn/8453/0xbeef00f0A818894a2Cf111644A5098421611100E)**
