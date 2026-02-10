@@ -1,0 +1,819 @@
+type Query {
+  aeraVaults(where: AeraVaultFilter, before: String, after: String, limit: Int): AeraVaultPage!
+  aeraVaultPositions(where: AeraVaultPositionFilter!, before: String, after: String, limit: Int): AeraVaultPositionPage!
+  chains(where: ChainFilter): [Chain!]!
+  tokens(inputs: [TokenInput!]!): [Token]!
+  tokenHoldings(inputs: [TokenHoldingInput!]!): [TokenHolding]!
+  erc4626Vaults(where: Erc4626VaultFilter, before: String, after: String, limit: Int): Erc4626VaultPage!
+  erc4626VaultPositions(where: Erc4626VaultPositionFilter, before: String, after: String, limit: Int): Erc4626VaultPositionPage!
+  identity(address: Address!, resolverOrder: [IdentityResolver!]): Identity
+  identities(addresses: [Address!]!, resolverOrder: [IdentityResolver!]): [Identity!]!
+  merklAccountRewards(chainId: ChainId!, accountAddress: Address!): [MerklAccountReward!]!
+  morphoMarkets(where: MorphoMarketFilter, before: String, after: String, limit: Int): MorphoMarketPage!
+  morphoVaults(where: MorphoVaultFilter, before: String, after: String, limit: Int): MorphoVaultPage!
+  morphoMarketPositions(where: MorphoMarketPositionFilter!, before: String, after: String, limit: Int): MorphoMarketPositionPage!
+  morphoVaultPositions(where: MorphoVaultPositionFilter!, before: String, after: String, limit: Int): MorphoVaultPositionPage!
+  steakhouseTvl: SteakhouseTvl! @deprecated(reason: "Schema is subject to change, not yet stable")
+  vaults(inputs: [VaultInput!]!): [Vault]!
+}
+
+input AeraVaultFilter {
+  chainId_in: [ChainId!]
+  vaultAddress_in: [Address!]
+}
+
+input AeraVaultPositionFilter {
+  chainId_in: [ChainId!]
+  vaultAddress_in: [Address!]
+  accountAddress_in: [Address!]
+}
+
+type AeraVaultPage {
+  items: [AeraVault]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type AeraVaultPositionPage {
+  items: [AeraVaultPosition]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type AeraVault {
+  chain: Chain!
+  vaultAddress: Address!
+  name: String!
+  totalSupplied: TokenAmount!
+  supplyApy1d: Apy!
+  supplyApy7d: Apy!
+  supplyApy30d: Apy!
+  isPaused: Boolean!
+  numeraireAsset: Token!
+  performanceFee: OnchainAmount!
+  managementFee: OnchainAmount!
+}
+
+type AeraVaultPosition {
+  vault: AeraVault!
+  accountAddress: Address!
+  supplyShares: OnchainAmount!
+  supplyAmount: TokenAmount!
+  hasPendingDeposit: Boolean!
+  hasPendingWithdrawal: Boolean!
+  pendingDeposits: [AeraPendingAction!]!
+  pendingWithdrawals: [AeraPendingAction!]!
+}
+
+type AeraPendingAction {
+  hash: Hex!
+  token: Token!
+  amount: TokenAmount!
+}
+
+scalar BigInt
+
+scalar URL
+
+scalar Hex
+
+scalar Address
+
+scalar ChainId
+
+type OnchainAmount {
+  raw: BigInt!
+  formatted: String!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Reward {
+  asset: Token!
+  apr: Float!
+}
+
+enum ApySide {
+  Supply
+  Borrow
+}
+
+type TimeSeriesPoint {
+  timestamp: Int!
+  value: Float!
+}
+
+type Apy {
+  side: ApySide!
+  base: Float!
+  rewards: [Reward!]!
+  fee: Float!
+  total: Float!
+}
+
+type BoxVault implements Erc4626Vault & Erc20 {
+  chain: Chain!
+  address: Address!
+  name: String!
+  symbol: String!
+  decimals: Int!
+  icon: URL
+  priceUsd: Float
+  category: TokenCategory
+  riskAssessment: RiskAssessment!
+  yield: YieldInfo
+  vaultAddress: Address! @deprecated(reason: "Use address instead")
+  asset: Token!
+  totalAssets: TokenAmount!
+  apy(timeframe: ApyTimeframe!): Apy!
+  historical: Erc4626VaultHistorical
+  allocations: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
+  fundingModules: [BoxFundingModule!]! @deprecated(reason: "Schema is subject to change, not yet stable")
+}
+
+interface BoxFundingModule {
+  fundingModuleAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  collateralHoldings: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
+  debtHoldings: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
+  nav: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+}
+
+type BoxMorphoFundingModule implements BoxFundingModule {
+  fundingModuleAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  collateralHoldings: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
+  debtHoldings: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
+  nav: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  positions: [MorphoMarketPosition!]! @deprecated(reason: "Schema is subject to change, not yet stable")
+}
+
+type BoxUnknownFundingModule implements BoxFundingModule {
+  fundingModuleAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  collateralHoldings: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
+  debtHoldings: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
+  nav: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+}
+
+input ChainFilter {
+  chainId_in: [ChainId!]
+}
+
+type Chain {
+  id: ChainId!
+  name: String!
+  icon: URL!
+  nativeToken: Token!
+  wrappedNativeToken: Token!
+}
+
+type YieldInfo {
+  intrinsicApy: Float!
+  trailingPeriod: Int
+  maturity: Int
+}
+
+interface Erc20 {
+  chain: Chain!
+  address: Address!
+  name: String!
+  symbol: String!
+  decimals: Int!
+  icon: URL
+  priceUsd: Float
+  category: TokenCategory
+  riskAssessment: RiskAssessment!
+  yield: YieldInfo
+}
+
+input TokenInput {
+  chainId: ChainId!
+  tokenAddress: Address!
+}
+
+enum TokenCategory {
+  Stable
+  Eth
+  Btc
+}
+
+type Token implements Erc20 {
+  chain: Chain!
+  address: Address!
+  name: String!
+  symbol: String!
+  decimals: Int!
+  icon: URL
+  category: TokenCategory
+  priceUsd: Float
+  riskAssessment: RiskAssessment!
+  yield: YieldInfo
+}
+
+type TokenAmount {
+  raw: BigInt!
+  formatted: String!
+  usd: Float
+}
+
+input TokenHoldingInput {
+  chainId: ChainId!
+  tokenAddress: Address!
+  accountAddress: Address!
+}
+
+type TokenHolding {
+  token: Erc20!
+  accountAddress: Address!
+  balance: TokenAmount!
+}
+
+enum Erc4626VaultProtocol {
+  generic
+  morpho_v1
+  morpho_v2
+  box
+}
+
+input Erc4626VaultKey {
+  chainId: ChainId!
+  vaultAddress: Address!
+  protocol: Erc4626VaultProtocol!
+}
+
+input Erc4626VaultFilter {
+  keys: [Erc4626VaultKey!]
+}
+
+type Erc4626VaultPage {
+  items: [Erc4626Vault]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input Erc4626VaultPositionFilter {
+  keys: [Erc4626VaultPositionKey!]
+}
+
+input Erc4626VaultPositionKey {
+  chainId: ChainId!
+  vaultAddress: Address!
+  protocol: Erc4626VaultProtocol!
+  accountAddress: Address!
+}
+
+type Erc4626VaultPositionPage {
+  items: [Erc4626VaultPosition]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+enum ApyTimeframe {
+  six_hours
+  one_day
+  seven_days
+  thirty_days
+}
+
+interface Erc4626VaultHistorical {
+  returns: [TimeSeriesPoint!]
+}
+
+type GenericErc4626VaultHistorical implements Erc4626VaultHistorical {
+  returns: [TimeSeriesPoint!]
+}
+
+interface Erc4626Vault implements Erc20 {
+  chain: Chain!
+  address: Address!
+  name: String!
+  symbol: String!
+  decimals: Int!
+  icon: URL
+  priceUsd: Float
+  category: TokenCategory
+  riskAssessment: RiskAssessment!
+  yield: YieldInfo
+  vaultAddress: Address! @deprecated(reason: "Use address instead")
+  asset: Token!
+  totalAssets: TokenAmount!
+  apy(timeframe: ApyTimeframe!): Apy!
+  historical: Erc4626VaultHistorical
+}
+
+type GenericErc4626Vault implements Erc4626Vault & Erc20 {
+  chain: Chain!
+  address: Address!
+  name: String!
+  symbol: String!
+  decimals: Int!
+  icon: URL
+  priceUsd: Float
+  category: TokenCategory
+  riskAssessment: RiskAssessment!
+  yield: YieldInfo
+  vaultAddress: Address! @deprecated(reason: "Use address instead")
+  asset: Token!
+  totalAssets: TokenAmount!
+  apy(timeframe: ApyTimeframe!): Apy!
+  historical: Erc4626VaultHistorical
+}
+
+interface Erc4626VaultPosition {
+  vault: Erc4626Vault!
+  accountAddress: Address!
+  shares: OnchainAmount!
+  assets: TokenAmount!
+  walletAssetHolding: TokenHolding!
+}
+
+type GenericErc4626VaultPosition implements Erc4626VaultPosition {
+  vault: Erc4626Vault!
+  accountAddress: Address!
+  shares: OnchainAmount!
+  assets: TokenAmount!
+  walletAssetHolding: TokenHolding!
+}
+
+enum IdentityResolver {
+  ens
+  farcaster
+  nns
+  base
+  uni
+  lens
+  world
+}
+
+type Identity {
+  aggregate: IdentityResolverOutput!
+  isOfacSanctioned: Boolean!
+  ens: IdentityResolverOutput!
+  farcaster: IdentityResolverOutput!
+  nns: IdentityResolverOutput!
+  base: IdentityResolverOutput!
+  uni: IdentityResolverOutput!
+  lens: IdentityResolverOutput!
+  world: IdentityResolverOutput!
+}
+
+type IdentityResolverOutput {
+  name: String
+  avatar: String
+  bio: String
+  website: String
+  x: String
+  github: String
+  discord: String
+  telegram: String
+}
+
+enum MerklAction {
+  Lend
+  Borrow
+}
+
+input MerklRewardInput {
+  chainId: ChainId!
+  mainProtocolId: String!
+  identifier: String!
+  action: MerklAction
+}
+
+type MerklAccountReward {
+  token: Token!
+  creditedAmount: TokenAmount!
+  claimableAmount: TokenAmount!
+  pendingAmount: TokenAmount!
+  proofs: [Hex!]!
+  distributorAddress: Address!
+}
+
+input MorphoVaultFilter {
+  chainId_in: [ChainId!]
+  vaultAddress_in: [Address!]
+  whitelisted: Boolean
+}
+
+type MorphoVaultPage {
+  items: [MorphoVault]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MorphoVault implements Erc4626Vault & Erc20 {
+  chain: Chain!
+  address: Address!
+  name: String!
+  symbol: String!
+  decimals: Int!
+  icon: URL
+  priceUsd: Float
+  category: TokenCategory
+  riskAssessment: RiskAssessment!
+  yield: YieldInfo
+  vaultAddress: Address! @deprecated(reason: "Use address instead")
+  asset: Token!
+  totalAssets: TokenAmount!
+  apy(timeframe: ApyTimeframe!): Apy!
+  metadata: MorphoVaultMetadata
+  performanceFee: Float!
+  feeRecipientAddress: Address
+  ownerAddress: Address!
+  curatorAddress: Address!
+  guardianAddress: Address!
+  totalLiquidity: TokenAmount!
+  marketAllocations: [MorphoVaultMarketAllocation!]!
+  historical: MorphoVaultHistorical
+  deploymentTimestamp: Int
+  timelockDuration: BigInt!
+  totalSupplied: TokenAmount! @deprecated(reason: "Use totalAssets instead")
+  supplyApy: Apy! @deprecated(reason: "Use apy(timeframe: one_day) instead")
+  supplyApy1d: Apy! @deprecated(reason: "Use apy(timeframe: one_day) instead")
+  supplyApy7d: Apy! @deprecated(reason: "Use apy(timeframe: seven_days) instead")
+  supplyApy30d: Apy! @deprecated(reason: "Use apy(timeframe: thirty_days) instead")
+}
+
+type MorphoVaultV2 implements Erc4626Vault & Erc20 {
+  chain: Chain!
+  address: Address!
+  name: String!
+  symbol: String!
+  decimals: Int!
+  icon: URL
+  priceUsd: Float
+  category: TokenCategory
+  riskAssessment: RiskAssessment!
+  yield: YieldInfo
+  vaultAddress: Address! @deprecated(reason: "Use address instead")
+  asset: Token!
+  totalAssets: TokenAmount!
+  apy(timeframe: ApyTimeframe!): Apy!
+  idleAssets: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  liquidityAssets: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  metadata: MorphoVaultMetadata @deprecated(reason: "Schema is subject to change, not yet stable")
+  ownerAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  curatorAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  performanceFee: OnchainAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  performanceFeeRecipientAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  managementFee: OnchainAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  managementFeeRecipientAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  allocatorAddresses: [Address!] @deprecated(reason: "Schema is subject to change, not yet stable")
+  sentinelAddresses: [Address!] @deprecated(reason: "Schema is subject to change, not yet stable")
+  allocations: [Adapter!]!
+  adapters: [Adapter!]! @deprecated(reason: "Use allocations instead")
+  caps: [Cap!] @deprecated(reason: "Schema is subject to change, not yet stable")
+  liquidityAdapterAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  receiveSharesGateAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  sendSharesGateAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  receiveAssetsGateAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  sendAssetsGateAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  historical: MorphoVaultHistorical
+  deploymentTimestamp: Int @deprecated(reason: "Schema is subject to change, not yet stable")
+  nav: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+}
+
+interface Adapter {
+  adapterAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
+  name: String
+  riskAssessment: RiskAssessment!
+}
+
+type MarketV1Adapter implements Adapter {
+  adapterAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
+  name: String @deprecated(reason: "Schema is subject to change, not yet stable")
+  riskAssessment: RiskAssessment!
+  marketCaps: [MarketV1ExposureCap!]! @deprecated(reason: "Schema is subject to change, not yet stable")
+}
+
+type VaultV1Adapter implements Adapter {
+  adapterAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
+  name: String @deprecated(reason: "Schema is subject to change, not yet stable")
+  riskAssessment: RiskAssessment!
+  vault: MorphoVault @deprecated(reason: "Schema is subject to change, not yet stable")
+}
+
+type BoxVaultAdapter implements Adapter {
+  adapterAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
+  name: String @deprecated(reason: "Schema is subject to change, not yet stable")
+  riskAssessment: RiskAssessment!
+  vault: BoxVault @deprecated(reason: "Schema is subject to change, not yet stable")
+}
+
+type Erc4626VaultAdapter implements Adapter {
+  adapterAddress: Address!
+  adapterCap: AdapterCap
+  name: String
+  riskAssessment: RiskAssessment!
+  vault: Erc4626Vault
+}
+
+type UnknownAdapter implements Adapter {
+  adapterAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
+  name: String @deprecated(reason: "Schema is subject to change, not yet stable")
+  riskAssessment: RiskAssessment!
+}
+
+interface Cap {
+  capId: Hex! @deprecated(reason: "Schema is subject to change, not yet stable")
+  allocation: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  absoluteCap: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  relativeCap: OnchainAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+}
+
+type AdapterCap implements Cap {
+  capId: Hex! @deprecated(reason: "Schema is subject to change, not yet stable")
+  allocation: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  absoluteCap: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  relativeCap: OnchainAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+}
+
+type MarketV1ExposureCap implements Cap {
+  capId: Hex! @deprecated(reason: "Schema is subject to change, not yet stable")
+  allocation: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  absoluteCap: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  relativeCap: OnchainAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  market: MorphoMarket! @deprecated(reason: "Schema is subject to change, not yet stable")
+}
+
+type CollateralExposureCap implements Cap {
+  capId: Hex! @deprecated(reason: "Schema is subject to change, not yet stable")
+  allocation: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  absoluteCap: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  relativeCap: OnchainAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  collateralToken: Token! @deprecated(reason: "Schema is subject to change, not yet stable")
+}
+
+type UnknownCap implements Cap {
+  capId: Hex! @deprecated(reason: "Schema is subject to change, not yet stable")
+  allocation: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  absoluteCap: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  relativeCap: OnchainAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+}
+
+type Curator {
+  name: String!
+  image: String!
+  url: String!
+}
+
+type MorphoVaultMetadata {
+  description: String
+  image: String
+  curator: Curator
+  forumLink: String @deprecated(reason: "Hourly data is currently not supported, and will return an empty array. Use daily or weekly instead.")
+  curators: [Curator!]! @deprecated(reason: "Use curator field instead.")
+}
+
+type MorphoVaultHistoricalEntry {
+  bucketTimestamp: Int!
+  totalSupplied: TokenAmount!
+  supplyApy6h: Apy!
+  supplyApy1d: Apy!
+  supplyApy7d: Apy!
+  supplyApy30d: Apy!
+}
+
+type MorphoVaultHistorical implements Erc4626VaultHistorical {
+  returns: [TimeSeriesPoint!]
+  hourly: [MorphoVaultHistoricalEntry!]! @deprecated(reason: "Hourly data is currently not supported, and will return an empty array. Use daily or weekly instead.")
+  daily: [MorphoVaultHistoricalEntry!]!
+  weekly: [MorphoVaultHistoricalEntry!]!
+}
+
+input MorphoMarketFilter {
+  chainId_in: [ChainId!]
+  marketId_in: [Hex!]
+  whitelisted: Boolean
+}
+
+type MorphoMarketPage {
+  items: [MorphoMarket]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MorphoMarket {
+  chain: Chain!
+  marketId: Hex!
+  loanAsset: Token!
+  collateralAsset: Token
+  name: String!
+  isIdle: Boolean!
+  oracleAddress: Address!
+  irm: MorphoIrm!
+  lltv: OnchainAmount!
+  liquidationPenalty: Float!
+  fee: OnchainAmount!
+  totalSupplied: TokenAmount!
+  totalBorrowed: TokenAmount!
+  liquidityInMarket: TokenAmount!
+  publicAllocatorSharedLiquidity: TokenAmount!
+  utilization: Float!
+  collateralPriceInLoanAsset: OnchainAmount
+  supplyApy: Apy!
+  supplyApy6h: Apy!
+  supplyApy1d: Apy!
+  supplyApy7d: Apy!
+  supplyApy30d: Apy!
+  borrowApy: Apy!
+  borrowApy6h: Apy!
+  borrowApy1d: Apy!
+  borrowApy7d: Apy!
+  borrowApy30d: Apy!
+  vaultAllocations: [MorphoVaultMarketAllocation!]!
+  historical: MorphoMarketHistorical
+  totalCollateral: TokenAmount
+  riskAssessment: RiskAssessment!
+}
+
+type MorphoIrm {
+  address: Address!
+  targetUtilization: Float!
+  curve: [MorphoIrmCurvePoint!]
+  rateAtTarget: BigInt
+}
+
+type MorphoIrmCurvePoint {
+  supplyApy: Float!
+  borrowApy: Float!
+  utilization: Float!
+}
+
+type MorphoMarketHistoricalEntry {
+  bucketTimestamp: Int!
+  totalSupplied: TokenAmount!
+  totalBorrowed: TokenAmount!
+  totalCollateral: TokenAmount!
+  collateralPriceInLoanAsset: OnchainAmount
+  supplyApyInstantaneous: Apy!
+  supplyApy6h: Apy!
+  supplyApy1d: Apy!
+  supplyApy7d: Apy!
+  supplyApy30d: Apy!
+  borrowApyInstantaneous: Apy!
+  borrowApy6h: Apy!
+  borrowApy1d: Apy!
+  borrowApy7d: Apy!
+  borrowApy30d: Apy!
+}
+
+type MorphoMarketHistorical {
+  hourly: [MorphoMarketHistoricalEntry!]! @deprecated(reason: "Hourly data is no longer supported")
+  daily: [MorphoMarketHistoricalEntry!]!
+  weekly: [MorphoMarketHistoricalEntry!]!
+}
+
+input MorphoMarketPositionFilter {
+  chainId_in: [ChainId!]
+  marketId_in: [Hex!]
+  accountAddress_in: [Address!]!
+  whitelisted: Boolean
+}
+
+type MorphoMarketPositionPage {
+  items: [MorphoMarketPosition]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MorphoMarketPosition {
+  market: MorphoMarket!
+  accountAddress: Address!
+  supplyShares: BigInt!
+  borrowShares: BigInt!
+  supplyAmount: TokenAmount!
+  borrowAmount: TokenAmount!
+  collateralAmount: TokenAmount
+  healthFactor: OnchainAmount
+  ltv: OnchainAmount
+  walletLoanAssetHolding: TokenHolding!
+  walletCollateralAssetHolding: TokenHolding
+}
+
+input MorphoVaultPositionFilter {
+  chainId_in: [ChainId!]
+  vaultAddress_in: [Address!]
+  accountAddress_in: [Address!]!
+  whitelisted: Boolean
+}
+
+type MorphoVaultPositionPage {
+  items: [MorphoVaultPosition]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MorphoVaultPosition {
+  vault: MorphoVault!
+  accountAddress: Address!
+  supplyShares: BigInt!
+  supplyAmount: TokenAmount!
+  walletUnderlyingAssetHolding: TokenHolding
+}
+
+type MorphoVaultMarketAllocation {
+  vault: MorphoVault!
+  market: MorphoMarket!
+  position: MorphoMarketPosition!
+  enabled: Boolean!
+  supplyCap: TokenAmount!
+  vaultSupplyShare: Float!
+  marketSupplyShare: Float!
+}
+
+type SteakhouseRiskAssessment {
+  score: Float!
+  rating: String!
+}
+
+type RiskAssessment {
+  steakhouse: SteakhouseRiskAssessment
+}
+
+type SteakhouseTvlSnapshot {
+  timestamp: Int!
+  totalUsd: Float!
+  byChain: [SteakhouseTvlByChain!]!
+  byProtocol: [SteakhouseTvlByProtocol!]!
+  byAssetCategory: [SteakhouseTvlByAssetCategory!]!
+}
+
+type SteakhouseTvl {
+  current: SteakhouseTvlSnapshot!
+  historical: [SteakhouseTvlSnapshot!]!
+  totalUsd: Float! @deprecated(reason: "Use current.totalUsd")
+  computedAt: Int! @deprecated(reason: "Use current.timestamp")
+  byChain: [SteakhouseTvlByChain!]! @deprecated(reason: "Use current.byChain")
+  byProtocol: [SteakhouseTvlByProtocol!]! @deprecated(reason: "Use current.byProtocol")
+  byAssetCategory: [SteakhouseTvlByAssetCategory!]! @deprecated(reason: "Use current.byAssetCategory")
+}
+
+type SteakhouseTvlByChain {
+  chain: Chain!
+  tvlUsd: Float!
+}
+
+type SteakhouseTvlByProtocol {
+  protocol: Erc4626VaultProtocol!
+  tvlUsd: Float!
+}
+
+type SteakhouseTvlByAssetCategory {
+  category: TokenCategory
+  tvlUsd: Float!
+}
+
+enum VaultProtocol {
+  euler_v2
+  euler_earn
+  morpho
+  enzyme
+  mellow
+  midas
+  turtle_club
+  silo
+  reserve
+  napier
+  gearbox
+  pendle
+  lista
+}
+
+enum VaultType {
+  lending
+  staking
+  index
+}
+
+input VaultInput {
+  chainId: ChainId!
+  protocol: VaultProtocol!
+  vaultAddress: Address!
+}
+
+type Protocol {
+  name: String!
+  icon: String!
+}
+
+type Vault {
+  chain: Chain!
+  protocol: Protocol!
+  vaultAddress: Address!
+  type: VaultType!
+  name: String!
+  description: String
+  url: String!
+  asset: Token!
+  totalSupplied: TokenAmount!
+  supplyApy: Apy!
+}

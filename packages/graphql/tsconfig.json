@@ -4,7 +4,7 @@
     "plugins": [
       {
         "name": "gql.tada/ts-plugin",
-        "schema": "https://api-v2.whisk.so/graphql",
+        "schema": "./src/generated/schema.graphql",
         "tadaOutputLocation": "./src/generated/graphql-env.d.ts"
       }
     ]

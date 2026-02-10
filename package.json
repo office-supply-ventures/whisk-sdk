@@ -12,9 +12,11 @@
     "changeset:publish": "pnpm build && changeset publish",
     "changeset:version": "changeset version",
     "check": "biome check --fix --unsafe",
+    "check:graphql": "pnpm --filter @whisk/graphql check:graphql",
     "check:types": "turbo check:types && tsgo --noEmit",
     "generate:vaults": "pnpm --filter @whisk/steakhouse generate:vaults",
-    "schema:sync": "pnpm --filter @whisk/graphql schema:sync"
+    "schema:sync": "pnpm --filter @whisk/graphql schema:sync",
+    "schema:sync:local": "pnpm --filter @whisk/graphql schema:sync:local"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.6",
