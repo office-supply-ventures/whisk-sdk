@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.2.1
+
+### Patch Changes
+
+- f1d6bb3: fix isListed for one vault
+
 ## 0.2.0
 
 ### Minor Changes
