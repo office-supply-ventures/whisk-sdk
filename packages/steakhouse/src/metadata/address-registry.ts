@@ -8,7 +8,7 @@ export interface ChainAddresses {
 
 const addressesRegistry: Record<number, ChainAddresses> = {
   [mainnet.id]: {
-    boxFactory: getAddress("0xC2243780E5a867bbAaa50b215364375cBa1F6D9A"),
+    boxFactory: getAddress("0xcF23d316e7C415a70836Ec9E68568C3cD82EBFc4"),
   },
   [base.id]: {
     boxFactory: getAddress("0x846365F9A09aeB7005127C6060876C82F7F70c0b"),
