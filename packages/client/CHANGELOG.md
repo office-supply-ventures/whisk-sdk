@@ -1,5 +1,12 @@
 # @whisk/client
 
+## 0.0.15
+
+### Patch Changes
+
+- Updated dependencies [2ceecb9]
+  - @whisk/graphql@0.0.15
+
 ## 0.0.14
 
 ### Patch Changes
