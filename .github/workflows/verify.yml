@@ -26,6 +26,9 @@ jobs:
       - name: Check types
         run: pnpm check:types
 
+      - name: Check GraphQL
+        run: pnpm check:graphql
+
       - name: Verify generated vault config
         run: |
           pnpm --filter @whisk/steakhouse generate:vaults

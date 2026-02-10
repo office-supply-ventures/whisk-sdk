@@ -9,7 +9,9 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "schema:sync": "tsx scripts/fetch-schema.ts && gql-tada generate-output",
+    "schema:sync": "tsx scripts/fetch-schema.ts https://staging.api-v2.whisk.so/graphql && gql.tada generate-output",
+    "schema:sync:local": "tsx scripts/fetch-schema.ts http://localhost:3500/graphql && gql.tada generate-output",
+    "check:graphql": "gql.tada check",
     "check:types": "tsgo --noEmit"
   },
   "type": "module",
