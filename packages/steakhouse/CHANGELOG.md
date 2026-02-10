@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.1.1
+
+### Patch Changes
+
+- 33aec4e: Added `getChainAddresses` for steakhouse specific factory addresses.
+
 ## 0.1.0
 
 ### Minor Changes
