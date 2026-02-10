@@ -1,12 +1,15 @@
 import { getAddress } from "viem"
 import { arbitrum, base, mainnet } from "viem/chains"
-import type { Address } from "./types.js"
+import { STEAKHOUSE_VAULTS } from "./generated/vaults.js"
+import type { Address, VaultConfig } from "./types.js"
 
-export interface ChainAddresses {
+export interface ChainDeployments {
   readonly boxFactory?: Address
+
+  readonly vaults: readonly VaultConfig[]
 }
 
-const addressesRegistry: Record<number, ChainAddresses> = {
+const singletonContracts: Record<number, Omit<ChainDeployments, "vaults">> = {
   [mainnet.id]: {
     boxFactory: getAddress("0xcF23d316e7C415a70836Ec9E68568C3cD82EBFc4"),
   },
@@ -18,6 +21,12 @@ const addressesRegistry: Record<number, ChainAddresses> = {
   },
 }
 
-export function getChainAddresses(chainId: number): ChainAddresses {
-  return addressesRegistry[chainId] ?? {}
+const vaultsByChain = Map.groupBy(STEAKHOUSE_VAULTS, (v) => v.chainId)
+
+export function getChainDeployments(chainId: number): ChainDeployments {
+  return {
+    ...(singletonContracts[chainId] ?? {}),
+
+    vaults: vaultsByChain.get(chainId) ?? [],
+  }
 }

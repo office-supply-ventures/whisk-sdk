@@ -2,11 +2,11 @@
 chainId: 1
 vaultAddress: "0xbeeff2b772fa2f443cbd1dd6d33b0c4bebf4aeb7"
 protocol: morpho_v1
-name: (v1) AUSD High Yield Instant
+name: AUSD High Yield Instant
 strategy: High Yield
 ---
 
-**Consider switching to the [Morpho v2 equivalent](https://app.steakhouse/financial/earn/1/0xbeeff89abb7815ccd5182bd1ff82c4a4f8fcb13d)**
+**Consider switching to the [Morpho v2 equivalent](https://app.steakhouse.financial/earn/1/0xbeeff89abb7815ccd5182bd1ff82c4a4f8fcb13d)**
 
 Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.
 

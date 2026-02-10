@@ -2,7 +2,7 @@
 chainId: 747474
 vaultAddress: "0x61d4f9d3797ba4da152238c53a6f93fb665c3c1d"
 protocol: morpho_v1
-name: (v1) USDC Prime Instant
+name: USDC Prime Instant
 strategy: Prime
 ---
 

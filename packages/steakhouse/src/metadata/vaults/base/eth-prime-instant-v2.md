@@ -1,12 +1,12 @@
 ---
-chainId: 1
-vaultAddress: "0xbeefc1cdafc5b4a649b54d07afc6bf0f75c6f4e2"
-protocol: morpho_v1
-name: Ethena USDtb Prime Instant
+chainId: 8453
+vaultAddress: "0xbeef00f0A818894a2Cf111644A5098421611100E"
+protocol: morpho_v2
+name: ETH Prime Instant
 strategy: Prime
 ---
 
-Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.
+Allocating only to Morpho borrow/lend.
 
 Prime Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/prime-instant)) maximizes exposure to repo markets on a blue-chip collateral only.
 

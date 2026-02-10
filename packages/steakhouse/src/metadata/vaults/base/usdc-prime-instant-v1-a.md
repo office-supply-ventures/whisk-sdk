@@ -2,9 +2,11 @@
 chainId: 8453
 vaultAddress: "0xBEEFE94c8aD530842bfE7d8B397938fFc1cb83b2"
 protocol: morpho_v1
-name: (v1) USDC Prime Instant
+name: USDC Prime Instant
 strategy: Prime
 ---
+
+**Consider switching to the [Morpho v2 equivalent](https://app.steakhouse.financial/earn/8453/0xbeef0e0834849aCC03f0089F01f4F1Eeb06873C9)**
 
 Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.
 

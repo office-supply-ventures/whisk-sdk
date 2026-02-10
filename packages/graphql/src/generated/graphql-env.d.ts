@@ -102,7 +102,7 @@ export type introspection_types = {
     'VaultProtocol': { name: 'VaultProtocol'; enumValues: 'euler_v2' | 'euler_earn' | 'morpho' | 'enzyme' | 'mellow' | 'midas' | 'turtle_club' | 'silo' | 'reserve' | 'napier' | 'gearbox' | 'pendle' | 'lista'; };
     'VaultType': { name: 'VaultType'; enumValues: 'lending' | 'staking' | 'index'; };
     'VaultV1Adapter': { kind: 'OBJECT'; name: 'VaultV1Adapter'; fields: { 'adapterAddress': { name: 'adapterAddress'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'Address'; ofType: null; }; } }; 'adapterCap': { name: 'adapterCap'; type: { kind: 'OBJECT'; name: 'AdapterCap'; ofType: null; } }; 'name': { name: 'name'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'riskAssessment': { name: 'riskAssessment'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'OBJECT'; name: 'RiskAssessment'; ofType: null; }; } }; 'vault': { name: 'vault'; type: { kind: 'OBJECT'; name: 'MorphoVault'; ofType: null; } }; }; };
-    'YieldInfo': { kind: 'OBJECT'; name: 'YieldInfo'; fields: { 'intrinsicApy': { name: 'intrinsicApy'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'Float'; ofType: null; }; } }; 'maturity': { name: 'maturity'; type: { kind: 'SCALAR'; name: 'Int'; ofType: null; } }; }; };
+    'YieldInfo': { kind: 'OBJECT'; name: 'YieldInfo'; fields: { 'intrinsicApy': { name: 'intrinsicApy'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'Float'; ofType: null; }; } }; 'maturity': { name: 'maturity'; type: { kind: 'SCALAR'; name: 'Int'; ofType: null; } }; 'trailingPeriod': { name: 'trailingPeriod'; type: { kind: 'SCALAR'; name: 'Int'; ofType: null; } }; }; };
 };
 
 /** An IntrospectionQuery representation of your schema.

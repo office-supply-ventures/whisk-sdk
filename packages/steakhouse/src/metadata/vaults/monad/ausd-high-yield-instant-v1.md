@@ -2,7 +2,7 @@
 chainId: 143
 vaultAddress: "0xBC03E505EE65f9fAa68a2D7e5A74452858C16D29"
 protocol: morpho_v1
-name: (v1) AUSD High Yield Instant
+name: AUSD High Yield Instant
 strategy: High Yield
 ---
 

@@ -1,14 +1,14 @@
 ---
-chainId: 1
-vaultAddress: "0xbeefff506b52b3323c48afe0cb405a284f0f9cf2"
+chainId: 42161
+vaultAddress: "0xbeefff13dd098de415e07f033dae65205b31a894"
 protocol: morpho_v2
-name: cbBTC Turbo
+name: USDC Turbo
 strategy: Turbo
 ---
 
-**Carry involves leverage**
+**High Leverage**
 
-Carry vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/turbo)) involve borrowing against one collateral type to earn a higher yield in the loan asset.
+Turbo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/turbo)) target a 10% liquidity rate held in repo and the remainder programmatically allocated to a simple leverage strategy.
 
 NAV accumulates when the cost of borrowing is persistently lower than the return on the underlying strategy. NAV decreases when the borrow cost is higher. The collateral selected fits our [risk framework](https://www.steakhouse.financial/docs/risk-management) to mitigate solvency risks.
 
