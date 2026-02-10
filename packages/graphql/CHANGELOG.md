@@ -1,5 +1,11 @@
 # @whisk/graphql
 
+## 0.0.16
+
+### Patch Changes
+
+- b6e7dae: Consumed latest schema changes
+
 ## 0.0.15
 
 ### Patch Changes
