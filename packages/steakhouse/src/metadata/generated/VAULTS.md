@@ -80,7 +80,7 @@
 | Base | `0xbeEFe1372c0A384aCEcBe8a0Adf3c94c389F6704` | - | morpho_v1 | - | ✗ |
 | Base | `0xBEEff02DE231f8B08c627C769edC73e7AcE47264` | - | morpho_v2 | - | ✗ |
 | Base | `0xBeeF0c8333b3De8F0450565834db4EB05dEf7A5F` | - | morpho_v1 | - | ✗ |
-| Base | `0xbEEf050a7485865A7a8d8Ca0CC5f7536b7a3443e` | ETH High Yield Instant | morpho_v1 | High Yield | ✓ |
+| Base | `0xbEEf050a7485865A7a8d8Ca0CC5f7536b7a3443e` | ETH High Yield Instant | morpho_v1 | High Yield | ✗ |
 | Base | `0xbeef00f0A818894a2Cf111644A5098421611100E` | ETH Prime Instant | morpho_v2 | Prime | ✓ |
 | Base | `0xBEEFFFdeADc2c172130Ac4C5Ae48c8D4708BFb40` | ETH Turbo | morpho_v2 | Turbo | ✓ |
 | Base | `0xBeEF086b8807Dc5E5A1740C5E3a7C4c366eA6ab5` | EURC Prime Instant | morpho_v1 | Prime | ✓ |
