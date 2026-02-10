@@ -2,7 +2,7 @@
 chainId: 143
 vaultAddress: "0xba8424ebbed6c51bea6d6d903b8815838e6a0322"
 protocol: morpho_v1
-name: (v1) ETH Prime Instant
+name: ETH Prime Instant
 strategy: Prime
 ---
 

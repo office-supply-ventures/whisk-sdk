@@ -2,9 +2,11 @@
 chainId: 42161
 vaultAddress: "0x4739e2c293bdcd835829aa7c5d7fbdee93565d1a"
 protocol: morpho_v1
-name: (v1) USDT0 High Yield Instant
+name: USDT0 High Yield Instant
 strategy: High Yield
+isListed: false
 ---
+**Consider switching to the [Morpho v2 equivalent](https://app.steakhouse.financial/earn/42161/0xbeeff77ce5c059445714e6a3490e273fe7f2492f)**
 
 Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.
 

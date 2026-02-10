@@ -2,7 +2,7 @@
 chainId: 143
 vaultAddress: "0x802c91d807A8DaCA257c4708ab264B6520964e44"
 protocol: morpho_v1
-name: (v1) USDC High Yield Instant
+name: USDC High Yield Instant
 strategy: High Yield
 ---
 

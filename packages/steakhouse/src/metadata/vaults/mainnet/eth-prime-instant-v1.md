@@ -2,11 +2,11 @@
 chainId: 1
 vaultAddress: "0xbeef050ecd6a16c4e7bffbb52ebba7846c4b8cd4"
 protocol: morpho_v1
-name: (v1) ETH Prime Instant
+name: ETH Prime Instant
 strategy: Prime
 ---
 
-**Consider switching to the [Morpho v2 equivalent](https://app.steakhouse/financial/earn/1/0xbeef0046fcab1de47e41fb75bb3dc4dfc94108e3)**
+**Consider switching to the [Morpho v2 equivalent](https://app.steakhouse.financial/earn/1/0xbeef0046fcab1de47e41fb75bb3dc4dfc94108e3)**
 
 Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.
 

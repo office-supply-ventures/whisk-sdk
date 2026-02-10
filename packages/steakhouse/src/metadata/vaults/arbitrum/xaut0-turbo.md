@@ -1,8 +1,8 @@
 ---
-chainId: 1
-vaultAddress: "0xbeefff506b52b3323c48afe0cb405a284f0f9cf2"
+chainId: 42161
+vaultAddress: "0xBEEFFFFE0E9b26bBe3B5cE851539366991C3BF39"
 protocol: morpho_v2
-name: cbBTC Turbo
+name: XAUT0 Turbo
 strategy: Turbo
 ---
 
