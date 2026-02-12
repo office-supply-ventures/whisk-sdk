@@ -1,6 +1,6 @@
 "use client"
 
-import type { GetTvlHistoricalResult } from "@whisk/steakhouse"
+import type { GetStatsResultWithHistorical } from "@whisk/steakhouse"
 import { useMemo, useState } from "react"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 import { Button } from "@/components/ui/button"
@@ -71,8 +71,10 @@ function formatDate(timestamp: number): string {
   })
 }
 
+type TvlHistorical = GetStatsResultWithHistorical["tvl"]["historical"]
+
 interface TvlChartProps {
-  historical: GetTvlHistoricalResult
+  historical: TvlHistorical
 }
 
 export function TvlChart({ historical }: TvlChartProps) {
@@ -186,7 +188,7 @@ export function TvlChart({ historical }: TvlChartProps) {
   )
 }
 
-function getKeysForBreakdown(historical: GetTvlHistoricalResult, breakdown: Breakdown): string[] {
+function getKeysForBreakdown(historical: TvlHistorical, breakdown: Breakdown): string[] {
   const keySet = new Set<string>()
   for (const snapshot of historical) {
     if (breakdown === "chain") {

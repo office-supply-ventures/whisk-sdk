@@ -1,0 +1,173 @@
+# Direct GraphQL Queries
+
+Write your own GraphQL queries against the Whisk API with full type safety. Use this when the built-in [query functions](/queries) don't cover your use case.
+
+## Playground
+
+The [Whisk GraphQL playground](https://api.whisk.so/graphql) is the best way to explore the schema and test queries before writing code.
+
+::::steps
+### Add your authorization header
+
+In the `Headers` section of the playground:
+
+```json [Headers]
+{
+  "Authorization": "Bearer <YOUR_API_KEY>"
+}
+```
+
+### Write and test your query
+
+Try running a query like this:
+
+```graphql
+{
+  steakhouseStats {
+    uniqueDepositors
+    tvl {
+      current {
+        totalUsd
+        byChain {
+          chain {
+            name
+          }
+          tvlUsd
+        }
+      }
+    }
+  }
+}
+```
+
+::::
+
+## Using in Your App
+
+To write custom queries, install `@whisk/graphql` alongside `@whisk/steakhouse`:
+
+:::code-group
+
+```bash [pnpm]
+pnpm add @whisk/graphql
+```
+
+```bash [npm]
+npm install @whisk/graphql
+```
+
+```bash [yarn]
+yarn add @whisk/graphql
+```
+
+:::
+
+The `graphql` function from `@whisk/graphql` gives you a type-safe tagged template for writing queries. Pair it with `SteakhouseClient.query()` to execute them.
+
+### 1. Write a query
+
+```ts
+import { graphql } from "@whisk/graphql"
+
+const myQuery = graphql(`
+  query MyCustomQuery {
+    steakhouseStats {
+      uniqueDepositors
+      tvl {
+        current {
+          totalUsd
+          byChain {
+            chain {
+              name
+              id
+            }
+            tvlUsd
+          }
+        }
+      }
+    }
+  }
+`)
+```
+
+The result type is **fully inferred** from the schema — no code generation step needed.
+
+### 2. Execute the query
+
+```ts
+import { SteakhouseClient } from "@whisk/steakhouse"
+
+const client = new SteakhouseClient({
+  apiKey: process.env.STEAKHOUSE_API_KEY!,
+})
+
+const data = await client.query(myQuery, {})
+// data.steakhouseStats.uniqueDepositors is typed as number | null
+// data.steakhouseStats.tvl.current.byChain is typed as an array
+```
+
+### Using variables
+
+```ts
+import { graphql } from "@whisk/graphql"
+
+const vaultQuery = graphql(`
+  query GetVaults($chainIds: [Int!]!) {
+    morphoVaults(where: { chainId_in: $chainIds, whitelisted: true }, limit: 10) {
+      items {
+        name
+        totalSupplied {
+          formatted
+          usd
+        }
+      }
+    }
+  }
+`)
+
+const data = await client.query(vaultQuery, { chainIds: [1] })
+// Variables are type-checked too
+```
+
+## Editor IntelliSense
+
+By default, you get full **type inference** on query results (return types, variable types). To also get **autocomplete inside the `graphql()` template literal** — field name suggestions, inline validation, and documentation — set up the gql.tada TypeScript plugin.
+
+::::steps
+### Add the plugin to your `tsconfig.json`
+
+```json
+{
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "gql.tada/ts-plugin",
+        "schema": "node_modules/@whisk/graphql/src/generated/schema.graphql"
+      }
+    ]
+  }
+}
+```
+
+### Use the workspace TypeScript version
+
+The plugin only works with the workspace TypeScript, not VS Code's built-in version.
+
+In VS Code: `Cmd+Shift+P` (or `Ctrl+Shift+P`) → **TypeScript: Select TypeScript Version** → **Use Workspace Version**.
+
+To make this automatic for your team, add to `.vscode/settings.json`:
+
+```json
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.tsdk.autoSelect": "preferWorkspace"
+}
+```
+
+### Restart the TypeScript server
+
+`Cmd+Shift+P` → **TypeScript: Restart TS Server**
+
+::::
+
+You should now get full autocomplete and error checking as you write queries.

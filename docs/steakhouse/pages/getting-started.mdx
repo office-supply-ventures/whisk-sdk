@@ -36,32 +36,35 @@ const client = new SteakhouseClient({ // [!code focus]
 }) // [!code focus]
 ```
 
-### 2. Fetch Current TVL
+### 2. Fetch Stats & TVL
 
 ```ts twoslash [index.ts]
-import { SteakhouseClient, getTvl } from "@whisk/steakhouse"
+import { SteakhouseClient, getStats } from "@whisk/steakhouse"
 
 const client = new SteakhouseClient({
   apiKey: process.env.STEAKHOUSE_API_KEY!,
 })
 
-const tvl = await getTvl(client) // [!code focus]
+const stats = await getStats(client) // [!code focus]
+stats.uniqueDepositors    // Unique depositor count
+stats.tvl.current.totalUsd // Current total TVL
 ```
 
-### 3. Fetch Historical TVL
+### 3. Include Historical TVL
 
 ```ts twoslash [index.ts]
-import { SteakhouseClient, getTvlHistorical } from "@whisk/steakhouse"
+import { SteakhouseClient, getStats } from "@whisk/steakhouse"
 
 const client = new SteakhouseClient({
   apiKey: process.env.STEAKHOUSE_API_KEY!,
 })
 
-const historical = await getTvlHistorical(client) // [!code focus]
-// Daily snapshots for the last 365 days, oldest first
+const stats = await getStats(client, { includeHistorical: true }) // [!code focus]
+stats.tvl.historical // Daily snapshots for the last 365 days
 ```
 
 ## Next Steps
 
 - [Queries](/queries) - Full query API reference
+- [Direct GraphQL](/graphql) - Write custom queries with full type safety
 - [React Hooks](/react) - Coming soon

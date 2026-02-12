@@ -23,6 +23,10 @@ export default defineConfig({
       link: "/queries",
     },
     {
+      text: "Direct GraphQL",
+      link: "/graphql",
+    },
+    {
       text: "React Hooks",
       link: "/react",
     },
