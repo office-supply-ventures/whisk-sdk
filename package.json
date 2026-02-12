@@ -6,7 +6,7 @@
     "clean": "rimraf packages/*/{dist,.turbo} examples/*/{dist,.turbo,.next} site/{dist,.turbo} .turbo node_modules/.cache",
     "build": "turbo build",
     "dev": "turbo run dev",
-    "dev:docs": "turbo run dev --filter=site...",
+    "dev:docs": "turbo run dev --filter=docs...",
     "dev:next": "turbo run dev --filter=next-app...",
     "test": "vitest",
     "changeset:publish": "pnpm build && changeset publish",

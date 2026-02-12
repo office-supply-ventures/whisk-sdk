@@ -1,0 +1,128 @@
+# Typescript SDK
+
+The Whisk SDK provides a type-safe GraphQL client for querying the Whisk API. It uses [gql.tada](https://gql-tada.0no.co/) for full type inference on GraphQL queries — no code generation step required.
+
+## Packages
+
+| Package | Description |
+| --- | --- |
+| `@whisk/graphql` | GraphQL schema and the `graphql()` tagged template function |
+| `@whisk/client` | `WhiskClient` — a thin wrapper around URQL with auth and scalar handling |
+
+## Installation
+
+:::code-group
+```bash [pnpm]
+pnpm add @whisk/client @whisk/graphql graphql
+```
+```bash [npm]
+npm install @whisk/client @whisk/graphql graphql
+```
+```bash [yarn]
+yarn add @whisk/client @whisk/graphql graphql
+```
+:::
+
+## Quick Start
+
+### 1. Create a client
+
+```ts
+import { WhiskClient } from "@whisk/client"
+
+const client = new WhiskClient({
+  apiKey: "YOUR_API_KEY",
+})
+```
+
+### 2. Write a query
+
+```ts
+import { graphql } from "@whisk/graphql"
+
+const vaultsQuery = graphql(`
+  query GetVaults {
+    morphoVaults(where: { chainId_in: [1], whitelisted: true }, limit: 10) {
+      items {
+        name
+        totalSupplied {
+          formatted
+          usd
+        }
+      }
+    }
+  }
+`)
+```
+
+The return type of `vaultsQuery` is fully inferred from the schema — no codegen needed.
+
+### 3. Execute the query
+
+```ts
+const data = await client.query(vaultsQuery, {})
+// data.morphoVaults.items is fully typed
+```
+
+## Editor IntelliSense
+
+By default, you get full **type inference** on query results. To also get **autocomplete inside the `graphql()` template literal** (field name suggestions, inline errors), set up the gql.tada TypeScript plugin.
+
+### Setup
+
+::::steps
+#### Install the dependency
+
+gql.tada is already included as a dependency of `@whisk/graphql`, so no extra install is needed.
+
+#### Add the plugin to your `tsconfig.json`
+
+```json
+{
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "gql.tada/ts-plugin",
+        "schema": "node_modules/@whisk/graphql/src/generated/schema.graphql"
+      }
+    ]
+  }
+}
+```
+
+#### Use the workspace TypeScript version
+
+The plugin only works with the workspace TypeScript, not VS Code's built-in version.
+
+In VS Code: `Cmd+Shift+P` (or `Ctrl+Shift+P`) → **TypeScript: Select TypeScript Version** → **Use Workspace Version**.
+
+To make this automatic for your team, add to `.vscode/settings.json`:
+
+```json
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.tsdk.autoSelect": "preferWorkspace"
+}
+```
+
+#### Restart the TypeScript server
+
+`Cmd+Shift+P` → **TypeScript: Restart TS Server**
+
+::::
+
+You should now get full autocomplete and error checking inside `graphql()` template literals.
+
+## Custom Scalars
+
+The SDK automatically handles custom scalar types from the Whisk API:
+
+| Scalar | TypeScript Type | Description |
+| --- | --- | --- |
+| `Address` | `` `0x${string}` `` | EVM address |
+| `ChainId` | `number` | Chain identifier |
+| `BigInt` | `bigint` | Large numeric values (token amounts, etc.) |
+| `Hex` | `` `0x${string}` `` | Hex-encoded bytes |
+| `URL` | `string` | URL string |
+
+These are converted automatically at runtime by the client — `BigInt` fields come back as native `bigint` values, not strings.

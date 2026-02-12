@@ -2,36 +2,41 @@
 
 Query functions for server-side usage, Node.js scripts, Next.js server components, or any non-React context.
 
-## getTvl
+## getStats
 
-Fetch current Steakhouse TVL breakdown by chain, protocol, and asset category.
+Fetch Steakhouse stats: unique depositor count and current TVL breakdown by chain, protocol, and asset category. Optionally include historical TVL snapshots.
+
+### Current stats only
 
 ```ts twoslash
-import { SteakhouseClient, getTvl } from "@whisk/steakhouse"
+import { SteakhouseClient, getStats } from "@whisk/steakhouse"
 
 const client = new SteakhouseClient({ apiKey: "your-api-key" })
 
-const tvl = await getTvl(client) // [!code focus]
+const stats = await getStats(client) // [!code focus]
 
-tvl.totalUsd       // Total TVL in USD
-tvl.byChain        // Breakdown by chain (name, id, icon, tvlUsd)
-tvl.byProtocol     // Breakdown by protocol (protocol, tvlUsd)
-tvl.byAssetCategory // Breakdown by asset category (category, tvlUsd)
+stats.uniqueDepositors        // Unique depositor count (or null)
+stats.tvl.current.totalUsd       // Total TVL in USD
+stats.tvl.current.byChain        // Breakdown by chain (name, id, icon, tvlUsd)
+stats.tvl.current.byProtocol     // Breakdown by protocol (protocol, tvlUsd)
+stats.tvl.current.byAssetCategory // Breakdown by asset category (category, tvlUsd)
 ```
 
-## getTvlHistorical
+### With historical TVL
 
-Fetch daily historical TVL snapshots (last 365 days, oldest first). Each snapshot has the same shape as the current TVL — `totalUsd` plus breakdowns by chain, protocol, and asset category.
+Pass `{ includeHistorical: true }` to also fetch daily historical TVL snapshots (last 365 days, oldest first).
 
 ```ts twoslash
-import { SteakhouseClient, getTvlHistorical } from "@whisk/steakhouse"
+import { SteakhouseClient, getStats } from "@whisk/steakhouse"
 
 const client = new SteakhouseClient({ apiKey: "your-api-key" })
 
-const historical = await getTvlHistorical(client) // [!code focus]
+const stats = await getStats(client, { includeHistorical: true }) // [!code focus]
 
-// Each snapshot has a timestamp and the same breakdowns as getTvl
-for (const snapshot of historical) {
+stats.tvl.historical // TvlSnapshot[] — daily snapshots
+
+// Each snapshot has a timestamp and the same breakdowns as stats.tvl.current
+for (const snapshot of stats.tvl.historical!) {
   snapshot.timestamp     // Unix timestamp (seconds)
   snapshot.totalUsd      // Total TVL at this point in time
   snapshot.byChain       // Chain breakdown at this point

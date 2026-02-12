@@ -22,6 +22,10 @@ export default defineConfig({
       text: "Getting Started",
       link: "/getting-started",
     },
+    {
+      text: "Typescript SDK",
+      link: "/sdk",
+    },
   ],
   socials: [
     {

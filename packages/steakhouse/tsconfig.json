@@ -1,5 +1,13 @@
 {
   "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "gql.tada/ts-plugin",
+        "schema": "../graphql/src/generated/schema.graphql"
+      }
+    ]
+  },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",

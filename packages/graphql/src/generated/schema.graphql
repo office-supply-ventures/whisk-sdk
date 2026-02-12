@@ -13,7 +13,8 @@ type Query {
   morphoVaults(where: MorphoVaultFilter, before: String, after: String, limit: Int): MorphoVaultPage!
   morphoMarketPositions(where: MorphoMarketPositionFilter!, before: String, after: String, limit: Int): MorphoMarketPositionPage!
   morphoVaultPositions(where: MorphoVaultPositionFilter!, before: String, after: String, limit: Int): MorphoVaultPositionPage!
-  steakhouseTvl: SteakhouseTvl! @deprecated(reason: "Schema is subject to change, not yet stable")
+  steakhouseStats: SteakhouseStats!
+  steakhouseTvl: SteakhouseTvl! @deprecated(reason: "Use steakhouseStats.tvl instead")
   vaults(inputs: [VaultInput!]!): [Vault]!
 }
 
@@ -737,6 +738,11 @@ type SteakhouseRiskAssessment {
 
 type RiskAssessment {
   steakhouse: SteakhouseRiskAssessment
+}
+
+type SteakhouseStats {
+  tvl: SteakhouseTvl!
+  uniqueDepositors: Int
 }
 
 type SteakhouseTvlSnapshot {
