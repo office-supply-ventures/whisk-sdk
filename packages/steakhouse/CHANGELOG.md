@@ -1,5 +1,37 @@
 # @whisk/steakhouse
 
+## 0.3.0
+
+### Minor Changes
+
+- a9ef2e1: Features:
+
+  - Added getStats function including uniqueDeposits and tvl
+
+  Breaking Changes:
+
+  - `getTvl` replaced by `getStats`
+
+  ```diff
+  - const tvl = await getTvl(client)
+  + const stats = await getStats(client)
+  + const tvl = stats.tvl.current
+  ```
+
+  - `getTvlHistorical` replaced by `getStats`
+
+  ```diff
+  - const snapshots = await getTvlHistorical(client)
+  + const stats = await getStats(client, { includeHistorical: true })
+  + const snapshots = stats.tvl.historical;
+  ```
+
+### Patch Changes
+
+- Updated dependencies [a9ef2e1]
+  - @whisk/graphql@0.0.17
+  - @whisk/client@0.0.17
+
 ## 0.2.2
 
 ### Patch Changes
