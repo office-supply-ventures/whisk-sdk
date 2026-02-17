@@ -120,7 +120,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "EURC Prime Instant",
     description: "Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.\n\nPrime Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/prime-instant)) maximizes exposure to repo markets on a blue-chip collateral only.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of AA or higher to mitigate solvency risks. The aggregated target maturity is less than one day.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "Prime",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 8453,
@@ -144,7 +144,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "USDC High Yield Instant",
     description: "**Consider switching to the [Morpho v2 equivalent](https://app.steakhouse.financial/earn/8453/0xbeeff7ae5e00aae3db302e4b0d8c883810a58100)**\n\nAllocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.\n\nHigh Yield Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/high-yield-instant)) maximizes exposure to repo markets on a wide range of collateral.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of CC or higher to mitigate solvency risks. The aggregated target maturity is less than one day with concentration limits on risk-tiers for underlying collateral.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "High Yield",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 8453,
@@ -247,7 +247,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "AUSD High Yield Instant",
     description: "Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.\n\nHigh Yield Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/high-yield-instant)) maximizes exposure to repo markets on a wide range of collateral.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of CC or higher to mitigate solvency risks. The aggregated target maturity is less than one day with concentration limits on risk-tiers for underlying collateral.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "High Yield",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 747474,
@@ -262,7 +262,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "USDC High Yield Instant",
     description: "Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.\n\nHigh Yield Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/high-yield-instant)) maximizes exposure to repo markets on a wide range of collateral.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of CC or higher to mitigate solvency risks. The aggregated target maturity is less than one day with concentration limits on risk-tiers for underlying collateral.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "High Yield",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 747474,
@@ -271,7 +271,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "USDC Prime Instant",
     description: "Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.\n\nPrime Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/prime-instant)) maximizes exposure to repo markets on a blue-chip collateral only.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of AA or higher to mitigate solvency risks. The aggregated target maturity is less than one day.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "Prime",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 1,
@@ -287,7 +287,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "AUSD High Yield Instant",
     description: "**Consider switching to the [Morpho v2 equivalent](https://app.steakhouse.financial/earn/1/0xbeeff89abb7815ccd5182bd1ff82c4a4f8fcb13d)**\n\nAllocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.\n\nHigh Yield Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/high-yield-instant)) maximizes exposure to repo markets on a wide range of collateral.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of CC or higher to mitigate solvency risks. The aggregated target maturity is less than one day with concentration limits on risk-tiers for underlying collateral.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "High Yield",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 1,
@@ -311,6 +311,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     chainId: 1,
     address: "0xbeeFfF68CC520D68f82641EFF84330C631E2490E",
     protocol: "morpho_v1",
+    strategy: "High Yield",
     isListed: false,
   },
   {
@@ -327,7 +328,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "ETH Prime Instant",
     description: "**Consider switching to the [Morpho v2 equivalent](https://app.steakhouse.financial/earn/1/0xbeef0046fcab1de47e41fb75bb3dc4dfc94108e3)**\n\nAllocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.\n\nPrime Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/prime-instant)) maximizes exposure to repo markets on a blue-chip collateral only.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of AA or higher to mitigate solvency risks. The aggregated target maturity is less than one day.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "Prime",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 1,
@@ -354,14 +355,16 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "Ethena USDtb Prime Instant",
     description: "Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.\n\nPrime Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/prime-instant)) maximizes exposure to repo markets on a blue-chip collateral only.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of AA or higher to mitigate solvency risks. The aggregated target maturity is less than one day.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "Prime",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 1,
     address: "0xbeef003E31546C7210687f1A7b40d096BE83ec58",
     protocol: "morpho_v2",
+    name: "EURC Prime Instant",
+    description: "Allocating only to Morpho borrow/lend.\n\nPrime Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/prime-instant)) maximizes exposure to repo markets on a blue-chip collateral only.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of AA or higher to mitigate solvency risks. The aggregated target maturity is less than one day.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "Prime",
-    isListed: false,
+    isListed: true,
   },
   {
     chainId: 1,
@@ -370,12 +373,13 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "Deblock x EURCV Prime [DECOMMISSIONED]",
     description: "Allocating only to Morpho borrow/lend.\n\nPrime Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/prime-instant)) maximizes exposure to repo markets on a blue-chip collateral only.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of AA or higher to mitigate solvency risks. The aggregated target maturity is less than one day.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "Prime",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 1,
     address: "0xbeef0D24920098C404c7Fc7942ee6d0f66d65D57",
     protocol: "morpho_v2",
+    strategy: "Prime",
     isListed: false,
   },
   {
@@ -394,30 +398,34 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "Techblock x Steakhouse EURCV",
     description: "Allocating only to Morpho borrow/lend.\n\nPrime Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/prime-instant)) maximizes exposure to repo markets on a blue-chip collateral only.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of AA or higher to mitigate solvency risks. The aggregated target maturity is less than one day.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "Prime",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 1,
     address: "0x75741A12B36D181f44F389E0c6B1E0210311e3Ff",
     protocol: "morpho_v1",
+    strategy: "Prime",
     isListed: false,
   },
   {
     chainId: 1,
     address: "0xd8A6511979D9C5D387c819E9F8ED9F3a5C6c5379",
     protocol: "morpho_v2",
+    strategy: "High Yield",
     isListed: false,
   },
   {
     chainId: 1,
     address: "0xbeef00B5d83C1188F07A5184230a805639c39f04",
     protocol: "morpho_v2",
+    strategy: "Prime",
     isListed: false,
   },
   {
     chainId: 1,
     address: "0xbEEF02e5E13584ab96848af90261f0C8Ee04722a",
     protocol: "morpho_v1",
+    strategy: "Prime",
     isListed: false,
   },
   {
@@ -430,6 +438,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     chainId: 1,
     address: "0xBEEf2B5FD3D94469b7782aeBe6364E6e6FB1B709",
     protocol: "morpho_v1",
+    strategy: "High Yield",
     isListed: false,
   },
   {
@@ -470,8 +479,8 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     address: "0xBEEf3f3A04e28895f3D5163d910474901981183D",
     protocol: "morpho_v2",
     name: "3F Ecosystem Vault",
-    description: "Allocating only to Morpho borrow/lend.\n\nPrime Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/prime-instant)) maximizes exposure to repo markets on a blue-chip collateral only.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of AA or higher to mitigate solvency risks. The aggregated target maturity is less than one day.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
-    strategy: "Prime",
+    description: "Allocating only to Morpho borrow/lend.\n\nThis partnership vault is curated on behalf of [3F](https://3f.xyz/), an alternative asset infrastructure developer. \n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
+    strategy: "High Yield",
     isListed: true,
   },
   {
@@ -485,18 +494,21 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     chainId: 1,
     address: "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
     protocol: "morpho_v1",
+    strategy: "Prime",
     isListed: false,
   },
   {
     chainId: 1,
     address: "0xBeefF08dF54897e7544aB01d0e86f013DA354111",
     protocol: "morpho_v2",
+    strategy: "Prime",
     isListed: false,
   },
   {
     chainId: 1,
     address: "0xBEeF1f5Bd88285E5B239B6AAcb991d38ccA23Ac9",
     protocol: "morpho_v1",
+    strategy: "High Yield",
     isListed: false,
   },
   {
@@ -521,13 +533,14 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     chainId: 1,
     address: "0xBEeFF047C03714965a54b671A37C18beF6b96210",
     protocol: "morpho_v2",
-    strategy: "Prime",
+    strategy: "High Yield",
     isListed: false,
   },
   {
     chainId: 1,
     address: "0xbeEF346d7099865208Ff331e4f648f4154DDAa05",
     protocol: "morpho_v1",
+    strategy: "High Yield",
     isListed: false,
   },
   {
@@ -541,6 +554,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     chainId: 1,
     address: "0xbEeFCe6c76C7D7A8066562Fe9FF0e343a52dD92F",
     protocol: "morpho_v1",
+    strategy: "Prime",
     isListed: false,
   },
   {
@@ -556,6 +570,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     chainId: 1,
     address: "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
     protocol: "morpho_v1",
+    strategy: "Prime",
     isListed: false,
   },
   {
@@ -579,7 +594,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "USDT High Yield Instant",
     description: "**Consider switching to the [Morpho v2 equivalent](https://app.steakhouse.financial/earn/1/0xbeeff07d991c04cd640de9f15c08ba59c4fedeb7)**\n\nAllocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.\n\nHigh Yield Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/high-yield-instant)) maximizes exposure to repo markets on a wide range of collateral.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of CC or higher to mitigate solvency risks. The aggregated target maturity is less than one day with concentration limits on risk-tiers for underlying collateral.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "High Yield",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 1,
@@ -594,6 +609,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     chainId: 1,
     address: "0xbEEf0c18715ACDdC14a3123a608F491319F1C28C",
     protocol: "morpho_v1",
+    strategy: "High Yield",
     isListed: false,
   },
   {
@@ -603,7 +619,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "USDT Prime Instant",
     description: "**Consider switching to the [Morpho v2 equivalent](https://app.steakhouse.financial/earn/1/0xbeef003c68896c7d2c3c60d363e8d71a49ab2bf9)**\n\nAllocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.\n\nPrime Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/prime-instant)) maximizes exposure to repo markets on a blue-chip collateral only.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of AA or higher to mitigate solvency risks. The aggregated target maturity is less than one day.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "Prime",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 1,
@@ -646,7 +662,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "AUSD High Yield Instant",
     description: "Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.\n\nHigh Yield Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/high-yield-instant)) maximizes exposure to repo markets on a wide range of collateral.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of CC or higher to mitigate solvency risks. The aggregated target maturity is less than one day with concentration limits on risk-tiers for underlying collateral.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "High Yield",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 143,
@@ -662,7 +678,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "ETH Prime Instant",
     description: "Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.\n\nPrime Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/prime-instant)) maximizes exposure to repo markets on a blue-chip collateral only.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of AA or higher to mitigate solvency risks. The aggregated target maturity is less than one day.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "Prime",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 143,
@@ -678,7 +694,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "USDC High Yield Instant",
     description: "Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.\n\nHigh Yield Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/high-yield-instant)) maximizes exposure to repo markets on a wide range of collateral.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of CC or higher to mitigate solvency risks. The aggregated target maturity is less than one day with concentration limits on risk-tiers for underlying collateral.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "High Yield",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 143,
@@ -713,7 +729,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     address: "0xB7c9988D3922F25a336a469F3bB26CA61FE79e24",
     protocol: "morpho_v1",
     strategy: "High Yield",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 130,

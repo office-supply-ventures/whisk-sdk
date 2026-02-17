@@ -4,6 +4,7 @@ vaultAddress: "0xBeEF086b8807Dc5E5A1740C5E3a7C4c366eA6ab5"
 protocol: morpho_v1
 name: EURC Prime Instant
 strategy: Prime
+isListed: false
 ---
 
 Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.
