@@ -4,6 +4,7 @@ vaultAddress: "0xa0804346780b4c2e3be118ac957d1db82f9d7484"
 protocol: morpho_v1
 name: USDT High Yield Instant
 strategy: High Yield
+isListed: false
 ---
 
 **Consider switching to the [Morpho v2 equivalent](https://app.steakhouse.financial/earn/1/0xbeeff07d991c04cd640de9f15c08ba59c4fedeb7)**

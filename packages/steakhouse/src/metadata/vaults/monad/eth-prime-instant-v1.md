@@ -4,6 +4,7 @@ vaultAddress: "0xba8424ebbed6c51bea6d6d903b8815838e6a0322"
 protocol: morpho_v1
 name: ETH Prime Instant
 strategy: Prime
+isListed: false
 ---
 
 Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.

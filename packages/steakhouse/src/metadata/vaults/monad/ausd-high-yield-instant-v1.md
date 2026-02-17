@@ -4,6 +4,7 @@ vaultAddress: "0xBC03E505EE65f9fAa68a2D7e5A74452858C16D29"
 protocol: morpho_v1
 name: AUSD High Yield Instant
 strategy: High Yield
+isListed: false
 ---
 
 Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.

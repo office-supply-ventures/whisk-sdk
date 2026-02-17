@@ -4,6 +4,7 @@ vaultAddress: "0xbeef050ecd6a16c4e7bffbb52ebba7846c4b8cd4"
 protocol: morpho_v1
 name: ETH Prime Instant
 strategy: Prime
+isListed: false
 ---
 
 **Consider switching to the [Morpho v2 equivalent](https://app.steakhouse.financial/earn/1/0xbeef0046fcab1de47e41fb75bb3dc4dfc94108e3)**
