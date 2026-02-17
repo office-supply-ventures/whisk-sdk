@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.3.1
+
+### Patch Changes
+
+- 2b2cdbb: Updated steakhouse vault whitelist
+
 ## 0.3.0
 
 ### Minor Changes
