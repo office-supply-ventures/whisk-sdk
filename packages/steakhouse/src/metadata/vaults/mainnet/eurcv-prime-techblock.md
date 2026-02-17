@@ -1,8 +1,8 @@
 ---
 chainId: 1
-vaultAddress: "0xbEef00e64ceB8908B58025793fE46Ee2038c2315"
+vaultAddress: "0xBEeF007ECFBfdF9B919d0050821A9B6DbD634fF0"
 protocol: morpho_v2
-name: Deblock x EURCV Prime [DECOMMISSIONED]
+name: Techblock x Steakhouse EURCV
 strategy: Prime
 ---
 
