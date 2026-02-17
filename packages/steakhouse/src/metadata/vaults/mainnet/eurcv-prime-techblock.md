@@ -4,6 +4,7 @@ vaultAddress: "0xBEeF007ECFBfdF9B919d0050821A9B6DbD634fF0"
 protocol: morpho_v2
 name: Techblock x Steakhouse EURCV
 strategy: Prime
+isListed: false
 ---
 
 Allocating only to Morpho borrow/lend.

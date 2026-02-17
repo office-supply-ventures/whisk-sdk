@@ -4,6 +4,7 @@ vaultAddress: "0xbeefc1cdafc5b4a649b54d07afc6bf0f75c6f4e2"
 protocol: morpho_v1
 name: Ethena USDtb Prime Instant
 strategy: Prime
+isListed: false
 ---
 
 Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.

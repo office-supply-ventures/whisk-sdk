@@ -4,6 +4,7 @@ vaultAddress: "0xCBeeF01994E24a60f7DCB8De98e75AD8BD4Ad60d"
 protocol: morpho_v1
 name: USDC High Yield Instant
 strategy: High Yield
+isListed: false
 ---
 
 **Consider switching to the [Morpho v2 equivalent](https://app.steakhouse.financial/earn/8453/0xbeeff7ae5e00aae3db302e4b0d8c883810a58100)**

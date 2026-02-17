@@ -4,6 +4,7 @@ vaultAddress: "0xbEef00e64ceB8908B58025793fE46Ee2038c2315"
 protocol: morpho_v2
 name: Deblock x EURCV Prime [DECOMMISSIONED]
 strategy: Prime
+isListed: false
 ---
 
 Allocating only to Morpho borrow/lend.

@@ -4,6 +4,7 @@ vaultAddress: "0xbeef047a543e45807105e51a8bbefcc5950fcfba"
 protocol: morpho_v1
 name: USDT Prime Instant
 strategy: Prime
+isListed: false
 ---
 
 **Consider switching to the [Morpho v2 equivalent](https://app.steakhouse.financial/earn/1/0xbeef003c68896c7d2c3c60d363e8d71a49ab2bf9)**

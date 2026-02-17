@@ -4,6 +4,7 @@ vaultAddress: "0x1445a01a57d7b7663cfd7b4ee0a8ec03b379aabd"
 protocol: morpho_v1
 name: USDC High Yield Instant
 strategy: High Yield
+isListed: false
 ---
 
 Allocating only to Morpho borrow/lend. Consider upgrading to a Steakhouse Morpho v2 vault for additional rewards, if available.
