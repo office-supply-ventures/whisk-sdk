@@ -3,7 +3,7 @@
 > This file is auto-generated. Do not edit directly.
 > Run `pnpm generate:vaults` to regenerate.
 
-**Total Vaults: 94**
+**Total Vaults: 95**
 
 ## All Vaults
 
@@ -40,12 +40,13 @@
 | Ethereum | `0xBEeff2b772fa2F443cbd1Dd6D33b0C4bebF4aeb7` | AUSD High Yield Instant | morpho_v1 | High Yield | ✓ |
 | Ethereum | `0xbEeFf89ABb7815cCD5182BD1FF82C4a4F8FCb13D` | AUSD High Yield Instant | morpho_v2 | High Yield | ✓ |
 | Ethereum | `0xBEEFFF506B52B3323c48aFE0Cb405A284F0f9cF2` | cbBTC Turbo | morpho_v2 | Turbo | ✓ |
-| Ethereum | `0xbEef00e64ceB8908B58025793fE46Ee2038c2315` | Deblock x EURCV Prime | morpho_v2 | Prime | ✓ |
+| Ethereum | `0xbEef00e64ceB8908B58025793fE46Ee2038c2315` | Deblock x EURCV Prime [DECOMMISSIONED] | morpho_v2 | Prime | ✓ |
 | Ethereum | `0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4` | ETH Prime Instant | morpho_v1 | Prime | ✓ |
 | Ethereum | `0xbeef0046fcab1dE47E41fB75BB3dC4Dfc94108E3` | ETH Prime Instant | morpho_v2 | Prime | ✓ |
 | Ethereum | `0xBEEFFFcbA46C49A24cfBfFc19166e8f089B59300` | ETH Turbo | morpho_v2 | Turbo | ✓ |
 | Ethereum | `0xBeEFC1CDAfc5b4a649b54D07AFc6bF0f75C6F4E2` | Ethena USDtb Prime Instant | morpho_v1 | Prime | ✓ |
 | Ethereum | `0xbeef0C075Da5D01112AE5cF34d257074fB5DDB2f` | EURCV Prime Instant | morpho_v2 | Prime | ✓ |
+| Ethereum | `0xBEeF007ECFBfdF9B919d0050821A9B6DbD634fF0` | Techblock x Steakhouse EURCV | morpho_v2 | Prime | ✓ |
 | Ethereum | `0xBEeFFF209270748ddd194831b3fa287a5386f5bC` | USDC High Yield Instant | morpho_v1 | High Yield | ✓ |
 | Ethereum | `0xbeeff2C5bF38f90e3482a8b19F12E5a6D2FCa757` | USDC High Yield Instant | morpho_v2 | High Yield | ✓ |
 | Ethereum | `0xBEEFFFC57A26fD8D3b693Ba025ead597DbECEBfe` | USDC High Yield Term | morpho_v2 | Term | ✓ |
@@ -108,14 +109,14 @@
 
 | Chain | Vaults |
 |-------|--------|
-| Ethereum | 47 |
+| Ethereum | 48 |
 | Unichain | 2 |
 | Polygon | 3 |
 | Monad | 8 |
 | Base | 22 |
 | Arbitrum | 8 |
 | Katana | 4 |
-| **Total** | **94** |
+| **Total** | **95** |
 
 ## Summary by Asset
 
@@ -125,9 +126,9 @@
 | ETH | 11 |
 | AUSD | 8 |
 | USDT | 7 |
+| EURCV | 5 |
 | USDT0 | 4 |
 | EURC | 4 |
-| EURCV | 4 |
 | PYUSD | 3 |
 | XSGD | 2 |
 | WSTETH | 2 |
@@ -140,4 +141,4 @@
 | USDQ | 1 |
 | USDR | 1 |
 | JPYC | 1 |
-| **Total** | **94** |
+| **Total** | **95** |
