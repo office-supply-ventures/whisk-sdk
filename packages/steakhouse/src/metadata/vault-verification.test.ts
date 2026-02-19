@@ -58,6 +58,13 @@ const chainConfigs: Record<number, Chain> = {
   [katana.id]: katana,
 }
 
+/** Override default RPCs that are broken, rate-limited, or require auth */
+const rpcOverrides: Record<number, string> = {
+  [mainnet.id]: "https://gateway.tenderly.co/public/mainnet",
+  [base.id]: "https://gateway.tenderly.co/public/base",
+  [polygon.id]: "https://gateway.tenderly.co/public/polygon",
+}
+
 /** MetaMorpho v1.0 factory - same address on mainnet and base (not in SDK) */
 const METAMORPHO_V1_0_FACTORY: Address = "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101"
 
@@ -89,9 +96,11 @@ function createClient(chainId: number) {
   const chain = chainConfigs[chainId]
   if (!chain) return null
 
+  const rpcUrl = rpcOverrides[chainId]
+
   return createPublicClient({
     chain,
-    transport: http(),
+    transport: http(rpcUrl),
     batch: {
       multicall: true,
     },
