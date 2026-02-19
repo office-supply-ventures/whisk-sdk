@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.3.2
+
+### Patch Changes
+
+- 75a2405: Tweaked listings and changed some descriptions
+
 ## 0.3.1
 
 ### Patch Changes
