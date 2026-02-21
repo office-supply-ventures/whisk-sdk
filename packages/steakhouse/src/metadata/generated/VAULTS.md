@@ -3,7 +3,7 @@
 > This file is auto-generated. Do not edit directly.
 > Run `pnpm generate:vaults` to regenerate.
 
-**Total Vaults: 95**
+**Total Vaults: 97**
 
 ## All Vaults
 
@@ -38,6 +38,8 @@
 | Ethereum | `0xBEEf3f3A04e28895f3D5163d910474901981183D` | 3F Ecosystem Vault | morpho_v2 | High Yield | ✓ |
 | Ethereum | `0xBEeff2b772fa2F443cbd1Dd6D33b0C4bebF4aeb7` | AUSD High Yield Instant | morpho_v1 | High Yield | ✗ |
 | Ethereum | `0xbEeFf89ABb7815cCD5182BD1FF82C4a4F8FCb13D` | AUSD High Yield Instant | morpho_v2 | High Yield | ✓ |
+| Ethereum | `0xBEEFF0DeaC1aBa71EF0D88C4291354eb92ef4589` | AUSD High Yield Term | morpho_v2 | Term | ✓ |
+| Ethereum | `0xBEEFFF7e4EedD83A4a4aB53A68D03eC77C9a57a8` | AUSD Turbo | morpho_v2 | Turbo | ✓ |
 | Ethereum | `0xBEEFFF506B52B3323c48aFE0Cb405A284F0f9cF2` | cbBTC Turbo | morpho_v2 | Turbo | ✓ |
 | Ethereum | `0xbEef00e64ceB8908B58025793fE46Ee2038c2315` | Deblock x EURCV Prime [DECOMMISSIONED] | morpho_v2 | Prime | ✗ |
 | Ethereum | `0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4` | ETH Prime Instant | morpho_v1 | Prime | ✗ |
@@ -109,14 +111,14 @@
 
 | Chain | Vaults |
 |-------|--------|
-| Ethereum | 48 |
+| Ethereum | 50 |
 | Unichain | 2 |
 | Polygon | 3 |
 | Monad | 8 |
 | Base | 22 |
 | Arbitrum | 8 |
 | Katana | 4 |
-| **Total** | **95** |
+| **Total** | **97** |
 
 ## Summary by Asset
 
@@ -124,7 +126,7 @@
 |-------|--------|
 | USDC | 40 |
 | ETH | 11 |
-| AUSD | 8 |
+| AUSD | 10 |
 | USDT | 7 |
 | EURCV | 5 |
 | USDT0 | 4 |
@@ -141,4 +143,4 @@
 | USDQ | 1 |
 | USDR | 1 |
 | JPYC | 1 |
-| **Total** | **95** |
+| **Total** | **97** |

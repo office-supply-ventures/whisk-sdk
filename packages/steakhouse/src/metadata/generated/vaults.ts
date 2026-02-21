@@ -275,6 +275,15 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
   },
   {
     chainId: 1,
+    address: "0xBEEFF0DeaC1aBa71EF0D88C4291354eb92ef4589",
+    protocol: "morpho_v2",
+    name: "AUSD High Yield Term",
+    description: "****Agora Finance USD****\n\nAUSD is a stablecoin issued by [Agora](https://www.agora.finance/product/ausd) with reserves custodied by State Street and managed by VanEck.\n\nAUSD Term is a first-of-its kind noncustodial vault allowing AUSD holders to access term-locked strategies with a fixed maturity, through the Morpho v2 construct with our custom adapters.\n\n****Term-locked strategy****\n\nTerm vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/term)) target a 10% liquidity rate held in repo and the remainder programmatically allocated to a simple buy-and-hold strategy of collateral assets with a fixed maturity.\n\nTerm collateral includes, for example, Pendle PT tokens held to maturity. The collateral selected fits our [risk framework](https://www.steakhouse.financial/docs/risk-management) to mitigate solvency risks.\n\nPositions are intended to be held for an extended period (>30 days) to avoid slippage from swapping into positions from diluting the NAV.\n\nUses [Steakhouse Box](https://www.steakhouse.financial/docs/products/infrastructure/box-vaults) custom adapters to extend the noncustodial features of Morpho v2 vaults to additional strategies beyond borrow/lend. As this vault does not use the Morpho adapter registry, it is not available on the Morpho frontend.",
+    strategy: "Term",
+    isListed: true,
+  },
+  {
+    chainId: 1,
     address: "0xBEEfF0d672ab7F5018dFB614c93981045D4aA98a",
     protocol: "morpho_v2",
     strategy: "High Yield",
@@ -296,6 +305,15 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "AUSD High Yield Instant",
     description: "Allocating only to Morpho borrow/lend.\n\nHigh Yield Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/high-yield-instant)) maximizes exposure to repo markets on a wide range of collateral.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of CC or higher to mitigate solvency risks. The aggregated target maturity is less than one day with concentration limits on risk-tiers for underlying collateral.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "High Yield",
+    isListed: true,
+  },
+  {
+    chainId: 1,
+    address: "0xBEEFFF7e4EedD83A4a4aB53A68D03eC77C9a57a8",
+    protocol: "morpho_v2",
+    name: "AUSD Turbo",
+    description: "****Agora Finance USD****\n\nAUSD is a stablecoin issued by [Agora](https://www.agora.finance/product/ausd) with reserves custodied by State Street and managed by VanEck.\n\nAUSD Turbo is a first-of-its kind noncustodial vault allowing AUSD holders to access term-locked strategies with a fixed maturity, through the Morpho v2 construct with our custom adapters.\n\n****High Leverage****\n\nTurbo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/turbo)) target a 10% liquidity rate held in repo and the remainder programmatically allocated to a simple leverage strategy.\n\nNAV accumulates when the cost of borrowing is persistently lower than the return on the underlying strategy. NAV decreases when the borrow cost is higher. The collateral selected fits our [risk framework](https://www.steakhouse.financial/docs/risk-management) to mitigate solvency risks.\n\nPositions are intended to be held for an extended period (>30 days) to avoid slippage from swapping into positions from diluting the NAV.\n\nUses [Steakhouse Box](https://www.steakhouse.financial/docs/products/infrastructure/box-vaults) custom adapters to extend the noncustodial features of Morpho v2 vaults to additional strategies beyond borrow/lend. As this vault does not use the Morpho adapter registry, it is not available on the Morpho frontend.",
+    strategy: "Turbo",
     isListed: true,
   },
   {
