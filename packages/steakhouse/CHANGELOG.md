@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.3.3
+
+### Patch Changes
+
+- 45bebb6: Add new AUSD vaults
+
 ## 0.3.2
 
 ### Patch Changes
