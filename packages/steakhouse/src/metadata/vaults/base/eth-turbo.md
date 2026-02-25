@@ -4,6 +4,7 @@ vaultAddress: "0xbeefffdeadc2c172130ac4c5ae48c8d4708bfb40"
 protocol: morpho_v2
 name: ETH Turbo
 strategy: Turbo
+isListed: False
 ---
 
 **High Leverage**
