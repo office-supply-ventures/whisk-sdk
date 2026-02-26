@@ -1,13 +1,9 @@
 ---
 
 chainId: 1
-
 vaultAddress: "0xBEEFFF7e4EedD83A4a4aB53A68D03eC77C9a57a8"
-
 protocol: morpho_v2
-
 name: AUSD Turbo
-
 strategy: Turbo
 
 ---

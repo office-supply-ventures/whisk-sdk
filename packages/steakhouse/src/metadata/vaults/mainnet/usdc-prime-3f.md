@@ -4,6 +4,7 @@ vaultAddress: "0xbeef3f3a04e28895f3d5163d910474901981183d"
 protocol: morpho_v2
 name: 3F Ecosystem Vault
 strategy: High Yield
+isListed: false
 ---
 
 Allocating only to Morpho borrow/lend.
