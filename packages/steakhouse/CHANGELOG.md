@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.3.5
+
+### Patch Changes
+
+- 0d2d13f: Fixed misconfigued `islisted` instead of `isListed` on Abitrum XAUt0 vault, and added strict validation to prevent this in the future
+
 ## 0.3.4
 
 ### Patch Changes
