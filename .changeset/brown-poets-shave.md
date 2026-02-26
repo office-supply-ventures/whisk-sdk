@@ -1,5 +1,5 @@
 ---
-"@whisk/steakhouse": major
+"@whisk/steakhouse": patch
 ---
 
 Final changes for vault listing
