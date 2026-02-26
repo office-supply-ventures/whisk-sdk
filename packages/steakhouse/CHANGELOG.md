@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.3.4
+
+### Patch Changes
+
+- 38c4811: Final changes for vault listing
+
 ## 0.3.3
 
 ### Patch Changes
