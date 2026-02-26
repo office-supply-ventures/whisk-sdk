@@ -149,6 +149,31 @@ describe("VaultFrontmatterSchema", () => {
     }
   })
 
+  it("rejects unknown frontmatter keys (catches typos like islisted instead of isListed)", () => {
+    const result = VaultFrontmatterSchema.safeParse({
+      chainId: 1,
+      vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
+      protocol: "morpho_v2",
+      islisted: false, // typo: should be isListed
+    })
+
+    expect(result.success).toBe(false)
+    if (!result.success) {
+      expect(result.error.issues[0]?.code).toBe("unrecognized_keys")
+    }
+  })
+
+  it("rejects any unrecognized key", () => {
+    const result = VaultFrontmatterSchema.safeParse({
+      chainId: 1,
+      vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
+      protocol: "morpho_v2",
+      somethingExtra: "oops",
+    })
+
+    expect(result.success).toBe(false)
+  })
+
   it("validates isListed boolean field with default true", () => {
     // Explicit true
     const trueResult = VaultFrontmatterSchema.safeParse({
@@ -297,6 +322,18 @@ name: Test Vault
     const content = `---
 chainId: 1
 vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB"
+---
+`
+    expect(() => parseVaultContent(content, "test.md")).toThrow("Invalid frontmatter in test.md")
+  })
+
+  it("throws on misspelled frontmatter key (e.g. islisted instead of isListed)", () => {
+    const content = `---
+chainId: 1
+vaultAddress: "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB"
+protocol: morpho_v2
+name: Bad Vault
+islisted: false
 ---
 `
     expect(() => parseVaultContent(content, "test.md")).toThrow("Invalid frontmatter in test.md")
