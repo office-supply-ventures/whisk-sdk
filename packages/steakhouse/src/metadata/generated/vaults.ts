@@ -44,7 +44,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "USDC Turbo",
     description: "**High Leverage**\n\nTurbo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/turbo)) target a 10% liquidity rate held in repo and the remainder programmatically allocated to a simple leverage strategy.\n\nNAV accumulates when the cost of borrowing is persistently lower than the return on the underlying strategy. NAV decreases when the borrow cost is higher. The collateral selected fits our [risk framework](https://www.steakhouse.financial/docs/risk-management) to mitigate solvency risks.\n\nPositions are intended to be held for an extended period (>30 days) to avoid slippage from swapping into positions from diluting the NAV.\n\nUses [Steakhouse Box](https://www.steakhouse.financial/docs/products/infrastructure/box-vaults) custom adapters to extend the noncustodial features of Morpho v2 vaults to additional strategies beyond borrow/lend. As this vault does not use the Morpho adapter registry, it is not available on the Morpho frontend.",
     strategy: "Turbo",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 42161,
@@ -62,7 +62,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "USDT0 High Yield Instant",
     description: "Allocating only to Morpho borrow/lend.\n\nHigh Yield Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/high-yield-instant)) maximizes exposure to repo markets on a wide range of collateral.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of CC or higher to mitigate solvency risks. The aggregated target maturity is less than one day with concentration limits on risk-tiers for underlying collateral.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "High Yield",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 42161,
@@ -98,7 +98,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "ETH Turbo",
     description: "**High Leverage**\n\nTurbo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/turbo)) target a 10% liquidity rate held in repo and the remainder programmatically allocated to a simple leverage strategy.\n\nNAV accumulates when the cost of borrowing is persistently lower than the return on the underlying strategy. NAV decreases when the borrow cost is higher. The collateral selected fits our [risk framework](https://www.steakhouse.financial/docs/risk-management) to mitigate solvency risks.\n\nPositions are intended to be held for an extended period (>30 days) to avoid slippage from swapping into positions from diluting the NAV.\n\nUses [Steakhouse Box](https://www.steakhouse.financial/docs/products/infrastructure/box-vaults) custom adapters to extend the noncustodial features of Morpho v2 vaults to additional strategies beyond borrow/lend. As this vault does not use the Morpho adapter registry, it is not available on the Morpho frontend.",
     strategy: "Turbo",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 8453,
@@ -278,7 +278,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     address: "0xBEEFF0DeaC1aBa71EF0D88C4291354eb92ef4589",
     protocol: "morpho_v2",
     name: "AUSD High Yield Term",
-    description: "****Agora Finance USD****\n\nAUSD is a stablecoin issued by [Agora](https://www.agora.finance/product/ausd) with reserves custodied by State Street and managed by VanEck.\n\nAUSD Term is a first-of-its kind noncustodial vault allowing AUSD holders to access term-locked strategies with a fixed maturity, through the Morpho v2 construct with our custom adapters.\n\n****Term-locked strategy****\n\nTerm vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/term)) target a 10% liquidity rate held in repo and the remainder programmatically allocated to a simple buy-and-hold strategy of collateral assets with a fixed maturity.\n\nTerm collateral includes, for example, Pendle PT tokens held to maturity. The collateral selected fits our [risk framework](https://www.steakhouse.financial/docs/risk-management) to mitigate solvency risks.\n\nPositions are intended to be held for an extended period (>30 days) to avoid slippage from swapping into positions from diluting the NAV.\n\nUses [Steakhouse Box](https://www.steakhouse.financial/docs/products/infrastructure/box-vaults) custom adapters to extend the noncustodial features of Morpho v2 vaults to additional strategies beyond borrow/lend. As this vault does not use the Morpho adapter registry, it is not available on the Morpho frontend.",
+    description: "****Agora Finance USD****\n\nAUSD is a stablecoin issued by [Agora](https://www.agora.finance/product/ausd) with reserves custodied by State Street and managed by VanEck.\n\nAUSD Term is a first-of-its kind noncustodial vault allowing AUSD holders to access term-locked strategies with a fixed maturity, through the Morpho v2 construct with our custom adapters.\n\n****Term-locked strategy****\n\nTerm vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/term)) target a 10% liquidity rate held in repo and the remainder programmatically allocated to a simple buy-and-hold strategy of collateral assets with a fixed maturity, such as PT rolling strategies.\n\nTerm collateral includes, for example, Pendle PT tokens held to maturity. The collateral selected fits our [risk framework](https://www.steakhouse.financial/docs/risk-management) to mitigate solvency risks.\n\nPositions are intended to be held for an extended period (>30 days) to avoid slippage from swapping into positions from diluting the NAV.\n\nUses [Steakhouse Box](https://www.steakhouse.financial/docs/products/infrastructure/box-vaults) custom adapters to extend the noncustodial features of Morpho v2 vaults to additional strategies beyond borrow/lend. As this vault does not use the Morpho adapter registry, it is not available on the Morpho frontend.",
     strategy: "Term",
     isListed: true,
   },
@@ -364,7 +364,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "ETH Turbo",
     description: "**High Leverage**\n\nTurbo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/turbo)) target a 10% liquidity rate held in repo and the remainder programmatically allocated to a simple leverage strategy.\n\nNAV accumulates when the cost of borrowing is persistently lower than the return on the underlying strategy. NAV decreases when the borrow cost is higher. The collateral selected fits our [risk framework](https://www.steakhouse.financial/docs/risk-management) to mitigate solvency risks.\n\nPositions are intended to be held for an extended period (>30 days) to avoid slippage from swapping into positions from diluting the NAV.\n\nUses [Steakhouse Box](https://www.steakhouse.financial/docs/products/infrastructure/box-vaults) custom adapters to extend the noncustodial features of Morpho v2 vaults to additional strategies beyond borrow/lend. As this vault does not use the Morpho adapter registry, it is not available on the Morpho frontend.",
     strategy: "Turbo",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 1,
@@ -488,9 +488,9 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     address: "0xBEEFFFC57A26fD8D3b693Ba025ead597DbECEBfe",
     protocol: "morpho_v2",
     name: "USDC High Yield Term",
-    description: "**Term-locked strategy**\n\nTerm vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/term)) target a 10% liquidity rate held in repo and the remainder programmatically allocated to a simple buy-and-hold strategy of collateral assets with a fixed maturity.\n\nTerm collateral includes, for example, Pendle PT tokens held to maturity. The collateral selected fits our [risk framework](https://www.steakhouse.financial/docs/risk-management) to mitigate solvency risks.\n\nPositions are intended to be held for an extended period (>30 days) to avoid slippage from swapping into positions from diluting the NAV.\n\nUses [Steakhouse Box](https://www.steakhouse.financial/docs/products/infrastructure/box-vaults) custom adapters to extend the noncustodial features of Morpho v2 vaults to additional strategies beyond borrow/lend. As this vault does not use the Morpho adapter registry, it is not available on the Morpho frontend.",
+    description: "**Term-locked strategy**\n\nTerm vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/term)) target a 10% liquidity rate held in repo and the remainder programmatically allocated to a simple buy-and-hold strategy of collateral assets with a fixed maturity, such as PT rolling strategies.\n\nTerm collateral includes, for example, Pendle PT tokens held to maturity. The collateral selected fits our [risk framework](https://www.steakhouse.financial/docs/risk-management) to mitigate solvency risks.\n\nPositions are intended to be held for an extended period (>30 days) to avoid slippage from swapping into positions from diluting the NAV.\n\nUses [Steakhouse Box](https://www.steakhouse.financial/docs/products/infrastructure/box-vaults) custom adapters to extend the noncustodial features of Morpho v2 vaults to additional strategies beyond borrow/lend. As this vault does not use the Morpho adapter registry, it is not available on the Morpho frontend.",
     strategy: "Term",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 1,
@@ -499,7 +499,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "3F Ecosystem Vault",
     description: "Allocating only to Morpho borrow/lend.\n\nThis partnership vault is curated on behalf of [3F](https://3f.xyz/), an alternative asset infrastructure developer. \n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "High Yield",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 1,
@@ -582,7 +582,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     name: "USDC Turbo",
     description: "**High Leverage**\n\nTurbo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/turbo)) target a 10% liquidity rate held in repo and the remainder programmatically allocated to a simple leverage strategy.\n\nNAV accumulates when the cost of borrowing is persistently lower than the return on the underlying strategy. NAV decreases when the borrow cost is higher. The collateral selected fits our [risk framework](https://www.steakhouse.financial/docs/risk-management) to mitigate solvency risks.\n\nPositions are intended to be held for an extended period (>30 days) to avoid slippage from swapping into positions from diluting the NAV.\n\nUses [Steakhouse Box](https://www.steakhouse.financial/docs/products/infrastructure/box-vaults) custom adapters to extend the noncustodial features of Morpho v2 vaults to additional strategies beyond borrow/lend. As this vault does not use the Morpho adapter registry, it is not available on the Morpho frontend.",
     strategy: "Turbo",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 1,
@@ -702,6 +702,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     chainId: 143,
     address: "0xbeef04b01e0275D4ac2e2986256BB14E3Ff6ef42",
     protocol: "morpho_v2",
+    description: "Allocating only to Morpho borrow/lend.\n\nPrime Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/prime-instant)) maximizes exposure to repo markets on a blue-chip collateral only.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of AA or higher to mitigate solvency risks. The aggregated target maturity is less than one day.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
     strategy: "Prime",
     isListed: false,
   },
@@ -733,7 +734,7 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     address: "0xBEEf0F82E269760429BE6255Fa00821b7e4b592A",
     protocol: "morpho_v2",
     strategy: "Prime",
-    isListed: true,
+    isListed: false,
   },
   {
     chainId: 137,

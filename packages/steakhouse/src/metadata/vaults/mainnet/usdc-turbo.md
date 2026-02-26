@@ -4,6 +4,7 @@ vaultAddress: "0xbeefff4716a49418d69c251cab8759bb107e57c8"
 protocol: morpho_v2
 name: USDC Turbo
 strategy: Turbo
+isListed: false
 ---
 
 **High Leverage**

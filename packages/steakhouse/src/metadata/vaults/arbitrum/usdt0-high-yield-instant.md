@@ -4,6 +4,7 @@ vaultAddress: "0xbeeff77ce5c059445714e6a3490e273fe7f2492f"
 protocol: morpho_v2
 name: USDT0 High Yield Instant
 strategy: High Yield
+isListed: false
 ---
 
 Allocating only to Morpho borrow/lend.

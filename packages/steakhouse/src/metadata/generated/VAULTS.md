@@ -35,7 +35,7 @@
 | Ethereum | `0x097FFEDb80d4b2Ca6105a07a4D90eB739C45A666` | - | morpho_v1 | Prime | ✗ |
 | Ethereum | `0xBEeF47b9F76C9672B967A7b88d0afFf245Be13ad` | - | morpho_v1 | - | ✗ |
 | Ethereum | `0x833AdaeF212c5cD3f78906B44bBfb18258F238F0` | - | morpho_v1 | - | ✗ |
-| Ethereum | `0xBEEf3f3A04e28895f3D5163d910474901981183D` | 3F Ecosystem Vault | morpho_v2 | High Yield | ✓ |
+| Ethereum | `0xBEEf3f3A04e28895f3D5163d910474901981183D` | 3F Ecosystem Vault | morpho_v2 | High Yield | ✗ |
 | Ethereum | `0xBEeff2b772fa2F443cbd1Dd6D33b0C4bebF4aeb7` | AUSD High Yield Instant | morpho_v1 | High Yield | ✗ |
 | Ethereum | `0xbEeFf89ABb7815cCD5182BD1FF82C4a4F8FCb13D` | AUSD High Yield Instant | morpho_v2 | High Yield | ✓ |
 | Ethereum | `0xBEEFF0DeaC1aBa71EF0D88C4291354eb92ef4589` | AUSD High Yield Term | morpho_v2 | Term | ✓ |
@@ -44,24 +44,24 @@
 | Ethereum | `0xbEef00e64ceB8908B58025793fE46Ee2038c2315` | Deblock x EURCV Prime [DECOMMISSIONED] | morpho_v2 | Prime | ✗ |
 | Ethereum | `0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4` | ETH Prime Instant | morpho_v1 | Prime | ✗ |
 | Ethereum | `0xbeef0046fcab1dE47E41fB75BB3dC4Dfc94108E3` | ETH Prime Instant | morpho_v2 | Prime | ✓ |
-| Ethereum | `0xBEEFFFcbA46C49A24cfBfFc19166e8f089B59300` | ETH Turbo | morpho_v2 | Turbo | ✓ |
+| Ethereum | `0xBEEFFFcbA46C49A24cfBfFc19166e8f089B59300` | ETH Turbo | morpho_v2 | Turbo | ✗ |
 | Ethereum | `0xBeEFC1CDAfc5b4a649b54D07AFc6bF0f75C6F4E2` | Ethena USDtb Prime Instant | morpho_v1 | Prime | ✗ |
 | Ethereum | `0xbeef003E31546C7210687f1A7b40d096BE83ec58` | EURC Prime Instant | morpho_v2 | Prime | ✓ |
 | Ethereum | `0xbeef0C075Da5D01112AE5cF34d257074fB5DDB2f` | EURCV Prime Instant | morpho_v2 | Prime | ✓ |
 | Ethereum | `0xBEeF007ECFBfdF9B919d0050821A9B6DbD634fF0` | Techblock x Steakhouse EURCV | morpho_v2 | Prime | ✗ |
 | Ethereum | `0xBEeFFF209270748ddd194831b3fa287a5386f5bC` | USDC High Yield Instant | morpho_v1 | High Yield | ✓ |
 | Ethereum | `0xbeeff2C5bF38f90e3482a8b19F12E5a6D2FCa757` | USDC High Yield Instant | morpho_v2 | High Yield | ✓ |
-| Ethereum | `0xBEEFFFC57A26fD8D3b693Ba025ead597DbECEBfe` | USDC High Yield Term | morpho_v2 | Term | ✓ |
+| Ethereum | `0xBEEFFFC57A26fD8D3b693Ba025ead597DbECEBfe` | USDC High Yield Term | morpho_v2 | Term | ✗ |
 | Ethereum | `0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB` | USDC Prime Instant | morpho_v1 | Prime | ✓ |
 | Ethereum | `0xbeef088055857739C12CD3765F20b7679Def0f51` | USDC Prime Instant | morpho_v2 | Prime | ✓ |
-| Ethereum | `0xBEEFFF4716a49418D69c251cab8759bB107e57C8` | USDC Turbo | morpho_v2 | Turbo | ✓ |
+| Ethereum | `0xBEEFFF4716a49418D69c251cab8759bB107e57C8` | USDC Turbo | morpho_v2 | Turbo | ✗ |
 | Ethereum | `0xA0804346780b4c2e3bE118ac957D1DB82F9d7484` | USDT High Yield Instant | morpho_v1 | High Yield | ✗ |
 | Ethereum | `0xbeeff07d991C04CD640DE9F15C08ba59c4FEDEb7` | USDT High Yield Instant | morpho_v2 | High Yield | ✓ |
 | Ethereum | `0xbEef047a543E45807105E51A8BBEFCc5950fcfBa` | USDT Prime Instant | morpho_v1 | Prime | ✗ |
 | Ethereum | `0xbeef003C68896c7D2c3c60d363e8d71a49Ab2bf9` | USDT Prime Instant | morpho_v2 | Prime | ✓ |
 | Unichain | `0x0993Ae24a988c6925d80aD61344a76B81aA0D34c` | - | morpho_v1 | Prime | ✗ |
 | Unichain | `0x9E111aCef0CF3bd8C38715B88e78BE31C1109F8a` | - | morpho_v1 | Prime | ✗ |
-| Polygon | `0xBEEf0F82E269760429BE6255Fa00821b7e4b592A` | - | morpho_v2 | Prime | ✓ |
+| Polygon | `0xBEEf0F82E269760429BE6255Fa00821b7e4b592A` | - | morpho_v2 | Prime | ✗ |
 | Polygon | `0xAcB0DCe4b0FF400AD8F6917f3ca13E434C9ed6bC` | - | morpho_v1 | High Yield | ✗ |
 | Polygon | `0xB7c9988D3922F25a336a469F3bB26CA61FE79e24` | - | morpho_v1 | High Yield | ✗ |
 | Monad | `0x32841A8511D5c2c5b253f45668780B99139e476D` | - | morpho_v1 | - | ✗ |
@@ -85,7 +85,7 @@
 | Base | `0xBeeF0c8333b3De8F0450565834db4EB05dEf7A5F` | - | morpho_v1 | - | ✗ |
 | Base | `0xbEEf050a7485865A7a8d8Ca0CC5f7536b7a3443e` | ETH High Yield Instant | morpho_v1 | High Yield | ✗ |
 | Base | `0xbeef00f0A818894a2Cf111644A5098421611100E` | ETH Prime Instant | morpho_v2 | Prime | ✓ |
-| Base | `0xBEEFFFdeADc2c172130Ac4C5Ae48c8D4708BFb40` | ETH Turbo | morpho_v2 | Turbo | ✓ |
+| Base | `0xBEEFFFdeADc2c172130Ac4C5Ae48c8D4708BFb40` | ETH Turbo | morpho_v2 | Turbo | ✗ |
 | Base | `0xBeEF086b8807Dc5E5A1740C5E3a7C4c366eA6ab5` | EURC Prime Instant | morpho_v1 | Prime | ✗ |
 | Base | `0xbeef009F28cCf367444a9F79096862920e025DC1` | EURC Prime Instant | morpho_v2 | Prime | ✓ |
 | Base | `0xCBeeF01994E24a60f7DCB8De98e75AD8BD4Ad60d` | USDC High Yield Instant | morpho_v1 | High Yield | ✗ |
@@ -98,9 +98,9 @@
 | Arbitrum | `0x250CF7c82bAc7cB6cf899b6052979d4B5BA1f9ca` | - | morpho_v1 | Prime | ✗ |
 | Arbitrum | `0x5c0C306Aaa9F877de636f4d5822cA9F2E81563BA` | USDC High Yield Instant | morpho_v1 | High Yield | ✗ |
 | Arbitrum | `0xbeeff1D5dE8F79ff37a151681100B039661da518` | USDC High Yield Instant | morpho_v2 | High Yield | ✓ |
-| Arbitrum | `0xBEEFFF13dD098De415e07F033daE65205B31A894` | USDC Turbo | morpho_v2 | Turbo | ✓ |
+| Arbitrum | `0xBEEFFF13dD098De415e07F033daE65205B31A894` | USDC Turbo | morpho_v2 | Turbo | ✗ |
 | Arbitrum | `0x4739E2c293bDCD835829aA7c5d7fBdee93565D1a` | USDT0 High Yield Instant | morpho_v1 | High Yield | ✗ |
-| Arbitrum | `0xbeeff77CE5C059445714E6A3490E273fE7F2492F` | USDT0 High Yield Instant | morpho_v2 | High Yield | ✓ |
+| Arbitrum | `0xbeeff77CE5C059445714E6A3490E273fE7F2492F` | USDT0 High Yield Instant | morpho_v2 | High Yield | ✗ |
 | Arbitrum | `0xBEEFFFFE0E9b26bBe3B5cE851539366991C3BF39` | XAUT0 Turbo | morpho_v2 | Turbo | ✓ |
 | Katana | `0xdE6a4F28Acfe431DD1CfA2D9c7A3d8301624a841` | - | morpho_v1 | - | ✗ |
 | Katana | `0x82c4C641CCc38719ae1f0FBd16A64808d838fDfD` | AUSD High Yield Instant | morpho_v1 | High Yield | ✗ |
