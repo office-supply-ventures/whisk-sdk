@@ -101,7 +101,7 @@
 | Arbitrum | `0xBEEFFF13dD098De415e07F033daE65205B31A894` | USDC Turbo | morpho_v2 | Turbo | ✗ |
 | Arbitrum | `0x4739E2c293bDCD835829aA7c5d7fBdee93565D1a` | USDT0 High Yield Instant | morpho_v1 | High Yield | ✗ |
 | Arbitrum | `0xbeeff77CE5C059445714E6A3490E273fE7F2492F` | USDT0 High Yield Instant | morpho_v2 | High Yield | ✗ |
-| Arbitrum | `0xBEEFFFFE0E9b26bBe3B5cE851539366991C3BF39` | XAUT0 Turbo | morpho_v2 | Turbo | ✓ |
+| Arbitrum | `0xBEEFFFFE0E9b26bBe3B5cE851539366991C3BF39` | XAUT0 Turbo | morpho_v2 | Turbo | ✗ |
 | Katana | `0xdE6a4F28Acfe431DD1CfA2D9c7A3d8301624a841` | - | morpho_v1 | - | ✗ |
 | Katana | `0x82c4C641CCc38719ae1f0FBd16A64808d838fDfD` | AUSD High Yield Instant | morpho_v1 | High Yield | ✗ |
 | Katana | `0x1445A01a57D7B7663CfD7B4EE0a8Ec03B379aabD` | USDC High Yield Instant | morpho_v1 | High Yield | ✗ |

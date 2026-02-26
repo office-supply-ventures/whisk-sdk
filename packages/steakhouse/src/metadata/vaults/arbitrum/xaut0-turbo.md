@@ -4,7 +4,7 @@ vaultAddress: "0xBEEFFFFE0E9b26bBe3B5cE851539366991C3BF39"
 protocol: morpho_v2
 name: XAUT0 Turbo
 strategy: Turbo
-islisted: false
+isListed: false
 ---
 
 **Carry involves leverage**

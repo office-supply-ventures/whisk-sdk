@@ -33,18 +33,20 @@ export function getChainFolder(filePath: string, vaultsDir: string): string | nu
   return parts.length > 1 ? (parts[0] ?? null) : null
 }
 
-/** Zod schema for vault frontmatter validation */
-export const VaultFrontmatterSchema = z.object({
-  chainId: z.number().int().positive(),
-  vaultAddress: z
-    .string()
-    .refine((addr) => isAddress(addr, { strict: false }), "Invalid Ethereum address")
-    .transform((addr) => getAddress(addr)), // checksums the address
-  protocol: z.enum(VAULT_PROTOCOLS),
-  name: z.string().min(1).optional(),
-  strategy: z.enum(VAULT_STRATEGIES).optional(),
-  isListed: z.boolean().default(true),
-})
+/** Zod schema for vault frontmatter validation (strict: rejects unknown keys like typos) */
+export const VaultFrontmatterSchema = z
+  .object({
+    chainId: z.number().int().positive(),
+    vaultAddress: z
+      .string()
+      .refine((addr) => isAddress(addr, { strict: false }), "Invalid Ethereum address")
+      .transform((addr) => getAddress(addr)), // checksums the address
+    protocol: z.enum(VAULT_PROTOCOLS),
+    name: z.string().min(1).optional(),
+    strategy: z.enum(VAULT_STRATEGIES).optional(),
+    isListed: z.boolean().default(true),
+  })
+  .strict()
 
 type VaultFrontmatter = z.infer<typeof VaultFrontmatterSchema>
 
