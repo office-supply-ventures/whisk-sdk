@@ -12,7 +12,7 @@ strategy: Turbo
 
 AUSD is a stablecoin issued by [Agora](https://www.agora.finance/product/ausd) with reserves custodied by State Street and managed by VanEck.
 
-AUSD Turbo is a first-of-its kind noncustodial vault allowing AUSD holders to access term-locked strategies with a fixed maturity, through the Morpho v2 construct with our custom adapters.
+AUSD Turbo is a first-of-its kind noncustodial vault allowing AUSD holders to access high-leverage strategies, through the Morpho v2 construct with our custom adapters.
 
 ****High Leverage****
 
