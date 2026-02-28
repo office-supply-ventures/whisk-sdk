@@ -6,7 +6,6 @@ nodejs = '24.13.0'
 pnpm = '10.26.0'
 gitleaks = '8.28.0'
 lefthook = '1.12.3'
-npm = "latest"
 
 [settings]
 experimental = true
