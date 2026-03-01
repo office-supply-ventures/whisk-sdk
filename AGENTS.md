@@ -165,8 +165,10 @@ export function useMyData(variables: GetMyDataVariables) {
 
 ## Releasing
 
+Always use `pnpm changeset` (interactive CLI) to create changesets — never create changeset files manually.
+
 ```bash
-pnpm changeset              # Create changeset describing your changes
+pnpm changeset              # Create changeset describing your changes (interactive)
 pnpm changeset:version      # Bump versions and update changelogs
 git add -A && git commit    # Commit the version bumps
 ```
