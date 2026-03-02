@@ -1,6 +1,6 @@
 ---
-chainId: 42161
-vaultAddress: "0xbeefff13dd098de415e07f033dae65205b31a894"
+chainId: 8453
+vaultAddress: "0xBEEFFFe68dFc2D3BD1ABdAd37c70634973b16478"
 protocol: morpho_v2
 name: USDC Turbo
 strategy: Turbo
@@ -15,6 +15,4 @@ NAV accumulates when the cost of borrowing is persistently lower than the return
 
 Positions are intended to be held for an extended period (>30 days) to avoid slippage from swapping into positions from diluting the NAV.
 
-Uses [Steakhouse Box](https://www.steakhouse.financial/docs/products/infrastructure/box-vaults) custom adapters to extend the noncustodial features of Morpho v2 vaults to additional strategies beyond borrow/lend. Position constraints are encoded onchain in the Box adapter permissions. As this vault does not use the Morpho adapter registry, it is not available on the Morpho frontend.
-
-Users are advised Turbo vaults are significantly less liquid than repo vaults and face possibility of loss.
+Uses [Steakhouse Box](https://www.steakhouse.financial/docs/products/infrastructure/box-vaults) custom adapters to extend the noncustodial features of Morpho v2 vaults to additional strategies beyond borrow/lend. As this vault does not use the Morpho adapter registry, it is not available on the Morpho frontend.
