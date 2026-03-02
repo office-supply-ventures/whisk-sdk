@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.3.8
+
+### Patch Changes
+
+- e8e017d: Update vault list
+
 ## 0.3.7
 
 ### Patch Changes
