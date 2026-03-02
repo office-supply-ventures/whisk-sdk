@@ -1,6 +1,5 @@
 import {
   type AnyVariables,
-  cacheExchange,
   fetchExchange,
   type TypedDocumentNode,
   Client as UrqlClient,
@@ -23,7 +22,7 @@ export class WhiskClient {
   constructor({ apiKey, url = DEFAULT_WHISK_API_URL, debug = false }: WhiskClientConfig) {
     this.urql = new UrqlClient({
       url,
-      exchanges: [scalarsExchange, cacheExchange, fetchExchange],
+      exchanges: [scalarsExchange, fetchExchange],
       fetchOptions: {
         headers: {
           Authorization: `Bearer ${apiKey}`,

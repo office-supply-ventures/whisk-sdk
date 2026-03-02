@@ -1,5 +1,18 @@
 # @whisk/client
 
+## 0.0.19
+
+### Patch Changes
+
+- 6be1aa3: Remove urql's cacheExchange to prevent stale data on server-side singletons
+
+## 0.0.18
+
+### Patch Changes
+
+- Updated dependencies [ced17e4]
+  - @whisk/graphql@0.0.18
+
 ## 0.0.17
 
 ### Patch Changes

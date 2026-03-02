@@ -133,6 +133,7 @@ type BoxVault implements Erc4626Vault & Erc20 {
   totalAssets: TokenAmount!
   apy(timeframe: ApyTimeframe!): Apy!
   historical: Erc4626VaultHistorical
+  leverage: Float!
   allocations: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
   fundingModules: [BoxFundingModule!]! @deprecated(reason: "Schema is subject to change, not yet stable")
 }
@@ -273,6 +274,7 @@ type Erc4626VaultPositionPage {
 }
 
 enum ApyTimeframe {
+  instant
   six_hours
   one_day
   seven_days
@@ -432,7 +434,7 @@ type MorphoVault implements Erc4626Vault & Erc20 {
   deploymentTimestamp: Int
   timelockDuration: BigInt!
   totalSupplied: TokenAmount! @deprecated(reason: "Use totalAssets instead")
-  supplyApy: Apy! @deprecated(reason: "Use apy(timeframe: one_day) instead")
+  supplyApy: Apy! @deprecated(reason: "Use apy(timeframe: instant) instead")
   supplyApy1d: Apy! @deprecated(reason: "Use apy(timeframe: one_day) instead")
   supplyApy7d: Apy! @deprecated(reason: "Use apy(timeframe: seven_days) instead")
   supplyApy30d: Apy! @deprecated(reason: "Use apy(timeframe: thirty_days) instead")
@@ -482,6 +484,7 @@ interface Adapter {
   adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
   name: String
   riskAssessment: RiskAssessment!
+  instantApy: Float!
 }
 
 type MarketV1Adapter implements Adapter {
@@ -489,6 +492,7 @@ type MarketV1Adapter implements Adapter {
   adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
   name: String @deprecated(reason: "Schema is subject to change, not yet stable")
   riskAssessment: RiskAssessment!
+  instantApy: Float!
   marketCaps: [MarketV1ExposureCap!]! @deprecated(reason: "Schema is subject to change, not yet stable")
 }
 
@@ -497,6 +501,7 @@ type VaultV1Adapter implements Adapter {
   adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
   name: String @deprecated(reason: "Schema is subject to change, not yet stable")
   riskAssessment: RiskAssessment!
+  instantApy: Float!
   vault: MorphoVault @deprecated(reason: "Schema is subject to change, not yet stable")
 }
 
@@ -505,6 +510,7 @@ type BoxVaultAdapter implements Adapter {
   adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
   name: String @deprecated(reason: "Schema is subject to change, not yet stable")
   riskAssessment: RiskAssessment!
+  instantApy: Float!
   vault: BoxVault @deprecated(reason: "Schema is subject to change, not yet stable")
 }
 
@@ -513,6 +519,7 @@ type Erc4626VaultAdapter implements Adapter {
   adapterCap: AdapterCap
   name: String
   riskAssessment: RiskAssessment!
+  instantApy: Float!
   vault: Erc4626Vault
 }
 
@@ -521,6 +528,7 @@ type UnknownAdapter implements Adapter {
   adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
   name: String @deprecated(reason: "Schema is subject to change, not yet stable")
   riskAssessment: RiskAssessment!
+  instantApy: Float!
 }
 
 interface Cap {
@@ -696,6 +704,8 @@ type MorphoMarketPosition {
   collateralAmount: TokenAmount
   healthFactor: OnchainAmount
   ltv: OnchainAmount
+  loopingNetApy: Float!
+  loopingLeverage: Float!
   walletLoanAssetHolding: TokenHolding!
   walletCollateralAssetHolding: TokenHolding
 }

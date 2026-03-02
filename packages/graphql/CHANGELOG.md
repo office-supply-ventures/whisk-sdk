@@ -1,5 +1,11 @@
 # @whisk/graphql
 
+## 0.0.18
+
+### Patch Changes
+
+- ced17e4: Update whisk types, fixed steakhouse vault type
+
 ## 0.0.17
 
 ### Patch Changes
