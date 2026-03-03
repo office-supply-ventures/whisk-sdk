@@ -16,7 +16,7 @@ AUSD Term is a first-of-its kind noncustodial vault allowing AUSD holders to acc
 
 ****Term-locked strategy****
 
-Term vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/term)) target a 10% liquidity rate held in repo and the remainder programmatically allocated to a simple buy-and-hold strategy of collateral assets with a fixed maturity, such as PT rolling strategies.
+Term vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/high-yield-term)) target a 10% liquidity rate held in repo and the remainder programmatically allocated to a simple buy-and-hold strategy of collateral assets with a fixed maturity, such as PT rolling strategies.
 
 Term collateral includes, for example, Pendle PT tokens held to maturity. The collateral selected fits our [risk framework](https://www.steakhouse.financial/docs/risk-management) to mitigate solvency risks.
 
