@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.3.9
+
+### Patch Changes
+
+- 63c98ba: Updated vault descriptions
+
 ## 0.3.8
 
 ### Patch Changes
