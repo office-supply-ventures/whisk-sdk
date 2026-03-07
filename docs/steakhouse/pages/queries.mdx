@@ -1,12 +1,184 @@
 # Queries
 
-Query functions for server-side usage, Node.js scripts, Next.js server components, or any non-React context.
+Fully typed query functions for Steakhouse data.
+
+All examples below assume a client is already created:
+
+```ts
+import { SteakhouseClient } from "@whisk/steakhouse"
+
+const client = new SteakhouseClient({
+  apiKey: process.env.STEAKHOUSE_API_KEY!,
+})
+```
+
+## getVaults
+
+Fetch all Steakhouse-curated vaults. Designed for vault discovery and table views.
+
+```ts twoslash
+import { SteakhouseClient, getVaults } from "@whisk/steakhouse"
+
+const client = new SteakhouseClient({ apiKey: "your-api-key" })
+
+const vaults = await getVaults(client) // [!code focus]
+
+for (const vault of vaults) {
+  vault.name
+  vault.address
+  vault.symbol
+  vault.decimals
+  vault.icon
+  vault.priceUsd
+  vault.chain
+  vault.asset
+  vault.totalAssets
+  vault.apyInstant
+  vault.apy1d
+  vault.apy7d
+  vault.apy30d
+  vault.riskAssessment
+  vault.__typename
+  vault.strategy
+  vault.isListed
+}
+```
+
+## getVault
+
+Fetch detailed data for a single vault. Includes all summary fields plus protocol-specific data.
+
+The vault must be in the Steakhouse registry (returned by `getVaults`) or queried as a Box vault with `isBox: true`.
+
+:::warning
+Throws an error if the vault is not in the Steakhouse registry and `isBox` is not set to `true`, or if the vault is not found by the API.
+:::
+
+```ts twoslash
+import { SteakhouseClient, getVault } from "@whisk/steakhouse"
+
+const client = new SteakhouseClient({ apiKey: "your-api-key" })
+
+const vault = await getVault(client, { // [!code focus]
+  chainId: 1, // [!code focus]
+  vaultAddress: "0x...", // [!code focus]
+}) // [!code focus]
+
+// Common fields (same as getVaults, plus description)
+vault.name
+vault.address
+vault.symbol
+vault.decimals
+vault.icon
+vault.priceUsd
+vault.chain
+vault.asset
+vault.totalAssets
+vault.apyInstant
+vault.apy1d
+vault.apy7d
+vault.apy30d
+vault.riskAssessment
+vault.__typename
+vault.strategy
+vault.description
+vault.isListed
+```
+
+### Protocol-specific fields
+
+Narrow on `__typename` to access protocol-specific fields.
+
+**Morpho V1**:
+
+```ts twoslash
+import { SteakhouseClient, getVault } from "@whisk/steakhouse"
+const client = new SteakhouseClient({ apiKey: "your-api-key" })
+const vault = await getVault(client, { chainId: 1, vaultAddress: "0x..." })
+// ---cut---
+if (vault.__typename === "MorphoVault") {
+  vault.deploymentTimestamp
+  vault.performanceFeeV1
+  vault.curatorAddress
+  vault.guardianAddress
+  vault.totalLiquidity
+  vault.allocations
+}
+```
+
+**Morpho V2**:
+
+```ts twoslash
+import { SteakhouseClient, getVault } from "@whisk/steakhouse"
+const client = new SteakhouseClient({ apiKey: "your-api-key" })
+const vault = await getVault(client, { chainId: 1, vaultAddress: "0x..." })
+// ---cut---
+if (vault.__typename === "MorphoVaultV2") {
+  vault.deploymentTimestamp
+  vault.performanceFee
+  vault.managementFee
+  vault.nav
+  vault.liquidityAssets
+  vault.idleAssets
+  vault.allocations
+}
+```
+
+**Box**:
+
+```ts twoslash
+import { SteakhouseClient, getVault } from "@whisk/steakhouse"
+const client = new SteakhouseClient({ apiKey: "your-api-key" })
+const vault = await getVault(client, { chainId: 1, vaultAddress: "0x..." })
+// ---cut---
+if (vault.__typename === "BoxVault") {
+  vault.leverage
+  vault.allocations
+  vault.fundingModules
+}
+```
+
+### Box vaults
+
+Box vaults are not in the Steakhouse registry. Pass `isBox: true` to query them directly.
+
+```ts twoslash
+import { SteakhouseClient, getVault } from "@whisk/steakhouse"
+
+const client = new SteakhouseClient({ apiKey: "your-api-key" })
+
+const vault = await getVault(client, { // [!code focus]
+  chainId: 1, // [!code focus]
+  vaultAddress: "0x...", // [!code focus]
+  isBox: true, // [!code focus]
+}) // [!code focus]
+```
+
+## getVaultHistory
+
+Fetch daily and weekly snapshots with APY and total supplied.
+
+:::info
+Historical data is only available for Morpho vaults (V1 and V2). For non-Morpho vaults or vaults not in the Steakhouse registry, returns `{ daily: null, weekly: null }`.
+:::
+
+```ts twoslash
+import { SteakhouseClient, getVaultHistory } from "@whisk/steakhouse"
+
+const client = new SteakhouseClient({ apiKey: "your-api-key" })
+
+const historical = await getVaultHistory(client, { // [!code focus]
+  chainId: 1, // [!code focus]
+  vaultAddress: "0x...", // [!code focus]
+}) // [!code focus]
+
+historical.daily
+historical.weekly
+```
 
 ## getStats
 
-Fetch Steakhouse stats: unique depositor count and current TVL breakdown by chain, protocol, and asset category. Optionally include historical TVL snapshots.
-
-### Current stats only
+Fetch Steakhouse aggregate stats.
 
 ```ts twoslash
 import { SteakhouseClient, getStats } from "@whisk/steakhouse"
@@ -15,16 +187,14 @@ const client = new SteakhouseClient({ apiKey: "your-api-key" })
 
 const stats = await getStats(client) // [!code focus]
 
-stats.uniqueDepositors        // Unique depositor count (or null)
-stats.tvl.current.totalUsd       // Total TVL in USD
-stats.tvl.current.byChain        // Breakdown by chain (name, id, icon, tvlUsd)
-stats.tvl.current.byProtocol     // Breakdown by protocol (protocol, tvlUsd)
-stats.tvl.current.byAssetCategory // Breakdown by asset category (category, tvlUsd)
+stats.uniqueDepositors
+stats.tvl.current.totalUsd
+stats.tvl.current.byChain
+stats.tvl.current.byProtocol
+stats.tvl.current.byAssetCategory
 ```
 
 ### With historical TVL
-
-Pass `{ includeHistorical: true }` to also fetch daily historical TVL snapshots (last 365 days, oldest first).
 
 ```ts twoslash
 import { SteakhouseClient, getStats } from "@whisk/steakhouse"
@@ -33,14 +203,5 @@ const client = new SteakhouseClient({ apiKey: "your-api-key" })
 
 const stats = await getStats(client, { includeHistorical: true }) // [!code focus]
 
-stats.tvl.historical // TvlSnapshot[] — daily snapshots
-
-// Each snapshot has a timestamp and the same breakdowns as stats.tvl.current
-for (const snapshot of stats.tvl.historical!) {
-  snapshot.timestamp     // Unix timestamp (seconds)
-  snapshot.totalUsd      // Total TVL at this point in time
-  snapshot.byChain       // Chain breakdown at this point
-  snapshot.byProtocol    // Protocol breakdown at this point
-  snapshot.byAssetCategory // Asset category breakdown at this point
-}
+stats.tvl.historical // daily snapshots (last 365 days)
 ```

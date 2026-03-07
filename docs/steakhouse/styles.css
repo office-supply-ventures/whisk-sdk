@@ -1,0 +1,58 @@
+:root {
+  --vocs-color_codeBlockBackground: #f3eede;
+  --vocs-color_codeTitleBackground: #ede9db;
+  --vocs-color_noteBackground: #ede9db;
+  --vocs-color_noteBorder: #086552;
+  --vocs-color_noteText: #1a1e20;
+  --vocs-color_tipBackground: #ede9db;
+  --vocs-color_tipBorder: #086552;
+  --vocs-color_tipText: #1a1e20;
+  --vocs-color_successBackground: #ede9db;
+  --vocs-color_successBorder: #086552;
+  --vocs-color_dangerBackground: #f3eede;
+  --vocs-color_dangerBorder: #f15c3b;
+}
+
+/* Tables */
+.vocs_Table table {
+  background-color: transparent;
+}
+
+.vocs_Table thead tr {
+  background-color: #f3eede;
+}
+
+.vocs_Table tbody tr {
+  background-color: transparent;
+}
+
+.vocs_Table tbody tr:nth-child(2n) {
+  background-color: #f3eede;
+}
+
+:root.dark {
+  --vocs-color_codeBlockBackground: #1a1e20;
+  --vocs-color_codeTitleBackground: #23282b;
+  --vocs-color_noteBackground: #1a1e20;
+  --vocs-color_noteBorder: #0a856c;
+  --vocs-color_noteText: #faf5e5;
+  --vocs-color_tipBackground: #1a1e20;
+  --vocs-color_tipBorder: #0a856c;
+  --vocs-color_tipText: #faf5e5;
+  --vocs-color_successBackground: #1a1e20;
+  --vocs-color_successBorder: #0a856c;
+  --vocs-color_dangerBackground: #1a1e20;
+  --vocs-color_dangerBorder: #f15c3b;
+}
+
+:root.dark .vocs_Table thead tr {
+  background-color: #1a1e20;
+}
+
+:root.dark .vocs_Table tbody tr {
+  background-color: transparent;
+}
+
+:root.dark .vocs_Table tbody tr:nth-child(2n) {
+  background-color: #1a1e20;
+}
