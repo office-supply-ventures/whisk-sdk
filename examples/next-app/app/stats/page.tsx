@@ -3,16 +3,24 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { steakhouseClient } from "../../lib/steakhouse"
 import { TvlChart } from "./TvlChart"
 
+const usdFormat = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  notation: "compact",
+  maximumFractionDigits: 2,
+})
+
+const numberFormat = new Intl.NumberFormat("en-US", {
+  notation: "compact",
+  maximumFractionDigits: 1,
+})
+
 function formatUsd(value: number): string {
-  if (value >= 1_000_000_000) return `$${(value / 1_000_000_000).toFixed(2)}B`
-  if (value >= 1_000_000) return `$${(value / 1_000_000).toFixed(1)}M`
-  return `$${value.toLocaleString()}`
+  return usdFormat.format(value)
 }
 
 function formatNumber(value: number): string {
-  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`
-  if (value >= 1_000) return `${(value / 1_000).toFixed(1)}K`
-  return value.toLocaleString()
+  return numberFormat.format(value)
 }
 
 const PROTOCOL_LABELS: Record<string, string> = {
