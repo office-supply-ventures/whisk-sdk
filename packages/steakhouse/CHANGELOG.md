@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.4.0
+
+### Minor Changes
+
+- b45b137: Added `getVaults`, `getVault`, and `getVaultHistory`
+
 ## 0.3.9
 
 ### Patch Changes
