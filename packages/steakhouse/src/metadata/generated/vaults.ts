@@ -133,6 +133,12 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
   },
   {
     chainId: 8453,
+    address: "0xbeEf003c7df2AB8dEF9Fbfc4B233CC13f83D1dA5",
+    protocol: "morpho_v2",
+    isListed: false,
+  },
+  {
+    chainId: 8453,
     address: "0xBeEf2d50B428675a1921bC6bBF4bfb9D8cF1461A",
     protocol: "morpho_v1",
     isListed: false,
@@ -210,6 +216,12 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
   {
     chainId: 8453,
     address: "0xbeef00b05AaFCf3caF27484Eea919E0AE7c7D048",
+    protocol: "morpho_v2",
+    isListed: false,
+  },
+  {
+    chainId: 8453,
+    address: "0xBeEF00283d2b26a55F56B9f8c283b25e9a22E95b",
     protocol: "morpho_v2",
     isListed: false,
   },

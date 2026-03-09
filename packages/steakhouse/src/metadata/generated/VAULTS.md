@@ -3,7 +3,7 @@
 > This file is auto-generated. Do not edit directly.
 > Run `pnpm generate:vaults` to regenerate.
 
-**Total Vaults: 98**
+**Total Vaults: 100**
 
 ## All Vaults
 
@@ -74,12 +74,14 @@
 | Monad | `0x802c91d807A8DaCA257c4708ab264B6520964e44` | USDC High Yield Instant | morpho_v1 | High Yield | ✗ |
 | Base | `0xBEeFA28D5e56d41D35df760AB53B94D9FfD7051F` | - | morpho_v1 | Prime | ✗ |
 | Base | `0xBeEFDebfaea8350Ce8C4b3a6B7E5FE629c9e27A8` | - | morpho_v2 | - | ✗ |
+| Base | `0xbeEf003c7df2AB8dEF9Fbfc4B233CC13f83D1dA5` | - | morpho_v2 | - | ✗ |
 | Base | `0xBeEf2d50B428675a1921bC6bBF4bfb9D8cF1461A` | - | morpho_v1 | - | ✗ |
 | Base | `0xBEEFA7B88064FeEF0cEe02AAeBBd95D30df3878F` | - | morpho_v1 | High Yield | ✗ |
 | Base | `0xBeeFa74640a5f7c28966cbA82466EED5609444E0` | - | morpho_v1 | - | ✗ |
 | Base | `0xBeEF00fc6e87dE086A0e29169A2f6e25cF5C11a9` | - | morpho_v2 | - | ✗ |
 | Base | `0xbeef00b4ebc8094A60006D75B277d30480e0a6D8` | - | morpho_v2 | - | ✗ |
 | Base | `0xbeef00b05AaFCf3caF27484Eea919E0AE7c7D048` | - | morpho_v2 | - | ✗ |
+| Base | `0xBeEF00283d2b26a55F56B9f8c283b25e9a22E95b` | - | morpho_v2 | - | ✗ |
 | Base | `0xbeEFe1372c0A384aCEcBe8a0Adf3c94c389F6704` | - | morpho_v1 | - | ✗ |
 | Base | `0xBEEff02DE231f8B08c627C769edC73e7AcE47264` | - | morpho_v2 | - | ✗ |
 | Base | `0xBeeF0c8333b3De8F0450565834db4EB05dEf7A5F` | - | morpho_v1 | - | ✗ |
@@ -116,22 +118,22 @@
 | Unichain | 2 |
 | Polygon | 3 |
 | Monad | 8 |
-| Base | 23 |
+| Base | 25 |
 | Arbitrum | 8 |
 | Katana | 4 |
-| **Total** | **98** |
+| **Total** | **100** |
 
 ## Summary by Asset
 
 | Asset | Vaults |
 |-------|--------|
-| USDC | 41 |
+| USDC | 42 |
 | ETH | 11 |
 | AUSD | 10 |
 | USDT | 7 |
+| EURC | 5 |
 | EURCV | 5 |
 | USDT0 | 4 |
-| EURC | 4 |
 | PYUSD | 3 |
 | XSGD | 2 |
 | WSTETH | 2 |
@@ -144,4 +146,4 @@
 | USDQ | 1 |
 | USDR | 1 |
 | JPYC | 1 |
-| **Total** | **98** |
+| **Total** | **100** |
