@@ -8,6 +8,9 @@ export default function Home() {
         <Link href="/stats" className="text-primary underline underline-offset-4 hover:opacity-80">
           Steakhouse Stats Dashboard
         </Link>
+        <Link href="/vaults" className="text-primary underline underline-offset-4 hover:opacity-80">
+          Steakhouse Vaults
+        </Link>
       </main>
     </div>
   )

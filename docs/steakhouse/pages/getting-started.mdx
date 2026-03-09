@@ -1,7 +1,5 @@
 # Getting Started
 
-Type-safe queries for Steakhouse-curated DeFi vaults.
-
 :::info
 You'll need a Steakhouse API key. [Reach out to Steakhouse](mailto:chefs@steakhouse.financial) to get one.
 :::
@@ -26,45 +24,40 @@ yarn add @whisk/steakhouse
 
 ## Quick Start
 
-### 1. Set up your Client
-
-```ts twoslash [client.ts]
-import { SteakhouseClient } from "@whisk/steakhouse"
-
-const client = new SteakhouseClient({ // [!code focus]
-  apiKey: process.env.STEAKHOUSE_API_KEY!, // [!code focus]
-}) // [!code focus]
-```
-
-### 2. Fetch Stats & TVL
-
-```ts twoslash [index.ts]
-import { SteakhouseClient, getStats } from "@whisk/steakhouse"
+```ts twoslash
+import { SteakhouseClient, getVaults, getVault, getStats } from "@whisk/steakhouse"
 
 const client = new SteakhouseClient({
   apiKey: process.env.STEAKHOUSE_API_KEY!,
 })
 
-const stats = await getStats(client) // [!code focus]
-stats.uniqueDepositors    // Unique depositor count
-stats.tvl.current.totalUsd // Current total TVL
-```
+// List Steakhouse-curated vaults
+const vaults = await getVaults(client)
 
-### 3. Include Historical TVL
-
-```ts twoslash [index.ts]
-import { SteakhouseClient, getStats } from "@whisk/steakhouse"
-
-const client = new SteakhouseClient({
-  apiKey: process.env.STEAKHOUSE_API_KEY!,
+// Get vault details
+const vault = await getVault(client, {
+  chainId: 1,
+  vaultAddress: "0x...",
 })
 
-const stats = await getStats(client, { includeHistorical: true }) // [!code focus]
-stats.tvl.historical // Daily snapshots for the last 365 days
+// Get stats & TVL
+const stats = await getStats(client)
 ```
 
 ## Next Steps
 
 - [Queries](/queries) - Full query API reference
-- [Direct GraphQL](/graphql) - Write custom queries with full type safety
-- [React Hooks](/react) - Coming soon
+- [Direct GraphQL](/graphql) - Custom queries with full type safety
+
+:::info
+React hooks are available via `@whisk/steakhouse/react` but are not yet stable. See the [source](https://github.com/papercliplabs/whisk-sdk/tree/main/packages/steakhouse/src/react) for usage.
+:::
+
+## Requirements
+
+| Requirement | Version |
+|-------------|---------|
+| Node.js | >= 18 |
+| TypeScript | >= 5.0 |
+
+`@whisk/steakhouse` is an **ESM-only** package.

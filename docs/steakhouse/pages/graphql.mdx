@@ -4,7 +4,11 @@ Write your own GraphQL queries against the Whisk API with full type safety. Use 
 
 ## Playground
 
-The [Whisk GraphQL playground](https://api-v2.whisk.so/graphql) is the best way to explore the schema and test queries before writing code.
+The [Whisk GraphQL playground](https://api-v2.whisk.so/graphql) is the best way to explore the schema and test queries before writing code. This is the production API — use your production API key here.
+
+:::info
+The Whisk API is currently read-only. Mutations are not supported.
+:::
 
 ::::steps
 ### Add your authorization header
@@ -106,7 +110,7 @@ const data = await client.query(myQuery, {})
 // data.steakhouseStats.tvl.current.byChain is typed as an array
 ```
 
-### Using variables
+## Using Variables
 
 ```ts
 import { graphql } from "@whisk/graphql"
@@ -160,7 +164,7 @@ To make this automatic for your team, add to `.vscode/settings.json`:
 ```json
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.tsdk.autoSelect": "preferWorkspace"
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
 ```
 

@@ -1,9 +1,8 @@
 # Whisk SDK
 
-Whisk SDK provides a suite of modular kits for seamless integration with [Whisk.so](https://whisk.so). 
-
-![Whisk Diagram](site/public/how-it-works.png)
+Whisk SDK provides a suite of modular kits for seamless integration with [Whisk.so](https://whisk.so).
 
 ## Documentation
 
-For documentation and guides, visit [docs.whisk.so](https://www.docs.whisk.so)
+- [Whisk Documentation](https://www.docs.whisk.so)
+- [Steakhouse SDK Guide](https://steakhouse-sdk.vercel.app/)

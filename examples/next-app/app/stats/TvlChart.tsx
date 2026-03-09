@@ -57,11 +57,15 @@ function getLabel(breakdown: Breakdown, key: string): string {
   return key
 }
 
+const usdCompact = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  notation: "compact",
+  maximumFractionDigits: 2,
+})
+
 function formatUsd(value: number): string {
-  if (value >= 1_000_000_000) return `$${(value / 1_000_000_000).toFixed(2)}B`
-  if (value >= 1_000_000) return `$${(value / 1_000_000).toFixed(1)}M`
-  if (value >= 1_000) return `$${(value / 1_000).toFixed(0)}K`
-  return `$${value.toFixed(0)}`
+  return usdCompact.format(value)
 }
 
 function formatDate(timestamp: number): string {
