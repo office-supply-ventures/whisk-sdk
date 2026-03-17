@@ -1,6 +1,6 @@
 "use client"
 
-import type { GetStatsResultWithHistorical } from "@whisk/steakhouse"
+import type { GetStatsResultWithHistorical } from "@steakhouse/sdk"
 import { useMemo, useState } from "react"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 import { Button } from "@/components/ui/button"

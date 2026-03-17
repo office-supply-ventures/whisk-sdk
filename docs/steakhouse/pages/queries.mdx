@@ -5,7 +5,7 @@ Fully typed query functions for Steakhouse data.
 All examples below assume a client is already created:
 
 ```ts
-import { SteakhouseClient } from "@whisk/steakhouse"
+import { SteakhouseClient } from "@steakhouse/sdk"
 
 const client = new SteakhouseClient({
   apiKey: process.env.STEAKHOUSE_API_KEY!,
@@ -17,7 +17,7 @@ const client = new SteakhouseClient({
 Fetch all Steakhouse-curated vaults. Designed for vault discovery and table views.
 
 ```ts twoslash
-import { SteakhouseClient, getVaults } from "@whisk/steakhouse"
+import { SteakhouseClient, getVaults } from "@steakhouse/sdk"
 
 const client = new SteakhouseClient({ apiKey: "your-api-key" })
 
@@ -55,7 +55,7 @@ Throws an error if the vault is not in the Steakhouse registry and `isBox` is no
 :::
 
 ```ts twoslash
-import { SteakhouseClient, getVault } from "@whisk/steakhouse"
+import { SteakhouseClient, getVault } from "@steakhouse/sdk"
 
 const client = new SteakhouseClient({ apiKey: "your-api-key" })
 
@@ -92,7 +92,7 @@ Narrow on `__typename` to access protocol-specific fields.
 **Morpho V1**:
 
 ```ts twoslash
-import { SteakhouseClient, getVault } from "@whisk/steakhouse"
+import { SteakhouseClient, getVault } from "@steakhouse/sdk"
 const client = new SteakhouseClient({ apiKey: "your-api-key" })
 const vault = await getVault(client, { chainId: 1, vaultAddress: "0x..." })
 // ---cut---
@@ -109,7 +109,7 @@ if (vault.__typename === "MorphoVault") {
 **Morpho V2**:
 
 ```ts twoslash
-import { SteakhouseClient, getVault } from "@whisk/steakhouse"
+import { SteakhouseClient, getVault } from "@steakhouse/sdk"
 const client = new SteakhouseClient({ apiKey: "your-api-key" })
 const vault = await getVault(client, { chainId: 1, vaultAddress: "0x..." })
 // ---cut---
@@ -127,7 +127,7 @@ if (vault.__typename === "MorphoVaultV2") {
 **Box**:
 
 ```ts twoslash
-import { SteakhouseClient, getVault } from "@whisk/steakhouse"
+import { SteakhouseClient, getVault } from "@steakhouse/sdk"
 const client = new SteakhouseClient({ apiKey: "your-api-key" })
 const vault = await getVault(client, { chainId: 1, vaultAddress: "0x..." })
 // ---cut---
@@ -143,7 +143,7 @@ if (vault.__typename === "BoxVault") {
 Box vaults are not in the Steakhouse registry. Pass `isBox: true` to query them directly.
 
 ```ts twoslash
-import { SteakhouseClient, getVault } from "@whisk/steakhouse"
+import { SteakhouseClient, getVault } from "@steakhouse/sdk"
 
 const client = new SteakhouseClient({ apiKey: "your-api-key" })
 
@@ -163,7 +163,7 @@ Historical data is only available for Morpho vaults (V1 and V2). For non-Morpho 
 :::
 
 ```ts twoslash
-import { SteakhouseClient, getVaultHistory } from "@whisk/steakhouse"
+import { SteakhouseClient, getVaultHistory } from "@steakhouse/sdk"
 
 const client = new SteakhouseClient({ apiKey: "your-api-key" })
 
@@ -181,7 +181,7 @@ historical.weekly
 Fetch Steakhouse aggregate stats.
 
 ```ts twoslash
-import { SteakhouseClient, getStats } from "@whisk/steakhouse"
+import { SteakhouseClient, getStats } from "@steakhouse/sdk"
 
 const client = new SteakhouseClient({ apiKey: "your-api-key" })
 
@@ -197,7 +197,7 @@ stats.tvl.current.byAssetCategory
 ### With historical TVL
 
 ```ts twoslash
-import { SteakhouseClient, getStats } from "@whisk/steakhouse"
+import { SteakhouseClient, getStats } from "@steakhouse/sdk"
 
 const client = new SteakhouseClient({ apiKey: "your-api-key" })
 

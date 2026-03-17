@@ -1,4 +1,4 @@
-import { getVaults } from "@whisk/steakhouse"
+import { getVaults } from "@steakhouse/sdk"
 import { steakhouseClient } from "../../lib/steakhouse"
 import { VaultsTable } from "./VaultsTable"
 

@@ -1,4 +1,4 @@
-import { getVault, getVaultHistory } from "@whisk/steakhouse"
+import { getVault, getVaultHistory } from "@steakhouse/sdk"
 import Link from "next/link"
 import Markdown from "react-markdown"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"

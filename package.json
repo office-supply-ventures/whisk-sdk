@@ -1,5 +1,5 @@
 {
-  "name": "whisk-sdk",
+  "name": "steakhouse-sdk",
   "type": "module",
   "private": true,
   "scripts": {
@@ -13,11 +13,8 @@
     "changeset:publish": "turbo build --filter './packages/*' && changeset publish",
     "changeset:version": "changeset version",
     "check": "biome check --fix --unsafe",
-    "check:graphql": "pnpm --filter @whisk/graphql check:graphql",
     "check:types": "turbo check:types && tsgo --noEmit",
-    "generate:vaults": "pnpm --filter @whisk/steakhouse generate:vaults",
-    "schema:sync": "pnpm --filter @whisk/graphql schema:sync",
-    "schema:sync:local": "pnpm --filter @whisk/graphql schema:sync:local"
+    "generate:vaults": "pnpm --filter @steakhouse/sdk generate:vaults"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.6",

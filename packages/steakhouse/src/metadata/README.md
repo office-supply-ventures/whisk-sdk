@@ -140,7 +140,7 @@ pnpm changeset
 
 When prompted:
 
-1. Select `@whisk/steakhouse` using spacebar
+1. Select `@steakhouse/sdk` using spacebar
 2. Choose "patch" (for adding/updating vaults)
 3. Write a short description like "Add USDC Prime vault"
 

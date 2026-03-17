@@ -1,5 +1,5 @@
 /**
- * Test utilities for @whisk/steakhouse
+ * Test utilities for @steakhouse/sdk
  * @module
  */
 

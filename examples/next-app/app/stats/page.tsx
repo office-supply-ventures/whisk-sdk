@@ -1,4 +1,4 @@
-import { getStats } from "@whisk/steakhouse"
+import { getStats } from "@steakhouse/sdk"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { steakhouseClient } from "../../lib/steakhouse"
 import { TvlChart } from "./TvlChart"

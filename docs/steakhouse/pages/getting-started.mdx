@@ -9,15 +9,15 @@ You'll need a Steakhouse API key. [Reach out to Steakhouse](mailto:chefs@steakho
 :::code-group
 
 ```bash [pnpm]
-pnpm add @whisk/steakhouse
+pnpm add @steakhouse/sdk
 ```
 
 ```bash [npm]
-npm install @whisk/steakhouse
+npm install @steakhouse/sdk
 ```
 
 ```bash [yarn]
-yarn add @whisk/steakhouse
+yarn add @steakhouse/sdk
 ```
 
 :::
@@ -25,7 +25,7 @@ yarn add @whisk/steakhouse
 ## Quick Start
 
 ```ts twoslash
-import { SteakhouseClient, getVaults, getVault, getStats } from "@whisk/steakhouse"
+import { SteakhouseClient, getVaults, getVault, getStats } from "@steakhouse/sdk"
 
 const client = new SteakhouseClient({
   apiKey: process.env.STEAKHOUSE_API_KEY!,
@@ -49,9 +49,6 @@ const stats = await getStats(client)
 - [Queries](/queries) - Full query API reference
 - [Direct GraphQL](/graphql) - Custom queries with full type safety
 
-:::info
-React hooks are available via `@whisk/steakhouse/react` but are not yet stable. See the [source](https://github.com/papercliplabs/whisk-sdk/tree/main/packages/steakhouse/src/react) for usage.
-:::
 
 ## Requirements
 
@@ -60,4 +57,4 @@ React hooks are available via `@whisk/steakhouse/react` but are not yet stable. 
 | Node.js | >= 18 |
 | TypeScript | >= 5.0 |
 
-`@whisk/steakhouse` is an **ESM-only** package.
+`@steakhouse/sdk` is an **ESM-only** package.

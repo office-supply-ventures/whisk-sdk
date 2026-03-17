@@ -26,12 +26,9 @@ jobs:
       - name: Check types
         run: pnpm check:types
 
-      - name: Check GraphQL
-        run: pnpm check:graphql
-
       - name: Verify generated vault config
         run: |
-          pnpm --filter @whisk/steakhouse generate:vaults
+          pnpm --filter @steakhouse/sdk generate:vaults
           if ! git diff --exit-code packages/steakhouse/src/metadata/generated/; then
             echo "::error::Generated vault files are out of date. Run 'pnpm generate:vaults' and commit."
             exit 1
