@@ -12,9 +12,6 @@ catalogs:
     '@types/react':
       specifier: ^19.2.0
       version: 19.2.6
-    '@types/react-dom':
-      specifier: ^19.2.0
-      version: 19.2.3
     '@urql/core':
       specifier: 6.0.1
       version: 6.0.1
@@ -78,22 +75,6 @@ importers:
       '@tanstack/react-query':
         specifier: 'catalog:'
         version: 5.90.10(react@19.2.0)
-      react:
-        specifier: 'catalog:'
-        version: 19.2.0
-      react-dom:
-        specifier: 'catalog:'
-        version: 19.2.0(react@19.2.0)
-      vocs:
-        specifier: ^1.4.1
-        version: 1.4.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(jiti@2.6.1)(lightningcss@1.30.2)(next@16.1.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.2)
-    devDependencies:
-      '@types/react':
-        specifier: 'catalog:'
-        version: 19.2.6
-
-  docs/whisk:
-    dependencies:
       react:
         specifier: 'catalog:'
         version: 19.2.0
@@ -196,15 +177,6 @@ importers:
       '@morpho-org/morpho-ts':
         specifier: ^2.4.6
         version: 2.4.6
-      '@tanstack/react-query':
-        specifier: 'catalog:'
-        version: 5.90.10(react@19.2.0)
-      '@types/react':
-        specifier: 'catalog:'
-        version: 19.2.6
-      '@types/react-dom':
-        specifier: 'catalog:'
-        version: 19.2.3(@types/react@19.2.6)
       chokidar-cli:
         specifier: ^3.0.0
         version: 3.0.0
@@ -214,12 +186,6 @@ importers:
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3
-      react:
-        specifier: 'catalog:'
-        version: 19.2.0
-      react-dom:
-        specifier: 'catalog:'
-        version: 19.2.0(react@19.2.0)
       tsx:
         specifier: ^4.20.6
         version: 4.21.0

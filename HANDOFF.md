@@ -23,12 +23,11 @@ The lower-level packages (`@whisk/graphql` and `@whisk/client`) remain published
 @whisk/client          ← stays on npm, published by us
 ```
 
-This package has three subpath exports:
+This package has two subpath exports:
 
 | Import | Purpose |
 |--------|---------|
 | `@steakhouse/sdk` | Core: SteakhouseClient, query functions |
-| `@steakhouse/sdk/react` | React hooks (TanStack Query) |
 | `@steakhouse/sdk/metadata` | Chain/vault config and metadata |
 
 ---

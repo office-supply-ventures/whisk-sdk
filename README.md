@@ -22,7 +22,6 @@ const vaults = await client.getVaults()
 | Import                       | Purpose                              |
 | ---------------------------- | ------------------------------------ |
 | `@steakhouse/sdk`            | Core: SteakhouseClient, query functions |
-| `@steakhouse/sdk/react`      | React hooks (TanStack Query)         |
 | `@steakhouse/sdk/metadata`   | Chain/vault config and metadata      |
 
 ## Documentation
