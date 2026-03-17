@@ -1,10 +1,10 @@
 /**
- * Example script demonstrating server-side usage of @whisk/steakhouse
+ * Example script demonstrating server-side usage of @steakhouse/sdk
  *
  * Run with: pnpm --filter next-app exec tsx scripts/fetch-vaults.ts
  */
 import "dotenv/config"
-import { getStats } from "@whisk/steakhouse"
+import { getStats } from "@steakhouse/sdk"
 import { steakhouseClient } from "../lib/steakhouse"
 
 async function main() {

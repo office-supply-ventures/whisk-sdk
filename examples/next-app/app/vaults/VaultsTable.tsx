@@ -1,6 +1,6 @@
 "use client"
 
-import type { SteakhouseVaultSummary } from "@whisk/steakhouse"
+import type { SteakhouseVaultSummary } from "@steakhouse/sdk"
 import Link from "next/link"
 import { useMemo, useState } from "react"
 import { Button } from "@/components/ui/button"

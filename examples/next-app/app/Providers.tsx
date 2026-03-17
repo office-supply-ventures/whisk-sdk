@@ -1,7 +1,7 @@
 "use client"
 
+import { SteakhouseProvider } from "@steakhouse/sdk/react"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { SteakhouseProvider } from "@whisk/steakhouse/react"
 import { steakhouseClient } from "../lib/steakhouse"
 
 const queryClient = new QueryClient()

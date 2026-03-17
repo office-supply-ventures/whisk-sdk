@@ -48,7 +48,7 @@ Try running a query like this:
 
 ## Using in Your App
 
-To write custom queries, install `@whisk/graphql` alongside `@whisk/steakhouse`:
+To write custom queries, install `@whisk/graphql` alongside `@steakhouse/sdk`:
 
 :::code-group
 
@@ -99,7 +99,7 @@ The result type is **fully inferred** from the schema — no code generation ste
 ### 2. Execute the query
 
 ```ts
-import { SteakhouseClient } from "@whisk/steakhouse"
+import { SteakhouseClient } from "@steakhouse/sdk"
 
 const client = new SteakhouseClient({
   apiKey: process.env.STEAKHOUSE_API_KEY!,

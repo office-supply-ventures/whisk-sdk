@@ -1,9 +1,9 @@
 {
-  "name": "@whisk/steakhouse",
-  "version": "0.5.0",
+  "name": "@steakhouse/sdk",
+  "version": "0.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/office-supply-ventures/whisk-sdk.git",
+    "url": "https://github.com/steakhouse-financial/steakhouse-sdk.git",
     "directory": "packages/steakhouse"
   },
   "scripts": {
@@ -42,8 +42,8 @@
   },
   "dependencies": {
     "@urql/core": "catalog:",
-    "@whisk/client": "workspace:*",
-    "@whisk/graphql": "workspace:*",
+    "@whisk/client": "0.0.19",
+    "@whisk/graphql": "0.0.18",
     "gql.tada": "catalog:"
   },
   "peerDependencies": {

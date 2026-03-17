@@ -1,6 +1,6 @@
 "use client"
 
-import type { SteakhouseVaultHistory } from "@whisk/steakhouse"
+import type { SteakhouseVaultHistory } from "@steakhouse/sdk"
 import { useMemo, useState } from "react"
 import { Area, AreaChart, CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 import { Button } from "@/components/ui/button"
