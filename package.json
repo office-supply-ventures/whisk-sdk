@@ -1,5 +1,5 @@
 {
-  "name": "whisk-sdk",
+  "name": "steakhouse-sdk",
   "type": "module",
   "private": true,
   "scripts": {
