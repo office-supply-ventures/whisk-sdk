@@ -72,12 +72,12 @@ importers:
 
   docs/steakhouse:
     dependencies:
+      '@steakhouse/sdk':
+        specifier: workspace:*
+        version: link:../../packages/steakhouse
       '@tanstack/react-query':
         specifier: 'catalog:'
         version: 5.90.10(react@19.2.0)
-      '@whisk/steakhouse':
-        specifier: workspace:*
-        version: link:../../packages/steakhouse
       react:
         specifier: 'catalog:'
         version: 19.2.0
@@ -110,12 +110,12 @@ importers:
 
   examples/next-app:
     dependencies:
+      '@steakhouse/sdk':
+        specifier: workspace:*
+        version: link:../../packages/steakhouse
       '@tanstack/react-query':
         specifier: 'catalog:'
         version: 5.90.10(react@19.2.0)
-      '@whisk/steakhouse':
-        specifier: workspace:*
-        version: link:../../packages/steakhouse
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -175,48 +175,17 @@ importers:
         specifier: ^5
         version: 5.9.2
 
-  packages/client:
-    dependencies:
-      '@atmina/urql-custom-scalars-exchange':
-        specifier: 1.2.0
-        version: 1.2.0(@urql/core@6.0.1(graphql@16.12.0))(graphql@16.12.0)(wonka@6.3.5)
-      '@urql/core':
-        specifier: 'catalog:'
-        version: 6.0.1(graphql@16.12.0)
-      '@whisk/graphql':
-        specifier: workspace:*
-        version: link:../graphql
-      gql.tada:
-        specifier: 'catalog:'
-        version: 1.9.0(graphql@16.12.0)(typescript@5.9.2)
-
-  packages/graphql:
-    dependencies:
-      gql.tada:
-        specifier: 'catalog:'
-        version: 1.9.0(graphql@16.12.0)(typescript@5.9.2)
-    devDependencies:
-      '@urql/introspection':
-        specifier: ^1.2.1
-        version: 1.2.1(graphql@16.12.0)
-      graphql:
-        specifier: ^16.12.0
-        version: 16.12.0
-      tsx:
-        specifier: ^4.20.6
-        version: 4.20.6
-
   packages/steakhouse:
     dependencies:
       '@urql/core':
         specifier: 'catalog:'
         version: 6.0.1(graphql@16.12.0)
       '@whisk/client':
-        specifier: workspace:*
-        version: link:../client
+        specifier: 0.0.19
+        version: 0.0.19(graphql@16.12.0)(typescript@5.9.2)(wonka@6.3.5)
       '@whisk/graphql':
-        specifier: workspace:*
-        version: link:../graphql
+        specifier: 0.0.18
+        version: 0.0.18(graphql@16.12.0)(typescript@5.9.2)
       gql.tada:
         specifier: 'catalog:'
         version: 1.9.0(graphql@16.12.0)(typescript@5.9.2)
@@ -274,7 +243,6 @@ packages:
   '@0no-co/graphqlsp@1.15.1':
     resolution: {integrity: sha512-UBDBuVGpX5Ti0PjGnSAzkMG04psNYxKfJ+1bgF8HFPfHHpKNVl4GULHSNW0GTOngcYCYA70c+InoKw0qjHwmVQ==}
     peerDependencies:
-      graphql: ^15.5.0 || ^16.0.0 || ^17.0.0
       typescript: ^5.0.0
 
   '@adraffy/ens-normalize@1.11.1':
@@ -877,7 +845,6 @@ packages:
     peerDependencies:
       '@gql.tada/svelte-support': 1.0.1
       '@gql.tada/vue-support': 1.0.1
-      graphql: ^15.5.0 || ^16.0.0 || ^17.0.0
       typescript: ^5.0.0
     peerDependenciesMeta:
       '@gql.tada/svelte-support':
@@ -2533,11 +2500,6 @@ packages:
   '@urql/core@6.0.1':
     resolution: {integrity: sha512-FZDiQk6jxbj5hixf2rEPv0jI+IZz0EqqGW8mJBEug68/zHTtT+f34guZDmyjJZyiWbj0vL165LoMr/TkeDHaug==}
 
-  '@urql/introspection@1.2.1':
-    resolution: {integrity: sha512-U9FTSISz69EEK3bHWDsqux9JqOeiLzr3eDFBQ5DmHuTLaBsd5mjPdtLRzzzmb9nW1Ygd6IR8YcuM7zeNqQ5lCQ==}
-    peerDependencies:
-      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-
   '@vanilla-extract/babel-plugin-debug-ids@1.2.2':
     resolution: {integrity: sha512-MeDWGICAF9zA/OZLOKwhoRlsUW+fiMwnfuOAqFVohL31Agj7Q/RBWAYweqjHLgFBCsdnr6XIfwjJnmb2znEWxw==}
 
@@ -2595,6 +2557,16 @@ packages:
 
   '@vitest/utils@4.0.12':
     resolution: {integrity: sha512-DVS/TLkLdvGvj1avRy0LSmKfrcI9MNFvNGN6ECjTUHWJdlcgPDOXhjMis5Dh7rBH62nAmSXnkPbE+DZ5YD75Rw==}
+
+  '@whisk/client@0.0.19':
+    resolution: {integrity: sha512-jXQOehv4t8ckxqifKmzl9uLgrtXAMp6m+smO+uqmqD0+/JQ9TuDvUf1bPR5UucO4798I7Chzkc9Bugssvr4Y2w==}
+    peerDependencies:
+      graphql: '>=16'
+
+  '@whisk/graphql@0.0.18':
+    resolution: {integrity: sha512-P/e1NjlLITG/+ieCewQCFEUZYQeayX7rErEdUbDxci6TTqfj97ER8+nOEVlGaav5pYyUZgjqrMFTyPHhabb/BQ==}
+    peerDependencies:
+      graphql: '>=16'
 
   abitype@1.2.3:
     resolution: {integrity: sha512-Ofer5QUnuUdTFsBRwARMoWKOH1ND5ehwYhJ3OJ/BQO+StkwQjHw0XyVh4vDttzHB7QOFhPHa/o413PJ82gU/Tg==}
@@ -5266,7 +5238,7 @@ snapshots:
     optionalDependencies:
       graphql: 16.12.0
 
-  '@0no-co/graphqlsp@1.15.1(graphql@16.12.0)(typescript@5.9.2)':
+  '@0no-co/graphqlsp@1.15.1(typescript@5.9.2)':
     dependencies:
       '@gql.tada/internal': 1.0.8(graphql@16.12.0)(typescript@5.9.2)
       graphql: 16.12.0
@@ -5807,9 +5779,9 @@ snapshots:
 
   '@fortawesome/fontawesome-free@6.7.2': {}
 
-  '@gql.tada/cli-utils@1.7.2(graphql@16.12.0)(typescript@5.9.2)':
+  '@gql.tada/cli-utils@1.7.2(typescript@5.9.2)':
     dependencies:
-      '@0no-co/graphqlsp': 1.15.1(graphql@16.12.0)(typescript@5.9.2)
+      '@0no-co/graphqlsp': 1.15.1(typescript@5.9.2)
       '@gql.tada/internal': 1.0.8(graphql@16.12.0)(typescript@5.9.2)
       graphql: 16.12.0
       typescript: 5.9.2
@@ -7420,10 +7392,6 @@ snapshots:
     transitivePeerDependencies:
       - graphql
 
-  '@urql/introspection@1.2.1(graphql@16.12.0)':
-    dependencies:
-      graphql: 16.12.0
-
   '@vanilla-extract/babel-plugin-debug-ids@1.2.2':
     dependencies:
       '@babel/core': 7.28.5
@@ -7560,6 +7528,28 @@ snapshots:
     dependencies:
       '@vitest/pretty-format': 4.0.12
       tinyrainbow: 3.0.3
+
+  '@whisk/client@0.0.19(graphql@16.12.0)(typescript@5.9.2)(wonka@6.3.5)':
+    dependencies:
+      '@atmina/urql-custom-scalars-exchange': 1.2.0(@urql/core@6.0.1(graphql@16.12.0))(graphql@16.12.0)(wonka@6.3.5)
+      '@urql/core': 6.0.1(graphql@16.12.0)
+      '@whisk/graphql': 0.0.18(graphql@16.12.0)(typescript@5.9.2)
+      gql.tada: 1.9.0(graphql@16.12.0)(typescript@5.9.2)
+      graphql: 16.12.0
+    transitivePeerDependencies:
+      - '@gql.tada/svelte-support'
+      - '@gql.tada/vue-support'
+      - typescript
+      - wonka
+
+  '@whisk/graphql@0.0.18(graphql@16.12.0)(typescript@5.9.2)':
+    dependencies:
+      gql.tada: 1.9.0(graphql@16.12.0)(typescript@5.9.2)
+      graphql: 16.12.0
+    transitivePeerDependencies:
+      - '@gql.tada/svelte-support'
+      - '@gql.tada/vue-support'
+      - typescript
 
   abitype@1.2.3(typescript@5.9.2)(zod@3.25.76):
     optionalDependencies:
@@ -8403,8 +8393,8 @@ snapshots:
   gql.tada@1.9.0(graphql@16.12.0)(typescript@5.9.2):
     dependencies:
       '@0no-co/graphql.web': 1.2.0(graphql@16.12.0)
-      '@0no-co/graphqlsp': 1.15.1(graphql@16.12.0)(typescript@5.9.2)
-      '@gql.tada/cli-utils': 1.7.2(graphql@16.12.0)(typescript@5.9.2)
+      '@0no-co/graphqlsp': 1.15.1(typescript@5.9.2)
+      '@gql.tada/cli-utils': 1.7.2(typescript@5.9.2)
       '@gql.tada/internal': 1.0.8(graphql@16.12.0)(typescript@5.9.2)
       typescript: 5.9.2
     transitivePeerDependencies:
