@@ -3,7 +3,7 @@
 > This file is auto-generated. Do not edit directly.
 > Run `pnpm generate:vaults` to regenerate.
 
-**Total Vaults: 100**
+**Total Vaults: 102**
 
 ## All Vaults
 
@@ -123,13 +123,13 @@
 | Base | 25 |
 | Arbitrum | 8 |
 | Katana | 4 |
-| **Total** | **100** |
+| **Total** | **102** |
 
 ## Summary by Asset
 
 | Asset | Vaults |
 |-------|--------|
-| USDC | 42 |
+| USDC | 43 |
 | ETH | 11 |
 | AUSD | 10 |
 | USDT | 7 |
@@ -149,4 +149,4 @@
 | USDR | 1 |
 | XAUT | 1 |
 | JPYC | 1 |
-| **Total** | **100** |
+| **Total** | **102** |
