@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.6.0
+
+### Minor Changes
+
+- c08e00a: Add XAUT and USDT T-Prime
+
 ## 0.5.0
 
 ### Minor Changes
