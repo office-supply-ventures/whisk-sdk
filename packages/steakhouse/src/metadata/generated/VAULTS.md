@@ -3,7 +3,7 @@
 > This file is auto-generated. Do not edit directly.
 > Run `pnpm generate:vaults` to regenerate.
 
-**Total Vaults: 100**
+**Total Vaults: 102**
 
 ## All Vaults
 
@@ -54,11 +54,13 @@
 | Ethereum | `0xBEEFFFC57A26fD8D3b693Ba025ead597DbECEBfe` | USDC High Yield Term | morpho_v2 | Term | ✗ |
 | Ethereum | `0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB` | USDC Prime Instant | morpho_v1 | Prime | ✓ |
 | Ethereum | `0xbeef088055857739C12CD3765F20b7679Def0f51` | USDC Prime Instant | morpho_v2 | Prime | ✓ |
+| Ethereum | `0x6f48cE6380693808682E43140E3Eeb877a096Aa1` | USDC T-Prime Instant | morpho_v2 | Prime | ✗ |
 | Ethereum | `0xBEEFFF4716a49418D69c251cab8759bB107e57C8` | USDC Turbo | morpho_v2 | Turbo | ✗ |
 | Ethereum | `0xA0804346780b4c2e3bE118ac957D1DB82F9d7484` | USDT High Yield Instant | morpho_v1 | High Yield | ✗ |
 | Ethereum | `0xbeeff07d991C04CD640DE9F15C08ba59c4FEDEb7` | USDT High Yield Instant | morpho_v2 | High Yield | ✓ |
 | Ethereum | `0xbEef047a543E45807105E51A8BBEFCc5950fcfBa` | USDT Prime Instant | morpho_v1 | Prime | ✗ |
 | Ethereum | `0xbeef003C68896c7D2c3c60d363e8d71a49Ab2bf9` | USDT Prime Instant | morpho_v2 | Prime | ✓ |
+| Ethereum | `0xBEEFFFDE1CABD3d8A3cd4fd5e04DbA51B9D4Ac39` | XAUT Turbo | morpho_v2 | Turbo | ✗ |
 | Unichain | `0x0993Ae24a988c6925d80aD61344a76B81aA0D34c` | - | morpho_v1 | Prime | ✗ |
 | Unichain | `0x9E111aCef0CF3bd8C38715B88e78BE31C1109F8a` | - | morpho_v1 | Prime | ✗ |
 | Polygon | `0xBEEf0F82E269760429BE6255Fa00821b7e4b592A` | - | morpho_v2 | Prime | ✗ |
@@ -114,20 +116,20 @@
 
 | Chain | Vaults |
 |-------|--------|
-| Ethereum | 50 |
+| Ethereum | 52 |
 | Unichain | 2 |
 | Polygon | 3 |
 | Monad | 8 |
 | Base | 25 |
 | Arbitrum | 8 |
 | Katana | 4 |
-| **Total** | **100** |
+| **Total** | **102** |
 
 ## Summary by Asset
 
 | Asset | Vaults |
 |-------|--------|
-| USDC | 42 |
+| USDC | 43 |
 | ETH | 11 |
 | AUSD | 10 |
 | USDT | 7 |
@@ -145,5 +147,6 @@
 | RUSD | 1 |
 | USDQ | 1 |
 | USDR | 1 |
+| XAUT | 1 |
 | JPYC | 1 |
-| **Total** | **100** |
+| **Total** | **102** |
