@@ -598,6 +598,15 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
   },
   {
     chainId: 1,
+    address: "0x6f48cE6380693808682E43140E3Eeb877a096Aa1",
+    protocol: "morpho_v2",
+    name: "USDC T-Prime Instant",
+    description: "Allocating only to Morpho borrow/lend. Gated for whitelisted depositors by the smart contract [0x227ee4a33432733bd2fe14ba2162c81e6ada3249](https://etherscan.io/address/0x227ee4a33432733bd2fe14ba2162c81e6ada3249).\n\nPrime Instant Repo vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/prime-instant)) maximizes exposure to repo markets on a blue-chip collateral only.\n\nWe target a rating in our [risk framework](https://www.steakhouse.financial/docs/risk-management) of AA or higher to mitigate solvency risks. The aggregated target maturity is less than one day.\n\nUses the Morpho adapter registry, and is therefore available on the Morpho frontend.",
+    strategy: "Prime",
+    isListed: false,
+  },
+  {
+    chainId: 1,
     address: "0xBEEFFF4716a49418D69c251cab8759bB107e57C8",
     protocol: "morpho_v2",
     name: "USDC Turbo",
@@ -686,6 +695,15 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
     chainId: 1,
     address: "0x833AdaeF212c5cD3f78906B44bBfb18258F238F0",
     protocol: "morpho_v1",
+    isListed: false,
+  },
+  {
+    chainId: 1,
+    address: "0xBEEFFFDE1CABD3d8A3cd4fd5e04DbA51B9D4Ac39",
+    protocol: "morpho_v2",
+    name: "XAUT Turbo",
+    description: "**Carry involves leverage**\n\nCarry vaults ([docs](https://www.steakhouse.financial/docs/products/vault-products/current/turbo)) involve borrowing against one collateral type to earn a higher yield in the loan asset.\n\nNAV accumulates when the cost of borrowing is persistently lower than the return on the underlying strategy. NAV decreases when the borrow cost is higher. The collateral selected fits our [risk framework](https://www.steakhouse.financial/docs/risk-management) to mitigate solvency risks.\n\nPositions are intended to be held for an extended period (>30 days) to avoid slippage from swapping into positions from diluting the NAV.\n\nUses [Steakhouse Box](https://www.steakhouse.financial/docs/products/infrastructure/box-vaults) custom adapters to extend the noncustodial features of Morpho v2 vaults to additional strategies beyond borrow/lend. Position constraints are encoded onchain in the Box adapter permissions. As this vault does not use the Morpho adapter registry, it is not available on the Morpho frontend.\n\nUsers are advised Turbo vaults are significantly less liquid than repo vaults and face possibility of loss.",
+    strategy: "Turbo",
     isListed: false,
   },
   {
