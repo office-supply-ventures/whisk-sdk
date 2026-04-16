@@ -28,7 +28,7 @@
 | Ethereum | `0xbeEF346d7099865208Ff331e4f648f4154DDAa05` | - | morpho_v1 | High Yield | ✗ |
 | Ethereum | `0x6D4e530B8431a52FFDA4516BA4Aadc0951897F8C` | - | morpho_v1 | Prime | ✗ |
 | Ethereum | `0xbEeFCe6c76C7D7A8066562Fe9FF0e343a52dD92F` | - | morpho_v1 | Prime | ✗ |
-| Ethereum | `0xbeeFf0956ACb02E6F203e83D6eaE357A1d7d116C` | - | morpho_v1 | High Yield | ✗ |
+| Ethereum | `0xbeeFf0956ACb02E6F203e83D6eaE357A1d7d116C` | - | morpho_v2 | High Yield | ✗ |
 | Ethereum | `0xBEefb9f61CC44895d8AEc381373555a64191A9c4` | - | morpho_v1 | Prime | ✗ |
 | Ethereum | `0xA1b60d96e5C50dA627095B9381dc5a46AF1a9a42` | - | morpho_v1 | Prime | ✗ |
 | Ethereum | `0x30881Baa943777f92DC934d53D3bFdF33382cab3` | - | morpho_v1 | Prime | ✗ |
