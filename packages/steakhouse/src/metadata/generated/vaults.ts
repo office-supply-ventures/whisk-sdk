@@ -598,6 +598,13 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
   },
   {
     chainId: 1,
+    address: "0xbeeFf0956ACb02E6F203e83D6eaE357A1d7d116C",
+    protocol: "morpho_v1",
+    strategy: "High Yield",
+    isListed: false,
+  },
+  {
+    chainId: 1,
     address: "0x6f48cE6380693808682E43140E3Eeb877a096Aa1",
     protocol: "morpho_v2",
     name: "USDC T-Prime Instant",
