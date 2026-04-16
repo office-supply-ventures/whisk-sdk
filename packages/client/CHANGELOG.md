@@ -1,5 +1,11 @@
 # @whisk/client
 
+## 0.0.20
+
+### Patch Changes
+
+- f3c2c98: Add brief JSDoc on WhiskClient class.
+
 ## 0.0.19
 
 ### Patch Changes

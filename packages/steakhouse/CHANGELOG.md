@@ -1,5 +1,12 @@
 # @whisk/steakhouse
 
+## 0.7.2
+
+### Patch Changes
+
+- Updated dependencies [f3c2c98]
+  - @whisk/client@0.0.20
+
 ## 0.7.1
 
 ### Patch Changes
