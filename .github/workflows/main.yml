@@ -39,11 +39,12 @@ jobs:
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
         with:
           token: ${{ steps.app-token.outputs.token }}
+          persist-credentials: false
 
       - name: Setup
         uses: ./.github/actions/setup
         with:
-          token: ${{ steps.app-token.outputs.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: PR or publish
         id: changesets
@@ -51,6 +52,7 @@ jobs:
         with:
           title: "chore: version packages"
           commit: "chore: version packages"
+          commitMode: "github-api"
           publish: pnpm run changeset:publish
           version: pnpm run changeset:version
         env:
