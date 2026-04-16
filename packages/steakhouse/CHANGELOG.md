@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.7.0
+
+### Minor Changes
+
+- 1473ee0: Adding one vault to mainnet, hidden
+
 ## 0.6.0
 
 ### Minor Changes
