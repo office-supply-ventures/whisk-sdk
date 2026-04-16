@@ -185,71 +185,79 @@ describe("Vault Deployment Verification", () => {
       }, 60000)
 
       if (hasFactory) {
-        it(`all ${vaults.length} vaults are from Morpho factory`, async () => {
+        it(`all ${vaults.length} vaults match their declared protocol factory`, async () => {
           const factoryCheckResults = await Promise.all(
             vaults.map(async (vault) => {
               const vaultAddress = vault.address as Address
-              let isFromFactory = false
 
-              // Check MetaMorpho v1.0 factory
-              if (factories.metaMorphoV1_0Factory) {
-                const isV1_0 = await client
-                  .readContract({
-                    address: factories.metaMorphoV1_0Factory,
-                    abi: metaMorphoFactoryAbi,
-                    functionName: "isMetaMorpho",
-                    args: [vaultAddress],
-                  })
-                  .catch(() => false)
-                if (isV1_0) isFromFactory = true
-              }
+              const [isV1_0, isV1_1, isV2] = await Promise.all([
+                factories.metaMorphoV1_0Factory
+                  ? client
+                      .readContract({
+                        address: factories.metaMorphoV1_0Factory,
+                        abi: metaMorphoFactoryAbi,
+                        functionName: "isMetaMorpho",
+                        args: [vaultAddress],
+                      })
+                      .catch(() => false)
+                  : Promise.resolve(false),
+                factories.metaMorphoV1_1Factory
+                  ? client
+                      .readContract({
+                        address: factories.metaMorphoV1_1Factory,
+                        abi: metaMorphoFactoryAbi,
+                        functionName: "isMetaMorpho",
+                        args: [vaultAddress],
+                      })
+                      .catch(() => false)
+                  : Promise.resolve(false),
+                factories.vaultV2Factory
+                  ? client
+                      .readContract({
+                        address: factories.vaultV2Factory,
+                        abi: vaultV2FactoryAbi,
+                        functionName: "isVaultV2",
+                        args: [vaultAddress],
+                      })
+                      .catch(() => false)
+                  : Promise.resolve(false),
+              ])
 
-              // Check MetaMorpho v1.1 factory
-              if (!isFromFactory && factories.metaMorphoV1_1Factory) {
-                const isV1_1 = await client
-                  .readContract({
-                    address: factories.metaMorphoV1_1Factory,
-                    abi: metaMorphoFactoryAbi,
-                    functionName: "isMetaMorpho",
-                    args: [vaultAddress],
-                  })
-                  .catch(() => false)
-                if (isV1_1) isFromFactory = true
-              }
+              const actualProtocol: "morpho_v1" | "morpho_v2" | null =
+                isV1_0 || isV1_1 ? "morpho_v1" : isV2 ? "morpho_v2" : null
 
-              // Check VaultV2 factory
-              if (!isFromFactory && factories.vaultV2Factory) {
-                const isV2 = await client
-                  .readContract({
-                    address: factories.vaultV2Factory,
-                    abi: vaultV2FactoryAbi,
-                    functionName: "isVaultV2",
-                    args: [vaultAddress],
-                  })
-                  .catch(() => false)
-                if (isV2) isFromFactory = true
-              }
-
-              return { vault, isFromFactory }
+              return { vault, actualProtocol }
             }),
           )
 
-          const failures: { address: string }[] = []
-          for (const { vault, isFromFactory } of factoryCheckResults) {
-            if (!isFromFactory) {
-              failures.push({ address: vault.address })
+          const failures: { address: string; declared: string; actual: string }[] = []
+          for (const { vault, actualProtocol } of factoryCheckResults) {
+            if (actualProtocol === null) {
+              failures.push({
+                address: vault.address,
+                declared: vault.protocol,
+                actual: "not from any Morpho factory",
+              })
+            } else if (actualProtocol !== vault.protocol) {
+              failures.push({
+                address: vault.address,
+                declared: vault.protocol,
+                actual: actualProtocol,
+              })
             }
           }
 
           if (failures.length > 0) {
-            console.log(`\n[Chain ${chainId}] Vaults NOT from Morpho factory:`)
+            console.log(`\n[Chain ${chainId}] Vaults with protocol/factory mismatch:`)
             console.log(`  v1.0: ${factories.metaMorphoV1_0Factory ?? "none"}`)
             console.log(`  v1.1: ${factories.metaMorphoV1_1Factory ?? "none"}`)
             console.log(`  v2: ${factories.vaultV2Factory ?? "none"}`)
             console.table(failures)
           }
 
-          expect(failures.length, `${failures.length} vaults not from factory`).toBe(0)
+          expect(failures.length, `${failures.length} vaults with protocol/factory mismatch`).toBe(
+            0,
+          )
         }, 60000)
       } else {
         it.skip(`No Morpho factory configured for chain ${chainId}`, () => {})
