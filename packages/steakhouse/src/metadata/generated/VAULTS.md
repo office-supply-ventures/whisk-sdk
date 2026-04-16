@@ -3,7 +3,7 @@
 > This file is auto-generated. Do not edit directly.
 > Run `pnpm generate:vaults` to regenerate.
 
-**Total Vaults: 102**
+**Total Vaults: 103**
 
 ## All Vaults
 
@@ -28,6 +28,7 @@
 | Ethereum | `0xbeEF346d7099865208Ff331e4f648f4154DDAa05` | - | morpho_v1 | High Yield | ✗ |
 | Ethereum | `0x6D4e530B8431a52FFDA4516BA4Aadc0951897F8C` | - | morpho_v1 | Prime | ✗ |
 | Ethereum | `0xbEeFCe6c76C7D7A8066562Fe9FF0e343a52dD92F` | - | morpho_v1 | Prime | ✗ |
+| Ethereum | `0xbeeFf0956ACb02E6F203e83D6eaE357A1d7d116C` | - | morpho_v1 | High Yield | ✗ |
 | Ethereum | `0xBEefb9f61CC44895d8AEc381373555a64191A9c4` | - | morpho_v1 | Prime | ✗ |
 | Ethereum | `0xA1b60d96e5C50dA627095B9381dc5a46AF1a9a42` | - | morpho_v1 | Prime | ✗ |
 | Ethereum | `0x30881Baa943777f92DC934d53D3bFdF33382cab3` | - | morpho_v1 | Prime | ✗ |
@@ -116,20 +117,20 @@
 
 | Chain | Vaults |
 |-------|--------|
-| Ethereum | 52 |
+| Ethereum | 53 |
 | Unichain | 2 |
 | Polygon | 3 |
 | Monad | 8 |
 | Base | 25 |
 | Arbitrum | 8 |
 | Katana | 4 |
-| **Total** | **102** |
+| **Total** | **103** |
 
 ## Summary by Asset
 
 | Asset | Vaults |
 |-------|--------|
-| USDC | 43 |
+| USDC | 44 |
 | ETH | 11 |
 | AUSD | 10 |
 | USDT | 7 |
@@ -149,4 +150,4 @@
 | USDR | 1 |
 | XAUT | 1 |
 | JPYC | 1 |
-| **Total** | **102** |
+| **Total** | **103** |
