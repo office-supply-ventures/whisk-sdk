@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.7.1
+
+### Patch Changes
+
+- c38d996: Fix USDC Ready vault protocol (morpho_v1 → morpho_v2) and strengthen onchain verification to assert each vault's declared protocol matches the factory it was deployed from.
+
 ## 0.7.0
 
 ### Minor Changes
