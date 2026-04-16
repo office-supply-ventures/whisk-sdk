@@ -15,6 +15,7 @@ export interface WhiskClientConfig {
   readonly debug?: boolean
 }
 
+/** GraphQL client for the Whisk API. */
 export class WhiskClient {
   private readonly urql: UrqlClient
   private readonly debug: boolean
