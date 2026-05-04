@@ -1,5 +1,11 @@
 # @whisk/steakhouse
 
+## 0.8.0
+
+### Minor Changes
+
+- 2800c81: Adding HY Edition on Base
+
 ## 0.7.2
 
 ### Patch Changes
