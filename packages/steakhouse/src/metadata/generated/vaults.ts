@@ -139,6 +139,14 @@ export const STEAKHOUSE_VAULTS: readonly VaultConfig[] = [
   },
   {
     chainId: 8453,
+    address: "0xbeeff2490FEffa212faC2f6553682C219E6a8845",
+    protocol: "morpho_v2",
+    name: "USDC High Yield Edition",
+    strategy: "High Yield",
+    isListed: false,
+  },
+  {
+    chainId: 8453,
     address: "0xBeEf2d50B428675a1921bC6bBF4bfb9D8cF1461A",
     protocol: "morpho_v1",
     isListed: false,

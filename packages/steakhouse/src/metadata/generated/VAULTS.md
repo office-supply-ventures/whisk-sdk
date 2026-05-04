@@ -3,7 +3,7 @@
 > This file is auto-generated. Do not edit directly.
 > Run `pnpm generate:vaults` to regenerate.
 
-**Total Vaults: 103**
+**Total Vaults: 104**
 
 ## All Vaults
 
@@ -93,6 +93,7 @@
 | Base | `0xBEEFFFdeADc2c172130Ac4C5Ae48c8D4708BFb40` | ETH Turbo | morpho_v2 | Turbo | ✗ |
 | Base | `0xBeEF086b8807Dc5E5A1740C5E3a7C4c366eA6ab5` | EURC Prime Instant | morpho_v1 | Prime | ✗ |
 | Base | `0xbeef009F28cCf367444a9F79096862920e025DC1` | EURC Prime Instant | morpho_v2 | Prime | ✓ |
+| Base | `0xbeeff2490FEffa212faC2f6553682C219E6a8845` | USDC High Yield Edition | morpho_v2 | High Yield | ✗ |
 | Base | `0xCBeeF01994E24a60f7DCB8De98e75AD8BD4Ad60d` | USDC High Yield Instant | morpho_v1 | High Yield | ✗ |
 | Base | `0xbeeff7aE5E00Aae3Db302e4B0d8C883810a58100` | USDC High Yield Instant | morpho_v2 | High Yield | ✓ |
 | Base | `0xBEEFE94c8aD530842bfE7d8B397938fFc1cb83b2` | USDC Prime Instant | morpho_v1 | Prime | ✓ |
@@ -121,16 +122,16 @@
 | Unichain | 2 |
 | Polygon | 3 |
 | Monad | 8 |
-| Base | 25 |
+| Base | 26 |
 | Arbitrum | 8 |
 | Katana | 4 |
-| **Total** | **103** |
+| **Total** | **104** |
 
 ## Summary by Asset
 
 | Asset | Vaults |
 |-------|--------|
-| USDC | 44 |
+| USDC | 45 |
 | ETH | 11 |
 | AUSD | 10 |
 | USDT | 7 |
@@ -150,4 +151,4 @@
 | USDR | 1 |
 | XAUT | 1 |
 | JPYC | 1 |
-| **Total** | **103** |
+| **Total** | **104** |
