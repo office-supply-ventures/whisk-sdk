@@ -1,12 +1,9 @@
 packages:
   - packages/*
-  - examples/*
   - docs/*
 
 catalog:
-  '@tanstack/react-query': 5.90.10
   '@types/react': ^19.2.0
-  '@types/react-dom': ^19.2.0
   '@urql/core': 6.0.1
   gql.tada: 1.9.0
   react: 19.2.0

@@ -13,7 +13,6 @@ export default defineConfig({
     alias: {
       "@whisk/graphql": resolveFromRoot("packages/graphql/src/index.ts"),
       "@whisk/client": resolveFromRoot("packages/client/src/index.ts"),
-      "@whisk/react": resolveFromRoot("packages/react/src/index.ts"),
     },
   },
   test: {
