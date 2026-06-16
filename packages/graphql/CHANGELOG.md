@@ -1,5 +1,11 @@
 # @whisk/graphql
 
+## 0.0.19
+
+### Patch Changes
+
+- 18c2d5d: Sync GraphQL schema from staging: deprecate the `morphoVaults` and `vaults` queries in favor of `erc4626Vaults`, and mark previously unstable Vault V2 adapter/cap fields as stable.
+
 ## 0.0.18
 
 ### Patch Changes
