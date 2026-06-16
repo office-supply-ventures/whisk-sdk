@@ -42,10 +42,10 @@ import { graphql } from "@whisk/graphql"
 
 const vaultsQuery = graphql(`
   query GetVaults {
-    morphoVaults(where: { chainId_in: [1], whitelisted: true }, limit: 10) {
+    erc4626Vaults(limit: 10) {
       items {
         name
-        totalSupplied {
+        totalAssets {
           formatted
           usd
         }
@@ -61,7 +61,7 @@ The return type of `vaultsQuery` is fully inferred from the schema — no codege
 
 ```ts
 const data = await client.query(vaultsQuery, {})
-// data.morphoVaults.items is fully typed
+// data.erc4626Vaults.items is fully typed
 ```
 
 ## Editor IntelliSense

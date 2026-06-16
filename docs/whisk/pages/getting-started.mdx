@@ -45,13 +45,14 @@ Try running a query like this:
 
 ```graphql [Example Query]
 {
-  morphoVaults(where: {chainId_in: [137], whitelisted: true}, limit: 10) {
+  erc4626Vaults(limit: 10) {
     items {
       name
-      totalSupplied {
+      totalAssets {
         formatted
         usd
       }
+    }
   }
 }
 ```
