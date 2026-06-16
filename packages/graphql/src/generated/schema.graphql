@@ -10,12 +10,12 @@ type Query {
   identities(addresses: [Address!]!, resolverOrder: [IdentityResolver!]): [Identity!]!
   merklAccountRewards(chainId: ChainId!, accountAddress: Address!): [MerklAccountReward!]!
   morphoMarkets(where: MorphoMarketFilter, before: String, after: String, limit: Int): MorphoMarketPage!
-  morphoVaults(where: MorphoVaultFilter, before: String, after: String, limit: Int): MorphoVaultPage!
+  morphoVaults(where: MorphoVaultFilter, before: String, after: String, limit: Int): MorphoVaultPage! @deprecated(reason: "Only returns Morpho Vault V1. Use the `erc4626Vaults` query instead, which supports Morpho Vault V2 and other DeFi protocols.")
   morphoMarketPositions(where: MorphoMarketPositionFilter!, before: String, after: String, limit: Int): MorphoMarketPositionPage!
   morphoVaultPositions(where: MorphoVaultPositionFilter!, before: String, after: String, limit: Int): MorphoVaultPositionPage!
   steakhouseStats: SteakhouseStats!
   steakhouseTvl: SteakhouseTvl! @deprecated(reason: "Use steakhouseStats.tvl instead")
-  vaults(inputs: [VaultInput!]!): [Vault]!
+  vaults(inputs: [VaultInput!]!): [Vault]! @deprecated(reason: "Use the `erc4626Vaults` query instead.")
 }
 
 input AeraVaultFilter {
@@ -134,30 +134,30 @@ type BoxVault implements Erc4626Vault & Erc20 {
   apy(timeframe: ApyTimeframe!): Apy!
   historical: Erc4626VaultHistorical
   leverage: Float!
-  allocations: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
-  fundingModules: [BoxFundingModule!]! @deprecated(reason: "Schema is subject to change, not yet stable")
+  allocations: [TokenHolding!]!
+  fundingModules: [BoxFundingModule!]!
 }
 
 interface BoxFundingModule {
-  fundingModuleAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  collateralHoldings: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
-  debtHoldings: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
-  nav: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  fundingModuleAddress: Address!
+  collateralHoldings: [TokenHolding!]!
+  debtHoldings: [TokenHolding!]!
+  nav: TokenAmount!
 }
 
 type BoxMorphoFundingModule implements BoxFundingModule {
-  fundingModuleAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  collateralHoldings: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
-  debtHoldings: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
-  nav: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  positions: [MorphoMarketPosition!]! @deprecated(reason: "Schema is subject to change, not yet stable")
+  fundingModuleAddress: Address!
+  collateralHoldings: [TokenHolding!]!
+  debtHoldings: [TokenHolding!]!
+  nav: TokenAmount!
+  positions: [MorphoMarketPosition!]!
 }
 
 type BoxUnknownFundingModule implements BoxFundingModule {
-  fundingModuleAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  collateralHoldings: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
-  debtHoldings: [TokenHolding!]! @deprecated(reason: "Schema is subject to change, not yet stable")
-  nav: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  fundingModuleAddress: Address!
+  collateralHoldings: [TokenHolding!]!
+  debtHoldings: [TokenHolding!]!
+  nav: TokenAmount!
 }
 
 input ChainFilter {
@@ -455,63 +455,63 @@ type MorphoVaultV2 implements Erc4626Vault & Erc20 {
   asset: Token!
   totalAssets: TokenAmount!
   apy(timeframe: ApyTimeframe!): Apy!
-  idleAssets: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  liquidityAssets: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  metadata: MorphoVaultMetadata @deprecated(reason: "Schema is subject to change, not yet stable")
-  ownerAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  curatorAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  performanceFee: OnchainAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  performanceFeeRecipientAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  managementFee: OnchainAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  managementFeeRecipientAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  allocatorAddresses: [Address!] @deprecated(reason: "Schema is subject to change, not yet stable")
-  sentinelAddresses: [Address!] @deprecated(reason: "Schema is subject to change, not yet stable")
+  idleAssets: TokenAmount!
+  liquidityAssets: TokenAmount!
+  metadata: MorphoVaultMetadata
+  ownerAddress: Address!
+  curatorAddress: Address!
+  performanceFee: OnchainAmount!
+  performanceFeeRecipientAddress: Address!
+  managementFee: OnchainAmount!
+  managementFeeRecipientAddress: Address!
+  allocatorAddresses: [Address!]
+  sentinelAddresses: [Address!]
   allocations: [Adapter!]!
   adapters: [Adapter!]! @deprecated(reason: "Use allocations instead")
-  caps: [Cap!] @deprecated(reason: "Schema is subject to change, not yet stable")
-  liquidityAdapterAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  receiveSharesGateAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  sendSharesGateAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  receiveAssetsGateAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  sendAssetsGateAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
+  caps: [Cap!]
+  liquidityAdapterAddress: Address!
+  receiveSharesGateAddress: Address!
+  sendSharesGateAddress: Address!
+  receiveAssetsGateAddress: Address!
+  sendAssetsGateAddress: Address!
   historical: MorphoVaultHistorical
-  deploymentTimestamp: Int @deprecated(reason: "Schema is subject to change, not yet stable")
-  nav: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  deploymentTimestamp: Int
+  nav: TokenAmount!
 }
 
 interface Adapter {
-  adapterAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
+  adapterAddress: Address!
+  adapterCap: AdapterCap
   name: String
   riskAssessment: RiskAssessment!
   instantApy: Float!
 }
 
 type MarketV1Adapter implements Adapter {
-  adapterAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
-  name: String @deprecated(reason: "Schema is subject to change, not yet stable")
+  adapterAddress: Address!
+  adapterCap: AdapterCap
+  name: String
   riskAssessment: RiskAssessment!
   instantApy: Float!
-  marketCaps: [MarketV1ExposureCap!]! @deprecated(reason: "Schema is subject to change, not yet stable")
+  marketCaps: [MarketV1ExposureCap!]!
 }
 
 type VaultV1Adapter implements Adapter {
-  adapterAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
-  name: String @deprecated(reason: "Schema is subject to change, not yet stable")
+  adapterAddress: Address!
+  adapterCap: AdapterCap
+  name: String
   riskAssessment: RiskAssessment!
   instantApy: Float!
-  vault: MorphoVault @deprecated(reason: "Schema is subject to change, not yet stable")
+  vault: MorphoVault
 }
 
 type BoxVaultAdapter implements Adapter {
-  adapterAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
-  name: String @deprecated(reason: "Schema is subject to change, not yet stable")
+  adapterAddress: Address!
+  adapterCap: AdapterCap
+  name: String
   riskAssessment: RiskAssessment!
   instantApy: Float!
-  vault: BoxVault @deprecated(reason: "Schema is subject to change, not yet stable")
+  vault: BoxVault
 }
 
 type Erc4626VaultAdapter implements Adapter {
@@ -524,48 +524,48 @@ type Erc4626VaultAdapter implements Adapter {
 }
 
 type UnknownAdapter implements Adapter {
-  adapterAddress: Address! @deprecated(reason: "Schema is subject to change, not yet stable")
-  adapterCap: AdapterCap @deprecated(reason: "Schema is subject to change, not yet stable")
-  name: String @deprecated(reason: "Schema is subject to change, not yet stable")
+  adapterAddress: Address!
+  adapterCap: AdapterCap
+  name: String
   riskAssessment: RiskAssessment!
   instantApy: Float!
 }
 
 interface Cap {
-  capId: Hex! @deprecated(reason: "Schema is subject to change, not yet stable")
-  allocation: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  absoluteCap: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  relativeCap: OnchainAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  capId: Hex!
+  allocation: TokenAmount!
+  absoluteCap: TokenAmount!
+  relativeCap: OnchainAmount!
 }
 
 type AdapterCap implements Cap {
-  capId: Hex! @deprecated(reason: "Schema is subject to change, not yet stable")
-  allocation: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  absoluteCap: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  relativeCap: OnchainAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  capId: Hex!
+  allocation: TokenAmount!
+  absoluteCap: TokenAmount!
+  relativeCap: OnchainAmount!
 }
 
 type MarketV1ExposureCap implements Cap {
-  capId: Hex! @deprecated(reason: "Schema is subject to change, not yet stable")
-  allocation: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  absoluteCap: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  relativeCap: OnchainAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  market: MorphoMarket! @deprecated(reason: "Schema is subject to change, not yet stable")
+  capId: Hex!
+  allocation: TokenAmount!
+  absoluteCap: TokenAmount!
+  relativeCap: OnchainAmount!
+  market: MorphoMarket!
 }
 
 type CollateralExposureCap implements Cap {
-  capId: Hex! @deprecated(reason: "Schema is subject to change, not yet stable")
-  allocation: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  absoluteCap: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  relativeCap: OnchainAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  collateralToken: Token! @deprecated(reason: "Schema is subject to change, not yet stable")
+  capId: Hex!
+  allocation: TokenAmount!
+  absoluteCap: TokenAmount!
+  relativeCap: OnchainAmount!
+  collateralToken: Token!
 }
 
 type UnknownCap implements Cap {
-  capId: Hex! @deprecated(reason: "Schema is subject to change, not yet stable")
-  allocation: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  absoluteCap: TokenAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
-  relativeCap: OnchainAmount! @deprecated(reason: "Schema is subject to change, not yet stable")
+  capId: Hex!
+  allocation: TokenAmount!
+  absoluteCap: TokenAmount!
+  relativeCap: OnchainAmount!
 }
 
 type Curator {
