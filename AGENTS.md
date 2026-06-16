@@ -5,29 +5,18 @@ TypeScript SDK for interacting with the Whisk GraphQL API, focused on DeFi vault
 ## Architecture
 
 ```
-@whisk/graphql → @whisk/client → @whisk/steakhouse
+@whisk/graphql → @whisk/client
 ```
 
 - **@whisk/graphql** - GraphQL schema, gql.tada setup, typed queries
 - **@whisk/client** - Core WhiskClient with URQL, scalar handling, error types
-- **@whisk/steakhouse** - Steakhouse vault integration with React hooks and metadata
 
 ## Package Structure
 
 ```
 packages/
 ├── graphql/          # GraphQL schema and gql.tada codegen
-├── client/           # Core WhiskClient (URQL-based)
-└── steakhouse/       # Steakhouse integration
-    ├── src/
-    │   ├── index.ts           # Core: SteakhouseClient, queries
-    │   ├── queries/           # Query functions (getVaults, etc.)
-    │   ├── react/             # React hooks and provider
-    │   └── metadata/          # Chain/vault configs
-    └── Subpath exports:
-        - @whisk/steakhouse
-        - @whisk/steakhouse/react
-        - @whisk/steakhouse/metadata
+└── client/           # Core WhiskClient (URQL-based)
 ```
 
 ## Commands
@@ -38,7 +27,7 @@ pnpm check:types     # TypeScript type check
 pnpm check:graphql   # Validate queries against schema (gql.tada check)
 pnpm test            # Run vitest tests
 pnpm check           # Biome lint/format (auto-fix)
-pnpm dev:next        # Run Next.js example app
+pnpm dev:docs        # Run the docs site
 pnpm clean           # Clean all build artifacts
 ```
 
@@ -83,8 +72,7 @@ pnpm schema:sync:local
 "pnpm": {
   "overrides": {
     "@whisk/graphql": "link:../whisk-sdk/packages/graphql",
-    "@whisk/client": "link:../whisk-sdk/packages/client",
-    "@whisk/steakhouse": "link:../whisk-sdk/packages/steakhouse"
+    "@whisk/client": "link:../whisk-sdk/packages/client"
   }
 }
 ```
@@ -97,57 +85,11 @@ Then run `pnpm install` in the app. Adjust the `link:` paths based on your direc
 NEXT_PUBLIC_WHISK_API_URL=http://localhost:3500/graphql
 ```
 
-### Adding a new query to @whisk/steakhouse
-
-1. Create fragment in `src/queries/fragments/` if needed
-2. Create query file in `src/queries/` following `getVaults.ts` pattern
-3. Export from `src/queries/index.ts`
-4. Optionally create React hook in `src/react/hooks/`
-
-### Query function pattern
-
-```typescript
-import { graphql, type ResultOf } from "@whisk/graphql"
-import type { VariablesOf } from "gql.tada"
-import type { SteakhouseClient } from "../client.js"
-
-export const myQuery = graphql(`query MyQuery($arg: String!) { ... }`)
-
-export type MyQueryVariables = VariablesOf<typeof myQuery>
-export type MyQueryResult = ResultOf<typeof myQuery>["fieldName"]
-
-export async function getMyData(
-  client: SteakhouseClient,
-  variables: MyQueryVariables,
-): Promise<MyQueryResult> {
-  const result = await client.query(myQuery, variables)
-  return result.fieldName
-}
-```
-
-### React hook pattern
-
-```typescript
-"use client"
-
-import { type GetMyDataVariables, getMyData } from "../../queries/getMyData.js"
-import { useSteakhouseQuery } from "./useSteakhouseQuery.js"
-
-export function useMyData(variables: GetMyDataVariables) {
-  return useSteakhouseQuery({
-    queryName: "myData",
-    queryFn: getMyData,
-    variables,
-  })
-}
-```
-
 ## Conventions
 
 - Use `function` keyword for top-level functions (not arrow functions)
 - Explicit return types on exported functions
 - Use `.js` extensions in imports (ES modules)
-- React components use explicit `Props` interface
 - No `try/catch` unless necessary - let errors propagate
 - Tests use mocked data (no real API calls in CI)
 
@@ -158,14 +100,13 @@ export function useMyData(variables: GetMyDataVariables) {
 - **tsup** - TypeScript bundler
 - **gql.tada** - Type-safe GraphQL queries
 - **URQL** - GraphQL client
-- **TanStack Query** - React data fetching
 - **Biome** - Linting and formatting
 - **Vitest** - Testing
 - **Changesets** - Version management
 
 ## Releasing
 
-Always use `pnpm changeset` (interactive CLI) to create changesets — never create changeset files manually.
+Always use `pnpm changeset` (interactive CLI) to create changesets, never create changeset files manually.
 
 ```bash
 pnpm changeset              # Create changeset describing your changes (interactive)
@@ -177,7 +118,7 @@ After merging to `main`, CI automatically runs `changeset:publish` to build and 
 
 ## Environment Variables
 
-For the Next.js example app:
+For consuming apps:
 
 ```bash
 NEXT_PUBLIC_WHISK_API_KEY=xxx
